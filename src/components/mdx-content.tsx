@@ -1,5 +1,9 @@
+import { transformerNotationDiff } from '@shikijs/transformers'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import rehypePrettyCode from 'rehype-pretty-code'
+import rehypeSlug from 'rehype-slug'
+import remarkGfm from 'remark-gfm'
+import type { PluggableList } from 'unified'
 
 const components = {
   h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -57,14 +61,22 @@ export function MDXContent({ source }: MDXContentProps) {
       components={components}
       options={{
         mdxOptions: {
+          remarkPlugins: [remarkGfm],
           rehypePlugins: [
+            rehypeSlug,
             [
               rehypePrettyCode,
               {
-                theme: 'github-dark',
+                theme: {
+                  dark: 'github-dark',
+                  light: 'github-light',
+                },
+                keepBackground: false,
+                defaultLang: 'plaintext',
+                transformers: [transformerNotationDiff()],
               },
             ],
-          ],
+          ] as PluggableList,
         },
       }}
     />

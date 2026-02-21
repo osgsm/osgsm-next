@@ -73,8 +73,11 @@ const { data, content } = matter(fileContents)
 ### 2. `src/components/mdx-content.tsx` - レンダリング
 
 ```tsx
+import { transformerNotationDiff } from '@shikijs/transformers'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import rehypePrettyCode from 'rehype-pretty-code'
+import rehypeSlug from 'rehype-slug'
+import remarkGfm from 'remark-gfm'
 
 export function MDXContent({ source }: { source: string }) {
   return (
@@ -83,7 +86,19 @@ export function MDXContent({ source }: { source: string }) {
       components={components} // カスタムコンポーネント
       options={{
         mdxOptions: {
-          rehypePlugins: [[rehypePrettyCode, { theme: 'github-dark' }]],
+          remarkPlugins: [remarkGfm],
+          rehypePlugins: [
+            rehypeSlug,
+            [
+              rehypePrettyCode,
+              {
+                theme: { dark: 'github-dark', light: 'github-light' },
+                keepBackground: false,
+                defaultLang: 'plaintext',
+                transformers: [transformerNotationDiff()],
+              },
+            ],
+          ],
         },
       }}
     />
@@ -109,6 +124,8 @@ const components = {
 
 `rehype-pretty-code` と `shiki` を使用。
 
+### 基本的な使い方
+
 ````mdx
 ```typescript
 function greet(name: string): string {
@@ -117,7 +134,34 @@ function greet(name: string): string {
 ```
 ````
 
-これが自動的にハイライトされる。テーマは `github-dark`。
+### 設定
+
+| オプション       | 値                                               | 説明                       |
+| ---------------- | ------------------------------------------------ | -------------------------- |
+| `theme`          | `{ dark: 'github-dark', light: 'github-light' }` | ライト/ダーク両対応        |
+| `keepBackground` | `false`                                          | テーマの背景色を透明にする |
+| `defaultLang`    | `plaintext`                                      | 言語未指定時のデフォルト   |
+| `transformers`   | `[transformerNotationDiff()]`                    | diff 記法サポート          |
+
+### diff 記法
+
+コード内で `// [!code ++]` や `// [!code --]` を使うと、追加/削除行として表示される。
+
+````mdx
+```ts
+function greet(name: string) {
+  console.log('Old greeting') // [!code --]
+  console.log('New greeting') // [!code ++]
+}
+```
+````
+
+### 使用プラグイン
+
+- **remark-gfm**: GitHub Flavored Markdown（テーブル、取り消し線など）
+- **rehype-slug**: 見出しに自動で ID を付与
+- **rehype-pretty-code**: シンタックスハイライト
+- **@shikijs/transformers**: diff 記法などのトランスフォーマー
 
 ## 新しい記事の追加
 

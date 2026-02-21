@@ -24,3 +24,86 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/*
+ * Syntax highlighting styles for rehype-pretty-code
+ * @see: https://rehype-pretty.pages.dev/
+ */
+
+/* Light/Dark theme switching */
+code[data-theme*=' '],
+code[data-theme*=' '] span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  code[data-theme*=' '],
+  code[data-theme*=' '] span {
+    color: var(--shiki-dark);
+    background-color: var(--shiki-dark-bg);
+  }
+}
+
+/* Code block container */
+figure[data-rehype-pretty-code-figure] {
+  margin: 1rem 0;
+  border: 1px solid var(--foreground);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+/* Code title */
+figcaption[data-rehype-pretty-code-title] {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-bottom: 1px solid var(--foreground);
+  opacity: 0.7;
+}
+
+/* Pre element */
+pre {
+  padding: 1rem 0;
+  overflow-x: auto;
+}
+
+/* Code lines */
+pre [data-line] {
+  padding: 0 1rem;
+  border-left: 2px solid transparent;
+}
+
+/* Highlighted lines */
+[data-highlighted-line] {
+  background-color: rgba(100, 100, 100, 0.2) !important;
+  border-left-color: #3b82f6 !important;
+}
+
+/* Diff styles */
+[data-line].diff {
+  position: relative;
+}
+
+[data-line].diff::before {
+  position: absolute;
+  left: 0.25rem;
+}
+
+[data-line].diff.add {
+  background-color: rgba(34, 197, 94, 0.15);
+}
+
+[data-line].diff.add::before {
+  content: '+';
+  color: #22c55e;
+}
+
+[data-line].diff.remove {
+  background-color: rgba(239, 68, 68, 0.15);
+  opacity: 0.7;
+}
+
+[data-line].diff.remove::before {
+  content: '-';
+  color: #ef4444;
+}
