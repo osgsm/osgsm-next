@@ -7,7 +7,16 @@
       "Bash(pnpm exec husky:*)",
       "Bash(pnpm format:*)",
       "Bash(pnpm build:*)",
-      "Bash(pnpm lint:*)"
+      "Bash(pnpm lint:*)",
+      "Bash(tree:*)",
+      "Bash(find:*)",
+      "Bash(ls:*)",
+      "Bash(npm install:*)",
+      "Bash(npm cache clean:*)",
+      "Bash(pnpm run build:*)",
+      "Bash(node scripts/migrate-content.js:*)",
+      "Bash(node scripts/copy-images.js:*)",
+      "Bash(npx eslint:*)"
     ]
   }
 }

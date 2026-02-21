@@ -1,0 +1,226 @@
+---
+title: 'Rehype Pretty Code で、コードブロックに行番号を付け、特定の行をハイライトする'
+date: 2023-01-19
+
+tags: ['shiki', 'rehype-pretty-code']
+---
+
+[前回](/blog/introducing-rehype-pretty-code)は、 Rehype Pretty Code (`rehype-pretty-code`) を使ってシンタックスハイライトを適用し、テーマを変更するところまで行いました。
+
+今回は、さらに踏み込んで、行番号を付けたり、コードブロック内の特定の行をハイライトする方法を紹介します。
+
+Rehype Pretty Code では、シンタックスハイライトされるコードブロックの設定を、 meta string を通して行えます。
+
+例えば、次のようにマークダウンを書きます。 Meta string とは `showLineNumbers title="add.js" {3}` の部分を指します。
+
+````none title="sample-post.md" {1}
+```js showLineNumbers title="add.js" {3}
+const add = (a, b) => a + b
+
+add(2, 3) // 5
+```
+````
+
+上のマークダウンは、次のように表示されます。
+
+```js showLineNumbers title="add.js" {3}
+const add = (a, b) => a + b
+
+add(2, 3) // 5
+```
+
+ただし、 Rehype Pretty Code は、スタイリング部分は提供してくれないので、別途 CSS を書く必要があります。
+
+それでは、実際の作業に入っていきましょう。まずは CSS を適用するための準備から。
+
+## Rehype Pretty Code に CSS を適用する準備
+
+はじめに、CSS を記述するためのファイル（`styles/syntax-highlighting.css`）を作成します。
+
+```shell title="Terminal"
+touch styles/syntax-highlighting.css
+```
+
+そして、このファイルを `styles/global.css` から読み込みます。
+
+```css title="styles/global.css" {5}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './syntax-highlighting.css';
+```
+
+これで CSS を適用する準備が整ったので、 CSS の中身を書いていきましょう。 CSS では Tailwind CSS の `@apply` を使用しています。
+
+## コードブロック全体のスタイリング
+
+Rehype Pretty Code を適用後は、コードブロックをラップする `figure` 要素に `data-rehype-pretty-code-figure` という data attribute が付きます。なので、次のようにコードブロック全体をスタイリングできます。
+
+```css title="styles/syntax-highlighting.css"
+figure[data-rehype-pretty-code-figure] {
+  /* ... */
+}
+```
+
+今回は、次のようにスタイリングしています。併せて、子要素の `pre` にもスタイルを適用しています。配色の部分では [Radix Colors](https://www.radix-ui.com/colors) を使用しています。
+
+```css title="styles/syntax-highlighting.css"
+figure[data-rehype-pretty-code-figure] {
+  @apply w-full mt-4 border border-[--border] rounded-[--radius-base] bg-[--iris-2];
+}
+
+figure[data-rehype-pretty-code-figure] pre {
+  @apply py-4 overflow-x-auto;
+}
+```
+
+では、次にコードブロックの行をスタイリングしていきます。
+
+## 行のスタイリング
+
+Rehype Pretty Code では、コードブロック内の各行に対して `data-line` という data attribute が追加されます。なので、行のスタイリングは、 `data-line` に対して行っていきます。
+
+```css title="styles/syntax-highlighting.css"
+figure[data-rehype-pretty-code-figure] [data-line] {
+  @apply mt-0 px-4 border-l-2 border-transparent;
+}
+```
+
+ここで、透明の `border` を適用しているのは、ハイライト時に色を付けるためです。
+
+それでは次に、ハイライト表示するための設定とそのスタイリングを行っていきます。
+
+## 特定行のハイライト
+
+### マークダウンでのハイライト指定
+
+Rehype Pretty Code で行をハイライトするには、マークダウンのコードブロックで `{3}` のように記述します。
+
+範囲を指定する場合は `{1-3}` 、複数行を指定する場合は `{1,3}` のように書きます。
+
+````none title="sample-post.md" {1}
+```js title="add.js" {3}
+const add = (a, b) => a + b
+
+add(2, 3) // 5
+```
+````
+
+これで、マークダウンのコードブロックで `{3}` と書いた場合に、3行目に `data-highlighted-line` という data attribute が追加されます。
+
+### ハイライト部分のスタイリング
+
+`data-highlighted-line` に対してスタイリングを行います。 `border-color` と `background-color` を指定します。
+
+```css title="styles/syntax-highlighting.css"
+[data-highlighted-line] {
+  @apply !bg-[--plum-3] !border-[--plum-8];
+}
+```
+
+次はコードブロック用のタイトル部分の設定です。
+
+## コードブロック用タイトル
+
+### マークダウンでのタイトル指定
+
+タイトルを設定するには、マークダウンのコードブロックに `title="..."` を使用します。
+
+````none title="sample-post.md" {1}
+```js {3} title="add.js"
+const add = (a, b) => a + b
+
+add(2, 3) // 5
+```
+````
+
+`title="..."` を使うと、 次のような要素が HTML に挿入されます。
+
+```html
+<figcaption
+  data-rehype-pretty-code-title=""
+  data-language="js"
+  data-theme="default"
+>
+  add.js
+</figcaption>
+```
+
+`data-rehype-pretty-code-title` という data attribute を持つ `figcaption` 内に、 `title="..."` の値（ここでは `add.js`）が入っています。
+
+それでは、この要素に対してスタイリングしていきましょう。
+
+### タイトル関連のスタイリング
+
+ここでは、タイトル部分に加えて、タイトルに隣接する `pre` 要素にもスタイルを適用しています。
+
+```css title="styles/syntax-highlighting.css"
+figcaption[data-rehype-pretty-code-title] {
+  @apply text-small py-1 px-4 border-b border-border text-[--iris-9];
+}
+
+figcaption[data-rehype-pretty-code-title] + pre {
+  @apply mt-0;
+}
+```
+
+最後に、行番号を追加し、スタイリングしていきます。
+
+## 行番号
+
+行番号を表示するには、マークダウンのコードブロックに `showLineNumbers` を追記します。
+
+````none title="sample-post.md" {1}
+```js {3} title="add.js" showLineNumbers
+const add = (a, b) => a + b
+
+add(2, 3) // 5
+```
+````
+
+次に、 `lineNumber` をインクリメントするための記述と、 `lineNumber` の表示を行います。ついでに他のスタイリングも行います。
+
+```css title="styles/syntax-highlighting.css" showLineNumbers
+code[data-line-numbers] {
+  counter-reset: line;
+}
+
+code[data-line-numbers] > [data-line]::before {
+  display: inline-block;
+  width: 12px;
+  margin-right: 1rem;
+  color: gray;
+  text-align: right;
+  content: counter(line);
+  counter-increment: line;
+}
+
+code[data-line-numbers-max-digits='2'] > [data-line]::before {
+  width: 1.25rem;
+}
+
+code[data-line-numbers-max-digits='3'] > [data-line]::before {
+  width: 1.75rem;
+}
+
+code[data-line-numbers-max-digits='4'] > [data-line]::before {
+  width: 2.25rem;
+}
+```
+
+以上で、上に今表示されているようないい感じのコードブロックを表示できます。
+
+## さいごに
+
+Rehype Pretty Code を使って、適宜 CSS を用意すれば、美しく、かつわかりやすいシンタックスハイライトを導入できます。
+
+CSS については、デフォルトで用意されているものがないので、自身で用意する必要がありますが、デフォルトのスタイリングがない分、自由にできるのがありがたいですね。
+
+Rehype Pretty Code は、Shiki を使っているので、 Shiki が用意しているトランスフォーマーを使えば、[シンタックスハイライトを効かせた状態で diff を表示する](/blog/syntax-hilighted-diff) ことも可能です。興味のある方はチェックしてみてください。
+
+---
+
+参考
+
+- [Rehype Pretty Code | Rehype Pretty](https://rehype-pretty.pages.dev/)

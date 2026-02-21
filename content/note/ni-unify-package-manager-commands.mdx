@@ -1,0 +1,52 @@
+---
+title: 'ni を使って npm や yarn、pnpm、bun のコマンドを統一する'
+date: 2025-03-15
+
+tags: ['npm', 'yarn', 'pnpm', 'bun']
+---
+
+[ni](https://github.com/antfu-collective/ni?tab=readme-ov-file) は、パッケージマネージャーのコマンドを統一するためのツール。
+
+例えば、 yarn を使っているプロジェクトで `pnpm dev` などを実行してしまうことがよくある。 ni を使えばそれを防ぐことができる。
+
+また、ni を使うと、自動的に現在のプロジェクトで使用しているパッケージマネージャーを検出して正しいコマンドを使ってくれるので、どのパッケージマネージャーを使っているかを意識する必要がなくなる。
+
+ni のインストールは次のコマンドから行える。
+
+```shell
+npm i -g @antfu/ni
+```
+
+インストール後、 ni が用意しているコマンドを使える。
+
+よく使うコマンドは次の通り。他のコマンドについては [antfu-collective/ni: 💡 Use the right package manager](https://github.com/antfu-collective/ni?tab=readme-ov-file) を参照。
+
+- `ni`: 引数なしだと `pnpm install` に、引数を与えると `pnpm add` などに該当
+- `nr`: `pnpm run` などに該当
+- `nlx`: `npx`, `pnpm dlx` などに該当
+- `nu`: `pnpm update` などに該当
+- `nun`: `pnpm remove` などに該当
+- `nci`: `npm ci`, `pnpm install --frozen-lockfile` などに該当
+
+さらに、次のようなコマンドエイリアスを設定しておくと、Vite や Astro プロジェクトなどで `nrd` で開発サーバーを起動したりできるので便利。
+
+```ini title="~/.zshrc"
+alias nrd="nr dev"
+alias nrb="nr build"
+alias nrs="nr start"
+alias nrp="nr preview"
+```
+
+ちなみに、ni はコマンドを実行する前に `yarn.lock`, `pnpm-lock.yaml`, `package-lock.json` などを見つけて現在のパッケージマネージャーを知る。もしくは `package.json` の `packageManager` field を確認する。
+
+---
+
+関連ノート
+
+- [コマンドエイリアスを使ってコマンドをすばやく実行する](/notes/command-alias)
+
+---
+
+参考
+
+- [antfu-collective/ni: 💡 Use the right package manager](https://github.com/antfu-collective/ni?tab=readme-ov-file)

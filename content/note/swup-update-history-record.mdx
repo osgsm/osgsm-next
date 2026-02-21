@@ -1,0 +1,48 @@
+---
+title: 'Swup の updateHistoryRecord ヘルパー関数を使って URL を更新する'
+date: 2025-03-20
+
+tags: ['swup']
+---
+
+Swup を使っているプロジェクトでは、History API の `window.history.replaceState(){:js}` などを使って直接 URL を更新すると、 swup との連携がうまくいかなくなる。
+
+このようなケースでは、用意されているヘルパー関数 `updateHistoryRecord(){:js}` を使う。
+
+```ts {1, 7}
+import { updateHistoryRecord } from 'swup'
+
+// ...
+
+const newUrl = new URL(window.location.href)
+newUrl.searchParams.set('show', currentCount.toString())
+updateHistoryRecord(newUrl.toString())
+```
+
+ちなみに、`updateHistoryRecord.ts` の実装は次のようになっている。
+
+```ts title="swup/src/helpers/updateHistoryRecord.ts"
+/** Update the current history record with a custom swup identifier. */
+export const updateHistoryRecord = (
+  url: string | null = null,
+  data: HistoryData = {}
+): void => {
+  url = url || getCurrentUrl({ hash: true })
+  const currentState = (window.history.state as HistoryState) || {}
+  const state: HistoryState = {
+    ...currentState,
+    url,
+    random: Math.random(),
+    source: 'swup',
+    ...data,
+  }
+  window.history.replaceState(state, '', url)
+}
+```
+
+---
+
+参考
+
+- [Helpers — swup](https://swup.js.org/api/helpers/#updatehistoryrecord)
+- [swup/src/helpers/history.ts at 1a89f891fbc96631410f97a95c7d900e46ea7d58 · swup/swup](https://github.com/swup/swup/blob/1a89f891fbc96631410f97a95c7d900e46ea7d58/src/helpers/history.ts)
