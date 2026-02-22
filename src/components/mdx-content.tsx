@@ -12,6 +12,7 @@ import { cn } from '@/lib/cn'
 import {
   Bluesky,
   Callout,
+  CodeBlock,
   CodeSandbox,
   FootnoteBackReference,
   FootnoteForwardReference,
@@ -258,6 +259,16 @@ const components: MDXComponents = {
         {children}
       </li>
     )
+  },
+  figure: (
+    props: React.HTMLAttributes<HTMLElement> & {
+      'data-rehype-pretty-code-figure'?: string
+    }
+  ) => {
+    if ('data-rehype-pretty-code-figure' in props) {
+      return <CodeBlock {...props} />
+    }
+    return <figure {...props} />
   },
   code: (props: React.HTMLAttributes<HTMLElement>) => (
     <code

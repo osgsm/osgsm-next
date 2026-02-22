@@ -28,7 +28,9 @@
       "Bash(head:*)",
       "Bash(grep:*)",
       "Bash(pnpm list:*)",
-      "Bash(head:)"
+      "Bash(head:)",
+      "WebFetch(domain:rehype-pretty.pages.dev)",
+      "Bash(pnpm remove:*)"
     ]
   }
 }

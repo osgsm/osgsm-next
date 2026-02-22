@@ -1,6 +1,7 @@
 export { Bluesky } from './bluesky'
 export { BlueskyEmbed } from './bluesky-embed'
 export { Callout } from './callout'
+export { CodeBlock } from './code-block'
 export { CodeSandbox } from './codesandbox'
 export { default as FootnoteBackReference } from './footnote/back-reference'
 export { default as FootnoteForwardReference } from './footnote/forward-reference'
