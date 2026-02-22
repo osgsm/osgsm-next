@@ -23,8 +23,6 @@
   border-top-right-radius: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  .preview {
-    border-color: #374151;
-  }
+:global(.dark) .preview {
+  border-color: #374151;
 }

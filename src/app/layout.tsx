@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import Link from 'next/link'
 
 import { CommandMenu } from '@/components/command-menu'
+import { Footer } from '@/components/footer'
+import { ThemeProvider } from '@/components/theme-provider'
 import { getAllPosts } from '@/lib/mdx'
 
 import './globals.css'
@@ -34,33 +36,36 @@ export default function RootLayout({
   const notePosts = getAllPosts('note')
 
   return (
-    <html lang="ja">
+    <html lang="ja" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header className="border-b">
-          <nav className="mx-auto flex max-w-3xl items-center justify-between px-6 py-4">
-            <Link href="/" className="text-xl font-bold">
-              osgsm
-            </Link>
-            <div className="flex items-center gap-6">
-              <ul className="flex gap-6">
-                <li>
-                  <Link href="/blog" className="hover:underline">
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/note" className="hover:underline">
-                    Note
-                  </Link>
-                </li>
-              </ul>
-              <CommandMenu blogPosts={blogPosts} notePosts={notePosts} />
-            </div>
-          </nav>
-        </header>
-        <main className="mx-auto max-w-3xl px-6 py-8">{children}</main>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <header className="border-b">
+            <nav className="mx-auto flex max-w-3xl items-center justify-between px-6 py-4">
+              <Link href="/" className="text-xl font-bold">
+                osgsm
+              </Link>
+              <div className="flex items-center gap-6">
+                <ul className="flex gap-6">
+                  <li>
+                    <Link href="/blog" className="hover:underline">
+                      Blog
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/note" className="hover:underline">
+                      Note
+                    </Link>
+                  </li>
+                </ul>
+                <CommandMenu blogPosts={blogPosts} notePosts={notePosts} />
+              </div>
+            </nav>
+          </header>
+          <main className="mx-auto max-w-3xl px-6 py-8">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   )
