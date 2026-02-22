@@ -24,7 +24,10 @@
       "mcp__context7__resolve-library-id",
       "mcp__context7__query-docs",
       "Bash(cd:*)",
-      "Bash(npx tsx:*)"
+      "Bash(npx tsx:*)",
+      "Bash(head:*)",
+      "Bash(grep:*)",
+      "Bash(pnpm list:*)"
     ]
   }
 }

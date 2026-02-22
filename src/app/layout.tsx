@@ -1,6 +1,10 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import Link from 'next/link'
+
+import { CommandMenu } from '@/components/command-menu'
+import { getAllPosts } from '@/lib/mdx'
+
 import './globals.css'
 
 const geistSans = Geist({
@@ -26,6 +30,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const blogPosts = getAllPosts('blog')
+  const notePosts = getAllPosts('note')
+
   return (
     <html lang="ja">
       <body
@@ -36,18 +43,21 @@ export default function RootLayout({
             <Link href="/" className="text-xl font-bold">
               osgsm
             </Link>
-            <ul className="flex gap-6">
-              <li>
-                <Link href="/blog" className="hover:underline">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/note" className="hover:underline">
-                  Note
-                </Link>
-              </li>
-            </ul>
+            <div className="flex items-center gap-6">
+              <ul className="flex gap-6">
+                <li>
+                  <Link href="/blog" className="hover:underline">
+                    Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/note" className="hover:underline">
+                    Note
+                  </Link>
+                </li>
+              </ul>
+              <CommandMenu blogPosts={blogPosts} notePosts={notePosts} />
+            </div>
           </nav>
         </header>
         <main className="mx-auto max-w-3xl px-6 py-8">{children}</main>
