@@ -123,9 +123,6 @@ const components: MDXComponents = {
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3 className="text-xl font-bold mt-4 mb-2" {...props} />
   ),
-  p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p className="my-4 leading-relaxed" {...props} />
-  ),
   a: ({ children, href }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
     if (href?.startsWith('#user-content-fn-')) {
       return (
@@ -287,6 +284,7 @@ export function MDXContent({ source }: MDXContentProps) {
       source={source}
       components={components}
       options={{
+        blockJS: false,
         mdxOptions: {
           remarkPlugins: [remarkGfm],
           rehypePlugins: [
