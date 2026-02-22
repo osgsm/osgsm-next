@@ -5,43 +5,43 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const copyDir = (src, dest) => {
-  if (!fs.existsSync(src)) {
-    console.log(`Source directory not found: ${src}`)
+const contentDir = path.join(__dirname, '../content')
+const publicDir = path.join(__dirname, '../public')
+
+const copyPostAssets = (type, publicType) => {
+  const typeDir = path.join(contentDir, type)
+  if (!fs.existsSync(typeDir)) {
+    console.log(`Content directory not found: ${typeDir}`)
     return
   }
 
-  if (!fs.existsSync(dest)) {
-    fs.mkdirSync(dest, { recursive: true })
-  }
-
-  const entries = fs.readdirSync(src, { withFileTypes: true })
+  const entries = fs.readdirSync(typeDir, { withFileTypes: true })
 
   for (const entry of entries) {
-    const srcPath = path.join(src, entry.name)
-    const destPath = path.join(dest, entry.name)
+    if (!entry.isDirectory()) continue
 
-    if (entry.isDirectory()) {
-      copyDir(srcPath, destPath)
-    } else {
-      fs.copyFileSync(srcPath, destPath)
+    const slug = entry.name
+    const postDir = path.join(typeDir, slug)
+    const files = fs.readdirSync(postDir)
+    const assets = files.filter((file) => file !== 'index.mdx')
+
+    if (assets.length === 0) continue
+
+    const destDir = path.join(publicDir, publicType, 'images', slug)
+    if (!fs.existsSync(destDir)) {
+      fs.mkdirSync(destDir, { recursive: true })
+    }
+
+    for (const asset of assets) {
+      fs.copyFileSync(path.join(postDir, asset), path.join(destDir, asset))
     }
   }
 }
 
-const contentDir = path.join(__dirname, '../content')
-const publicDir = path.join(__dirname, '../public')
-
-// Copy blog images
-const blogImagesSource = path.join(contentDir, 'blog/images')
-const blogImagesDest = path.join(publicDir, 'blog/images')
 console.log('Copying blog images...')
-copyDir(blogImagesSource, blogImagesDest)
+copyPostAssets('blog', 'blog')
 
-// Copy note images
-const noteImagesSource = path.join(contentDir, 'note/images')
-const noteImagesDest = path.join(publicDir, 'notes/images')
 console.log('Copying note images...')
-copyDir(noteImagesSource, noteImagesDest)
+copyPostAssets('note', 'notes')
 
 console.log('Images copied successfully!')

@@ -1,5 +1,4 @@
 import type { MDXComponents } from 'mdx/types'
-import type { PluggableList } from 'unified'
 
 import { transformerNotationDiff } from '@shikijs/transformers'
 import { MDXRemote } from 'next-mdx-remote/rsc'
@@ -285,6 +284,7 @@ export function MDXContent({ source }: MDXContentProps) {
       components={components}
       options={{
         blockJS: false,
+        blockDangerousJS: true,
         mdxOptions: {
           remarkPlugins: [remarkGfm],
           rehypePlugins: [
@@ -301,7 +301,7 @@ export function MDXContent({ source }: MDXContentProps) {
                 transformers: [transformerNotationDiff()],
               },
             ],
-          ] as PluggableList,
+          ],
         },
       }}
     />

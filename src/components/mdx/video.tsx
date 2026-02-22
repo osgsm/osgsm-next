@@ -27,7 +27,6 @@ export default function MDXVideo({
           className="h-auto w-full object-contain"
         >
           <source src={src} type="video/mp4" />
-          <track kind="captions" label="Japanese" srcLang="ja" src="" default />
         </video>
       </div>
       {caption && (

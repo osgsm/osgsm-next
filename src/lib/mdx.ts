@@ -24,13 +24,17 @@ export function getPostSlugs(type: PostType): string[] {
     return []
   }
   return fs
-    .readdirSync(dir)
-    .filter((file) => file.endsWith('.mdx'))
-    .map((file) => file.replace(/\.mdx$/, ''))
+    .readdirSync(dir, { withFileTypes: true })
+    .filter(
+      (entry) =>
+        entry.isDirectory() &&
+        fs.existsSync(path.join(dir, entry.name, 'index.mdx'))
+    )
+    .map((entry) => entry.name)
 }
 
 export function getPostBySlug(type: PostType, slug: string): Post | null {
-  const filePath = path.join(contentDirectory, type, `${slug}.mdx`)
+  const filePath = path.join(contentDirectory, type, slug, 'index.mdx')
 
   if (!fs.existsSync(filePath)) {
     return null

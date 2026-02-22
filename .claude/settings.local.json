@@ -20,7 +20,11 @@
       "WebFetch(domain:github.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "Bash(ps:*)",
-      "Bash(printf \\\\a:*)"
+      "Bash(printf \\\\a:*)",
+      "mcp__context7__resolve-library-id",
+      "mcp__context7__query-docs",
+      "Bash(cd:*)",
+      "Bash(npx tsx:*)"
     ]
   }
 }
