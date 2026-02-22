@@ -21,23 +21,14 @@ export default function NotePage() {
                 className="block rounded-lg border p-6 transition-colors hover:bg-gray-50 dark:hover:bg-gray-900"
               >
                 <h2 className="text-xl font-semibold">{post.title}</h2>
-                <time className="text-sm text-gray-500">{post.date}</time>
+                <div className="text-sm text-gray-500">
+                  <time>{post.date}</time>
+                  {post.category && <span> · {post.category}</span>}
+                </div>
                 {post.description && (
                   <p className="mt-2 text-gray-600 dark:text-gray-400">
                     {post.description}
                   </p>
-                )}
-                {post.tags && (
-                  <div className="mt-3 flex gap-2">
-                    {post.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded bg-gray-100 px-2 py-1 text-sm dark:bg-gray-800"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
                 )}
               </Link>
             </li>

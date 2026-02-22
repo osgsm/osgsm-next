@@ -1,6 +1,7 @@
 ---
 title: 'cmdk を使ってコマンドパレットのような機能を追加する'
 date: 2025-01-26
+category: Development
 ---
 
 最近のいい感じのウェブアプリケーションやドキュメントでは、よく <kbd>⌘</kbd><kbd>K</kbd> で検索したり、コマンドを実行できたりしますよね。
@@ -228,16 +229,16 @@ export const CommandMenu = () => {
       label="Global Command Menu"
       loop
       contentClassName="fixed inset-0 z-50 grid place-items-center pointer-events-none backdrop-blur-md backdrop-brightness-50"
-      className="pointer-events-auto relative min-w-72 rounded-xl border border-iris-4 bg-iris-2 leading-snug"
+      className="border-iris-4 bg-iris-2 pointer-events-auto relative min-w-72 rounded-xl border leading-snug"
     >
       <div className="border-iris-4 border-b px-4 py-3">
         <Command.Input
           placeholder="Type a command or search..."
-          className="bg-transparent outline-none placeholder:text-iris-8"
+          className="placeholder:text-iris-8 bg-transparent outline-none"
         />
       </div>
       <Command.List className="p-2">
-        <Command.Empty className="p-2 text-iris-10">
+        <Command.Empty className="text-iris-10 p-2">
           No results found.
         </Command.Empty>
         <CommandItem

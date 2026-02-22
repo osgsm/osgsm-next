@@ -3,6 +3,7 @@ title: 'JavaScript で特定の要素の中でマウスイベントが生じた�
 date: 2025-02-18
 
 tags: ['js', 'mouse', 'event']
+category: JavaScript
 ---
 
 例えば、 `a` 要素内でマウスイベントが生じた位置を取得しようと、次のように `MouseEvent.clientX{:js}` などを使っても、ビューポートにおけるイベントが生じた位置しか取得できない。
@@ -24,7 +25,7 @@ el?.addEventListener('mousemove', (event: MouseEvent) => {
 `DOMRect` のプロパティについては、MDN の画像がわかりやすい（下図参照）。
 
 <Image
-  className="rounded-none bg-white-a11"
+  className="bg-white-a11 rounded-none"
   src="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect/element-box-diagram.png"
   alt="DOMRect object that is the smallest rectangle containing the entire element."
   caption="Element: getBoundingClientRect() method - Web APIs | MDN"

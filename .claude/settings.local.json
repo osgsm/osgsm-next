@@ -30,7 +30,8 @@
       "Bash(pnpm list:*)",
       "Bash(head:)",
       "WebFetch(domain:rehype-pretty.pages.dev)",
-      "Bash(pnpm remove:*)"
+      "Bash(pnpm remove:*)",
+      "Bash(git checkout:*)"
     ]
   }
 }

@@ -38,19 +38,10 @@ export default async function BlogPostPage({ params }: Props) {
     <article>
       <header className="mb-8">
         <h1 className="text-3xl font-bold">{post.title}</h1>
-        <time className="text-gray-500">{post.date}</time>
-        {post.tags && (
-          <div className="mt-3 flex gap-2">
-            {post.tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded bg-gray-100 px-2 py-1 text-sm dark:bg-gray-800"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
+        <div className="text-gray-500">
+          <time>{post.date}</time>
+          {post.category && <span> · {post.category}</span>}
+        </div>
       </header>
       <div className="prose dark:prose-invert max-w-none">
         <MDXContent source={post.content} />

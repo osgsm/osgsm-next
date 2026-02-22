@@ -3,6 +3,7 @@ title: 'Rehype Pretty Code で、コードブロックに行番号を付け、�
 date: 2023-01-19
 
 tags: ['shiki', 'rehype-pretty-code']
+category: Development
 ---
 
 [前回](/blog/introducing-rehype-pretty-code)は、 Rehype Pretty Code (`rehype-pretty-code`) を使ってシンタックスハイライトを適用し、テーマを変更するところまで行いました。
@@ -67,11 +68,11 @@ figure[data-rehype-pretty-code-figure] {
 
 ```css title="styles/syntax-highlighting.css"
 figure[data-rehype-pretty-code-figure] {
-  @apply w-full mt-4 border border-[--border] rounded-[--radius-base] bg-[--iris-2];
+  @apply mt-4 w-full rounded-[--radius-base] border border-[--border] bg-[--iris-2];
 }
 
 figure[data-rehype-pretty-code-figure] pre {
-  @apply py-4 overflow-x-auto;
+  @apply overflow-x-auto py-4;
 }
 ```
 
@@ -83,7 +84,7 @@ Rehype Pretty Code では、コードブロック内の各行に対して `data-
 
 ```css title="styles/syntax-highlighting.css"
 figure[data-rehype-pretty-code-figure] [data-line] {
-  @apply mt-0 px-4 border-l-2 border-transparent;
+  @apply mt-0 border-l-2 border-transparent px-4;
 }
 ```
 
@@ -115,7 +116,7 @@ add(2, 3) // 5
 
 ```css title="styles/syntax-highlighting.css"
 [data-highlighted-line] {
-  @apply !bg-[--plum-3] !border-[--plum-8];
+  @apply !border-[--plum-8] !bg-[--plum-3];
 }
 ```
 
@@ -157,7 +158,7 @@ add(2, 3) // 5
 
 ```css title="styles/syntax-highlighting.css"
 figcaption[data-rehype-pretty-code-title] {
-  @apply text-small py-1 px-4 border-b border-border text-[--iris-9];
+  @apply text-small border-b border-border px-4 py-1 text-[--iris-9];
 }
 
 figcaption[data-rehype-pretty-code-title] + pre {

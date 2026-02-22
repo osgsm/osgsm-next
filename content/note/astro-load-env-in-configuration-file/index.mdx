@@ -3,6 +3,7 @@ title: 'Astro の設定ファイルで環境変数を読み込む'
 date: 2025-06-04
 
 tags: ['astro', 'vite', 'env']
+category: Astro
 ---
 
 Astro は、他のファイルが読み込まれる前に configuration files を評価する。つまり、`.env` ファイルにセットされている環境変数にアクセスするときに `import.meta.env{:ts}` を使っても、`astro.config.mjs` 内ではアクセスできない。
