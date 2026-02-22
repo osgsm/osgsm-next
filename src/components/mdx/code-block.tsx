@@ -11,7 +11,7 @@ export function CodeBlock({
   const ref = useRef<HTMLElement>(null)
 
   return (
-    <figure ref={ref} {...props} className="group">
+    <figure ref={ref} {...props} className="group my-[1.75em]">
       {children}
       <CopyButton
         getCode={() => ref.current?.querySelector('code')?.textContent ?? ''}

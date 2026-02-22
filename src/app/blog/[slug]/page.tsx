@@ -36,17 +36,25 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <article>
-      <header className="mb-8">
-        <h1 className="text-3xl font-bold">{post.title}</h1>
-        <div className="text-gray-500">
+      <header className="mt-20 mb-10">
+        <div className="relative -left-1 flex flex-wrap text-gray-500">
+          {post.category && (
+            <span className="rounded-full border border-border bg-mauve-2 px-2 py-0.5 text-sm text-mauve-10">
+              {post.category}
+            </span>
+          )}
+        </div>
+        <h1 className="mt-3 mb-2 text-2xl leading-normal lg:text-3xl">
+          {post.title}
+        </h1>
+        <div className="grid text-mauve-10">
           <time>{post.date}</time>
-          {post.category && <span> · {post.category}</span>}
         </div>
       </header>
       <div className="prose dark:prose-invert max-w-none">
         <MDXContent source={post.content} />
       </div>
-      <div className="mt-16">
+      <div className="mt-20">
         <GiscusComments />
       </div>
     </article>

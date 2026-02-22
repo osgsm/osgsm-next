@@ -108,20 +108,26 @@ const components: MDXComponents = {
 
   // HTML element overrides
   h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h1 className="text-3xl font-bold mt-8 mb-4" {...props} />
+    <h1 className="mt-8 mb-4 text-2xl lg:text-3xl" {...props} />
   ),
   h2: ({ children, id }: React.HTMLAttributes<HTMLHeadingElement>) => {
     if (id?.includes('footnote-label')) {
       return null
     }
     return (
-      <h2 id={id} className="text-2xl font-bold mt-6 mb-3">
+      <h2
+        id={id}
+        className="mt-[2.75em] mb-[1.5em] text-xl before:mr-2 before:text-mauve-8 before:content-['##'] lg:text-2xl"
+      >
         {children}
       </h2>
     )
   },
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h3 className="text-xl font-bold mt-4 mb-2" {...props} />
+    <h3
+      className="mt-[2.5em] mb-[1.5em] text-lg before:mr-2 before:text-mauve-8 before:content-['###'] lg:text-xl"
+      {...props}
+    />
   ),
   a: ({ children, href }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
     if (href?.startsWith('#user-content-fn-')) {
@@ -137,13 +143,19 @@ const components: MDXComponents = {
       </Link>
     )
   },
+  p: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <p
+      className="my-[1.5em] text-[0.9375rem] leading-[1.75] first:mt-0 last:mb-0 lg:text-base"
+      {...props}
+    />
+  ),
   blockquote: ({
     className,
     ...props
   }: React.HTMLAttributes<HTMLQuoteElement>) => (
     <blockquote
       className={cn(
-        'mt-6 border-gray-300 dark:border-gray-600 border-l-2 pl-6 text-gray-500',
+        'mt-6 border-l-2 border-gray-300 pl-6 text-gray-500 dark:border-gray-600',
         className
       )}
       {...props}
@@ -157,7 +169,7 @@ const components: MDXComponents = {
   th: ({ className, ...props }: React.HTMLAttributes<HTMLTableCellElement>) => (
     <th
       className={cn(
-        'border border-gray-200 dark:border-gray-700 px-4 py-2 text-left font-semibold [&[align=center]]:text-center [&[align=right]]:text-right',
+        'border border-gray-200 px-4 py-2 text-left font-semibold dark:border-gray-700 [&[align=center]]:text-center [&[align=right]]:text-right',
         className
       )}
       {...props}
@@ -166,7 +178,7 @@ const components: MDXComponents = {
   td: ({ className, ...props }: React.HTMLAttributes<HTMLTableCellElement>) => (
     <td
       className={cn(
-        'border border-gray-200 dark:border-gray-700 px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right',
+        'border border-gray-200 px-4 py-2 text-left dark:border-gray-700 [&[align=center]]:text-center [&[align=right]]:text-right',
         className
       )}
       {...props}
@@ -182,7 +194,11 @@ const components: MDXComponents = {
           )
       )
     ) {
-      return <ol data-footnotes>{props.children}</ol>
+      return (
+        <ol className="my-10" data-footnotes>
+          {props.children}
+        </ol>
+      )
     }
     return (
       <ol
@@ -272,15 +288,15 @@ const components: MDXComponents = {
   },
   code: (props: React.HTMLAttributes<HTMLElement>) => (
     <code
-      className="bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm"
+      className="border border-border bg-mauve-3 px-1.5 py-0.5 text-[90%]"
       {...props}
     />
   ),
   pre: (props: React.HTMLAttributes<HTMLPreElement>) => (
-    <pre
-      className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto my-4"
-      {...props}
-    />
+    <pre className="" {...props} />
+  ),
+  hr: (props: React.HTMLAttributes<HTMLElement>) => (
+    <hr className="my-17 border-t border-border" {...props} />
   ),
 }
 

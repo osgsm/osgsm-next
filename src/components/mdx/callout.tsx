@@ -58,12 +58,7 @@ const calloutVariants: Record<
 export function Callout({ type = 'note', title, children }: CalloutProps) {
   const Icon = calloutVariants[type].icon
   return (
-    <div
-      className={cn(
-        'mt-6 rounded-md border p-4',
-        calloutVariants[type].className
-      )}
-    >
+    <div className={cn('my-10 border p-6', calloutVariants[type].className)}>
       <h3 className="pb-3 text-sm leading-none text-inherit">
         <span className="flex items-center gap-1.5">
           <Icon size={16} />
@@ -74,7 +69,7 @@ export function Callout({ type = 'note', title, children }: CalloutProps) {
           )}
         </span>
       </h3>
-      <div className="leading-relaxed text-gray-800 dark:text-gray-200 *:mt-0 [&_*+*]:mt-2">
+      <div className="leading-relaxed text-gray-800 *:mt-0 dark:text-gray-200 [&_*+*]:mt-2">
         {children}
       </div>
     </div>

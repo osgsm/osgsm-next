@@ -6,9 +6,8 @@
   width: 100%;
   min-height: 20rem;
   padding: 1.5rem;
-  margin-top: 0.25rem;
-  border: 1px solid var(--border, #e5e7eb);
-  border-radius: 0.5rem;
+  margin: 1.75rem 0 0;
+  border: 1px solid var(--border);
 }
 
 .preview[data-with-codeblock='true'] {
@@ -18,11 +17,13 @@
 
 .preview[data-with-codeblock='true'] + figure {
   margin-top: 0;
+  margin-bottom: 1.75rem;
   border-top-width: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
 
-:global(.dark) .preview {
-  border-color: #374151;
+.preview[data-with-codeblock='true'] + figure pre {
+  margin: 0;
+  padding: 1rem 0;
 }

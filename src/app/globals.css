@@ -1,28 +1,54 @@
 @import 'tailwindcss';
+@import '@radix-ui/colors/mauve.css';
+@import '@radix-ui/colors/mauve-dark.css';
+@import '@radix-ui/colors/plum.css';
+@import '@radix-ui/colors/plum-dark.css';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: var(--mauve-2);
+  --fg: var(--mauve-12);
+  --border: var(--mauve-6);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-border: var(--border);
+
+  --color-mauve-1: var(--mauve-1);
+  --color-mauve-2: var(--mauve-2);
+  --color-mauve-3: var(--mauve-3);
+  --color-mauve-4: var(--mauve-4);
+  --color-mauve-5: var(--mauve-5);
+  --color-mauve-6: var(--mauve-6);
+  --color-mauve-7: var(--mauve-7);
+  --color-mauve-8: var(--mauve-8);
+  --color-mauve-9: var(--mauve-9);
+  --color-mauve-10: var(--mauve-10);
+  --color-mauve-11: var(--mauve-11);
+  --color-mauve-12: var(--mauve-12);
+
+  --color-plum-1: var(--plum-1);
+  --color-plum-2: var(--plum-2);
+  --color-plum-3: var(--plum-3);
+  --color-plum-4: var(--plum-4);
+  --color-plum-5: var(--plum-5);
+  --color-plum-6: var(--plum-6);
+  --color-plum-7: var(--plum-7);
+  --color-plum-8: var(--plum-8);
+  --color-plum-9: var(--plum-9);
+  --color-plum-10: var(--plum-10);
+  --color-plum-11: var(--plum-11);
+  --color-plum-12: var(--plum-12);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-.dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-}
-
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-bg leading-[1.75] text-fg;
 }
 
 /*
@@ -34,57 +60,50 @@ body {
 code[data-theme*=' '],
 code[data-theme*=' '] span {
   color: var(--shiki-light);
-  background-color: var(--shiki-light-bg);
 }
 
 .dark code[data-theme*=' '],
 .dark code[data-theme*=' '] span {
   color: var(--shiki-dark);
-  background-color: var(--shiki-dark-bg);
 }
 
 /* Code block container */
 figure[data-rehype-pretty-code-figure] {
-  margin: 1rem 0;
-  border: 1px solid var(--foreground);
-  border-radius: 0.5rem;
-  overflow: hidden;
+  @apply overflow-clip border border-border;
 }
 
 /* Code title */
 figcaption[data-rehype-pretty-code-title] {
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  border-bottom: 1px solid var(--foreground);
-  opacity: 0.7;
+  @apply border-b border-border px-4 py-2 text-sm leading-none text-mauve-11;
 }
 
 /* Pre element */
 pre {
-  padding: 1rem 0;
-  overflow-x: auto;
+  @apply my-4 overflow-x-auto;
+
+  code {
+    @apply border-0 bg-transparent p-0;
+  }
 }
 
 /* Code lines */
 pre [data-line] {
-  padding: 0 1rem;
-  border-left: 2px solid transparent;
+  @apply border-l-4 border-transparent pr-14 pl-4;
 }
 
 /* Highlighted lines */
 [data-highlighted-line] {
-  background-color: rgba(100, 100, 100, 0.2) !important;
-  border-left-color: #3b82f6 !important;
+  /* eslint-ignore */
+  @apply border-l-plum-7! bg-plum-3/75!;
 }
 
 /* Diff styles */
 [data-line].diff {
-  position: relative;
+  @apply relative;
 }
 
 [data-line].diff::before {
-  position: absolute;
-  left: 0.25rem;
+  @apply absolute left-0.5;
 }
 
 [data-line].diff.add {
@@ -112,17 +131,7 @@ figure[data-rehype-pretty-code-figure] {
 }
 
 figure[data-rehype-pretty-code-figure] > .rehype-pretty-copy {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.25rem;
-  border: none;
-  border-radius: 0.25rem;
-  background: transparent;
-  cursor: pointer;
+  @apply absolute top-2 right-2 grid size-8 cursor-pointer place-items-center border border-border bg-mauve-3 p-1;
 }
 
 /* When there's a figcaption (title), offset the button below it */

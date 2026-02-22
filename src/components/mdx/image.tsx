@@ -23,14 +23,14 @@ export default function MDXImage({
 
   return (
     <a
-      className="my-6 flex cursor-pointer flex-col justify-end gap-2 hover:opacity-90"
+      className="my-7 flex cursor-pointer flex-col justify-end gap-2 hover:opacity-90"
       href={href}
       target={href.startsWith('/') ? '_self' : '_blank'}
       rel={href.startsWith('/') ? undefined : 'noopener noreferrer'}
     >
       <div
         className={cn(
-          'relative max-h-[560px] w-fit overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700',
+          'relative max-h-120 w-fit border border-border',
           className
         )}
       >
