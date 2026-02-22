@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import { getPostBySlug, getPostSlugs } from '@/lib/mdx'
+import { GiscusComments } from '@/components/giscus-comments'
 import { MDXContent } from '@/components/mdx-content'
 
 type Props = {
@@ -53,6 +54,9 @@ export default async function BlogPostPage({ params }: Props) {
       </header>
       <div className="prose dark:prose-invert max-w-none">
         <MDXContent source={post.content} />
+      </div>
+      <div className="mt-16">
+        <GiscusComments />
       </div>
     </article>
   )

@@ -27,7 +27,8 @@
       "Bash(npx tsx:*)",
       "Bash(head:*)",
       "Bash(grep:*)",
-      "Bash(pnpm list:*)"
+      "Bash(pnpm list:*)",
+      "Bash(head:)"
     ]
   }
 }
