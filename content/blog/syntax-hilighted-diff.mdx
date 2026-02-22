@@ -10,8 +10,14 @@ tags: ['shiki', 'rehype-pretty-code']
 Rehype Pretty Code では、次のように、言語に `diff` を設定することで diff を表示できます。
 
 <Preview codeblock>
-  ```diff - console.log('removed') + console.log('added')
-  console.log('unchanged') ```
+
+{/* prettier-ignore */}
+```diff
+- console.log('removed')
++ console.log('added')
+console.log('unchanged')
+```
+
 </Preview>
 
 ````
@@ -31,8 +37,14 @@ Rehype Pretty Code は、 Shiki を使っているので、 `@shikijs/transforme
 まず、結果を見てみましょう。次のような表示になります。
 
 <Preview codeblock>
-  ```ts console.log('removed') // [!code --] console.log('added') // [!code ++]
-  console.log('unchanged') ```
+
+{/* prettier-ignore */}
+```ts
+console.log('removed') // [!code --]
+console.log('added') // [!code ++]
+console.log('unchanged')
+```
+
 </Preview>
 
 ````
