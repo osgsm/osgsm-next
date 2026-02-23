@@ -1,15 +1,15 @@
 @import 'tailwindcss';
 @import '@radix-ui/colors/mauve.css';
 @import '@radix-ui/colors/mauve-dark.css';
-@import '@radix-ui/colors/plum.css';
-@import '@radix-ui/colors/plum-dark.css';
+@import '@radix-ui/colors/iris.css';
+@import '@radix-ui/colors/iris-dark.css';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --bg: var(--mauve-2);
-  --fg: var(--mauve-12);
-  --border: var(--mauve-6);
+  --bg: var(--iris-1);
+  --fg: var(--iris-12);
+  --border: var(--iris-6);
 }
 
 @theme inline {
@@ -30,25 +30,30 @@
   --color-mauve-11: var(--mauve-11);
   --color-mauve-12: var(--mauve-12);
 
-  --color-plum-1: var(--plum-1);
-  --color-plum-2: var(--plum-2);
-  --color-plum-3: var(--plum-3);
-  --color-plum-4: var(--plum-4);
-  --color-plum-5: var(--plum-5);
-  --color-plum-6: var(--plum-6);
-  --color-plum-7: var(--plum-7);
-  --color-plum-8: var(--plum-8);
-  --color-plum-9: var(--plum-9);
-  --color-plum-10: var(--plum-10);
-  --color-plum-11: var(--plum-11);
-  --color-plum-12: var(--plum-12);
+  --color-iris-1: var(--iris-1);
+  --color-iris-2: var(--iris-2);
+  --color-iris-3: var(--iris-3);
+  --color-iris-4: var(--iris-4);
+  --color-iris-5: var(--iris-5);
+  --color-iris-6: var(--iris-6);
+  --color-iris-7: var(--iris-7);
+  --color-iris-8: var(--iris-8);
+  --color-iris-9: var(--iris-9);
+  --color-iris-10: var(--iris-10);
+  --color-iris-11: var(--iris-11);
+  --color-iris-12: var(--iris-12);
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-pixel-square: var(--font-geist-pixel-square);
+  --font-pixel-grid: var(--font-geist-pixel-grid);
+  --font-pixel-circle: var(--font-geist-pixel-circle);
+  --font-pixel-triangle: var(--font-geist-pixel-triangle);
+  --font-pixel-line: var(--font-geist-pixel-line);
 }
 
 body {
-  @apply bg-bg leading-[1.75] text-fg;
+  @apply bg-bg leading-[1.9] text-fg;
 }
 
 /*
@@ -69,17 +74,17 @@ code[data-theme*=' '] span {
 
 /* Code block container */
 figure[data-rehype-pretty-code-figure] {
-  @apply overflow-clip border border-border;
+  @apply overflow-clip border border-border bg-iris-2;
 }
 
 /* Code title */
 figcaption[data-rehype-pretty-code-title] {
-  @apply border-b border-border px-4 py-2 text-sm leading-none text-mauve-11;
+  @apply border-b border-border bg-iris-2 px-4 py-2 font-pixel-square text-sm leading-none tracking-wider text-iris-10;
 }
 
 /* Pre element */
 pre {
-  @apply my-4 overflow-x-auto;
+  @apply my-4 overflow-x-auto leading-[1.75];
 
   code {
     @apply border-0 bg-transparent p-0;
@@ -94,7 +99,7 @@ pre [data-line] {
 /* Highlighted lines */
 [data-highlighted-line] {
   /* eslint-ignore */
-  @apply border-l-plum-7! bg-plum-3/75!;
+  @apply border-l-iris-8! bg-iris-3!;
 }
 
 /* Diff styles */
@@ -131,7 +136,7 @@ figure[data-rehype-pretty-code-figure] {
 }
 
 figure[data-rehype-pretty-code-figure] > .rehype-pretty-copy {
-  @apply absolute top-2 right-2 grid size-8 cursor-pointer place-items-center border border-border bg-mauve-3 p-1;
+  @apply absolute top-2 right-2 grid size-8 cursor-pointer place-items-center border border-border bg-iris-2 p-1;
 }
 
 /* When there's a figcaption (title), offset the button below it */

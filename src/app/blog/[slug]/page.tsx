@@ -37,18 +37,24 @@ export default async function BlogPostPage({ params }: Props) {
   return (
     <article>
       <header className="mt-20 mb-10">
-        <div className="relative -left-1 flex flex-wrap text-gray-500">
+        <div className="relative flex flex-wrap">
           {post.category && (
-            <span className="rounded-full border border-border bg-mauve-2 px-2 py-0.5 text-sm text-mauve-10">
+            <span className="border border-border bg-iris-2 px-1.5 py-0.5 font-pixel-circle text-sm tracking-wider">
               {post.category}
             </span>
           )}
         </div>
-        <h1 className="mt-3 mb-2 text-2xl leading-normal lg:text-3xl">
+        <h1 className="mt-4 mb-3 text-2xl leading-normal lg:text-3xl">
           {post.title}
         </h1>
-        <div className="grid text-mauve-10">
-          <time>{post.date}</time>
+        <div className="grid font-pixel-circle tracking-wider">
+          <time>
+            {new Date(post.date).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </time>
         </div>
       </header>
       <div className="prose dark:prose-invert max-w-none">

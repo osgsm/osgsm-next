@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
+import { GeistSans } from 'geist/font/sans'
+import { GeistMono } from 'geist/font/mono'
+import { GeistPixelSquare, GeistPixelCircle } from 'geist/font/pixel'
 import Link from 'next/link'
 
 import { CommandMenu } from '@/components/command-menu'
@@ -8,6 +11,8 @@ import { ThemeProvider } from '@/components/theme-provider'
 import { getAllPosts } from '@/lib/mdx'
 
 import './globals.css'
+
+console.log(GeistSans)
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -36,7 +41,11 @@ export default function RootLayout({
   const notePosts = getAllPosts('note')
 
   return (
-    <html lang="ja" suppressHydrationWarning>
+    <html
+      lang="ja"
+      suppressHydrationWarning
+      className={`${GeistSans.variable} ${GeistMono.variable} ${GeistPixelCircle.variable} ${GeistPixelSquare.variable}`}
+    >
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

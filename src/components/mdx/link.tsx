@@ -14,11 +14,10 @@ const Link = ({ text, href, underline, className, children }: LinkProps) => {
   return isInternalLink ? (
     <NextLink
       href={href ?? ''}
-      className={cn(
-        'text-gray-600 dark:text-gray-400',
-        className,
-        'underline decoration-1 decoration-gray-400 underline-offset-2'
-      )}
+      className={cn('', className, {
+        'underline decoration-current decoration-1 underline-offset-2':
+          underline,
+      })}
     >
       {children}
     </NextLink>
@@ -26,14 +25,14 @@ const Link = ({ text, href, underline, className, children }: LinkProps) => {
     <a
       target="_blank"
       rel="noopener noreferrer nofollow"
-      className={cn('text-gray-600 dark:text-gray-400', className, {
-        'underline decoration-1 decoration-gray-400 underline-offset-2':
+      className={cn('', className, {
+        'underline decoration-current decoration-1 underline-offset-2':
           underline,
       })}
       href={href}
     >
       {text || children}
-      <span className="mx-0.5 inline-flex text-gray-500">
+      <span className="mx-1 inline-flex text-current">
         <SquareArrowOutUpRight className="inline-block size-3 translate-y-px" />
       </span>
     </a>

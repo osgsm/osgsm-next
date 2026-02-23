@@ -117,7 +117,7 @@ const components: MDXComponents = {
     return (
       <h2
         id={id}
-        className="mt-[2.75em] mb-[1.5em] text-xl before:mr-2 before:text-mauve-8 before:content-['##'] lg:text-2xl"
+        className="mt-[2.75em] mb-6 text-xl before:mr-2 before:text-iris-6 before:content-['##'] lg:text-2xl"
       >
         {children}
       </h2>
@@ -125,7 +125,7 @@ const components: MDXComponents = {
   },
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
-      className="mt-[2.5em] mb-[1.5em] text-lg before:mr-2 before:text-mauve-8 before:content-['###'] lg:text-xl"
+      className="mt-[2.5em] mb-6 text-lg before:mr-2 before:text-iris-6 before:content-['###'] lg:text-xl"
       {...props}
     />
   ),
@@ -138,14 +138,14 @@ const components: MDXComponents = {
       )
     }
     return (
-      <Link href={href} className="text-gray-600 dark:text-gray-400" underline>
+      <Link href={href} className="text-iris-10">
         {children}
       </Link>
     )
   },
   p: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <p
-      className="my-[1.5em] text-[0.9375rem] leading-[1.75] first:mt-0 last:mb-0 lg:text-base"
+      className="my-[1.5em] text-[0.9375rem] leading-[1.9] first:mt-0 last:mb-0 lg:text-base"
       {...props}
     />
   ),
@@ -271,7 +271,7 @@ const components: MDXComponents = {
       )
     }
     return (
-      <li className={cn('mt-1 ml-2 list-item marker:text-gray-400', className)}>
+      <li className={cn('mt-2 ml-2 list-item marker:text-mauve-8', className)}>
         {children}
       </li>
     )
@@ -288,7 +288,7 @@ const components: MDXComponents = {
   },
   code: (props: React.HTMLAttributes<HTMLElement>) => (
     <code
-      className="border border-border bg-mauve-3 px-1.5 py-0.5 text-[90%]"
+      className="border border-border bg-iris-2 px-1.5 py-0.5 text-[90%]"
       {...props}
     />
   ),
@@ -296,7 +296,10 @@ const components: MDXComponents = {
     <pre className="" {...props} />
   ),
   hr: (props: React.HTMLAttributes<HTMLElement>) => (
-    <hr className="my-17 border-t border-border" {...props} />
+    <hr
+      className="mx-auto my-17 block w-10 border-t border-border"
+      {...props}
+    />
   ),
 }
 
@@ -320,8 +323,8 @@ export function MDXContent({ source }: MDXContentProps) {
               rehypePrettyCode,
               {
                 theme: {
-                  dark: 'github-dark',
-                  light: 'github-light',
+                  dark: 'catppuccin-mocha',
+                  light: 'catppuccin-latte',
                 },
                 keepBackground: false,
                 defaultLang: 'plaintext',
