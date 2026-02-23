@@ -31,10 +31,8 @@ export function ThemeToggle() {
           key={value}
           onClick={() => setTheme(value)}
           className={cn(
-            'rounded-md p-1.5 transition-colors',
-            theme === value
-              ? 'bg-foreground/10 text-foreground'
-              : 'text-foreground/40 hover:text-foreground/70'
+            'grid size-8 place-items-center items-center gap-1.5 p-1 font-pixel-circle text-sm text-iris-12/60 transition-colors',
+            theme === value ? 'text-iris-10' : 'hover:text-iris-10'
           )}
           aria-label={label}
         >

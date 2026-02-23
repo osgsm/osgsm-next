@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { GeistPixelSquare, GeistPixelCircle } from 'geist/font/pixel'
@@ -11,18 +10,6 @@ import { ThemeProvider } from '@/components/theme-provider'
 import { getAllPosts } from '@/lib/mdx'
 
 import './globals.css'
-
-console.log(GeistSans)
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-})
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-})
 
 export const metadata: Metadata = {
   title: {
@@ -46,14 +33,12 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${GeistSans.variable} ${GeistMono.variable} ${GeistPixelCircle.variable} ${GeistPixelSquare.variable}`}
     >
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <header className="border-b">
+          <header className="font-pixel-circle text-sm font-bold tracking-widest uppercase">
             <nav className="mx-auto flex max-w-3xl items-center justify-between px-6 py-4">
-              <Link href="/" className="text-xl font-bold">
-                osgsm
+              <Link href="/" className="">
+                osgsm.io
               </Link>
               <div className="flex items-center gap-6">
                 <ul className="flex gap-6">

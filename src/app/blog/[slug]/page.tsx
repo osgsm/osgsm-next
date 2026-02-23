@@ -47,7 +47,7 @@ export default async function BlogPostPage({ params }: Props) {
         <h1 className="mt-4 mb-3 text-2xl leading-normal lg:text-3xl">
           {post.title}
         </h1>
-        <div className="grid font-pixel-circle tracking-wider">
+        <div className="grid font-pixel-circle text-sm tracking-wider">
           <time>
             {new Date(post.date).toLocaleDateString('en-US', {
               year: 'numeric',

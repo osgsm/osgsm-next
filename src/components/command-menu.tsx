@@ -47,13 +47,10 @@ export function CommandMenu({
     <>
       <button
         onClick={() => setOpen(true)}
-        className="flex items-center gap-1.5 text-sm text-foreground/60 hover:text-foreground/80"
+        className="grid size-8 place-items-center items-center gap-1.5 p-1 font-pixel-circle text-sm text-iris-12/60"
         aria-label="Search"
       >
         <Search size={16} />
-        <kbd className="pointer-events-none hidden rounded border px-1.5 py-0.5 text-[10px] sm:inline-block">
-          <span>&#8984;K</span>
-        </kbd>
       </button>
 
       <Command.Dialog
