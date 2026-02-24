@@ -125,7 +125,7 @@ const components: MDXComponents = {
   },
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
-      className="mt-[2.5em] mb-6 text-lg before:mr-2 before:text-iris-6 before:content-['###'] lg:text-xl"
+      className="mt-[2em] mb-6 text-lg before:mr-2 before:text-iris-6 before:content-['###'] lg:text-xl"
       {...props}
     />
   ),

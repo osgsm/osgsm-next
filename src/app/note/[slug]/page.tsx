@@ -1,7 +1,6 @@
 import { notFound } from 'next/navigation'
 import { getPostBySlug, getPostSlugs } from '@/lib/mdx'
-import { GiscusComments } from '@/components/giscus-comments'
-import { MDXContent } from '@/components/mdx-content'
+import { PostArticle } from '@/components/post-article'
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -34,21 +33,5 @@ export default async function NotePostPage({ params }: Props) {
     notFound()
   }
 
-  return (
-    <article>
-      <header className="mb-8">
-        <h1 className="text-3xl font-bold">{post.title}</h1>
-        <div className="text-gray-500">
-          <time>{post.date}</time>
-          {post.category && <span> · {post.category}</span>}
-        </div>
-      </header>
-      <div className="prose dark:prose-invert max-w-none">
-        <MDXContent source={post.content} />
-      </div>
-      <div className="mt-16">
-        <GiscusComments />
-      </div>
-    </article>
-  )
+  return <PostArticle post={post} />
 }

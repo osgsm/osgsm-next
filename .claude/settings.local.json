@@ -31,7 +31,9 @@
       "Bash(head:)",
       "WebFetch(domain:rehype-pretty.pages.dev)",
       "Bash(pnpm remove:*)",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(xargs sed:*)",
+      "Bash(npm run build:*)"
     ]
   }
 }

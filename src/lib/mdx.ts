@@ -10,7 +10,7 @@ export interface PostMeta {
   date: string
   description?: string
   tags?: string[]
-  category?: string
+  categories?: string[]
 }
 
 export interface Post extends PostMeta {
@@ -56,7 +56,7 @@ export function getPostBySlug(type: PostType, slug: string): Post | null {
     date,
     description: data.description,
     tags: data.tags,
-    category: data.category,
+    categories: data.categories,
     content,
   }
 }
@@ -73,7 +73,7 @@ export function getAllPosts(type: PostType): PostMeta[] {
         date: post.date,
         description: post.description,
         tags: post.tags,
-        category: post.category,
+        categories: post.categories,
       })
     )
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())

@@ -8,8 +8,7 @@ export function CodeSandbox({ id, module }: { id: string; module?: string }) {
       style={{
         width: '100%',
         height: '30rem',
-        border: '1px solid var(--border, #e5e7eb)',
-        borderRadius: '0.75rem',
+        border: '1px solid var(--border)',
         overflow: 'hidden',
         margin: '1.5rem 0',
       }}

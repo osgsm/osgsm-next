@@ -17,7 +17,7 @@ export default function MDXVideo({
 }: MDXVideoProps) {
   return (
     <div className="my-6 flex flex-col justify-end gap-2">
-      <div className="relative max-h-[560px] w-fit overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700">
+      <div className="relative max-h-[560px] w-fit overflow-hidden border border-border">
         <video
           autoPlay={autoPlay}
           controls={controls}

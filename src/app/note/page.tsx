@@ -23,7 +23,9 @@ export default function NotePage() {
                 <h2 className="text-xl font-semibold">{post.title}</h2>
                 <div className="text-sm text-gray-500">
                   <time>{post.date}</time>
-                  {post.category && <span> · {post.category}</span>}
+                  {post.categories && post.categories.length > 0 && (
+                    <span> · {post.categories.join(', ')}</span>
+                  )}
                 </div>
                 {post.description && (
                   <p className="mt-2 text-gray-600 dark:text-gray-400">
