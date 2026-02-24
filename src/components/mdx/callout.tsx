@@ -55,7 +55,7 @@ export function Callout({ type = 'note', title, children }: CalloutProps) {
   return (
     <div className={cn('my-7 border p-6', calloutVariants[type].className)}>
       <h3 className="pb-3 text-sm leading-none text-inherit">
-        <span className="flex items-center gap-1.5 font-pixel-square tracking-wider">
+        <span className="flex items-center gap-1.5 font-pixel-square font-bold tracking-widest">
           <Icon size={16} />
           {title ? (
             <span>{title}</span>
