@@ -12,6 +12,10 @@
   --border: var(--iris-6);
 }
 
+::selection {
+  @apply bg-iris-5;
+}
+
 @theme inline {
   --color-bg: var(--bg);
   --color-fg: var(--fg);
