@@ -29,28 +29,23 @@ const calloutVariants: Record<
   }
 > = {
   note: {
-    className:
-      'bg-blue-50 dark:bg-blue-950 border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300',
+    className: 'bg-blue-2 border-blue-8 text-blue-9',
     icon: Info,
   },
   tip: {
-    className:
-      'bg-teal-50 dark:bg-teal-950 border-teal-200 dark:border-teal-800 text-teal-700 dark:text-teal-300',
+    className: 'bg-teal-2 border-teal-8 text-teal-9',
     icon: Lightbulb,
   },
   important: {
-    className:
-      'bg-purple-50 dark:bg-purple-950 border-purple-200 dark:border-purple-800 text-purple-700 dark:text-purple-300',
+    className: 'bg-purple-2 border-purple-9 text-purple-10',
     icon: MessageCircleWarning,
   },
   warning: {
-    className:
-      'bg-amber-50 dark:bg-amber-950 border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-300',
+    className: 'bg-amber-2 border-amber-8 text-amber-9',
     icon: AlertTriangle,
   },
   caution: {
-    className:
-      'bg-pink-50 dark:bg-pink-950 border-pink-200 dark:border-pink-800 text-pink-700 dark:text-pink-300',
+    className: 'bg-ruby-2 border-ruby-8 text-ruby-9',
     icon: OctagonAlert,
   },
 }
@@ -58,14 +53,14 @@ const calloutVariants: Record<
 export function Callout({ type = 'note', title, children }: CalloutProps) {
   const Icon = calloutVariants[type].icon
   return (
-    <div className={cn('my-10 border p-6', calloutVariants[type].className)}>
+    <div className={cn('my-7 border p-6', calloutVariants[type].className)}>
       <h3 className="pb-3 text-sm leading-none text-inherit">
-        <span className="flex items-center gap-1.5">
+        <span className="flex items-center gap-1.5 font-pixel-square tracking-wider">
           <Icon size={16} />
           {title ? (
             <span>{title}</span>
           ) : (
-            <span className="capitalize">{type}</span>
+            <span className="uppercase">{type}</span>
           )}
         </span>
       </h3>
