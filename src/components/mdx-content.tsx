@@ -287,10 +287,7 @@ const components: MDXComponents = {
     return <figure {...props} />
   },
   code: (props: React.HTMLAttributes<HTMLElement>) => (
-    <code
-      className="border border-border bg-iris-2 px-1.5 py-0.5 text-[90%]"
-      {...props}
-    />
+    <code className="bg-iris-3 px-1.5 py-0.5 text-[90%]" {...props} />
   ),
   pre: (props: React.HTMLAttributes<HTMLPreElement>) => (
     <pre className="" {...props} />

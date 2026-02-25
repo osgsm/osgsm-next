@@ -19,7 +19,7 @@
 :root {
   --bg: var(--iris-1);
   --fg: var(--iris-12);
-  --border: var(--iris-6);
+  --border: var(--iris-5);
 }
 
 ::selection {
@@ -228,11 +228,7 @@ figure[data-rehype-pretty-code-figure]:has(figcaption) > .rehype-pretty-copy {
  */
 
 [cmdk-overlay] {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 50;
-  backdrop-filter: blur(16px) brightness(75%);
+  @apply fixed inset-0 z-50 bg-black/50 backdrop-blur-2xl dark:backdrop-brightness-75;
 }
 
 [cmdk-dialog] {
@@ -277,7 +273,7 @@ figure[data-rehype-pretty-code-figure]:has(figcaption) > .rehype-pretty-copy {
 }
 
 [cmdk-group-heading] {
-  @apply font-pixel-circle text-sm font-bold tracking-widest text-iris-10 uppercase;
+  @apply font-pixel-circle text-sm font-bold tracking-wider text-iris-10;
   padding: 0.5rem 1rem 0.25rem;
 }
 
