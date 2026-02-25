@@ -15,7 +15,7 @@ export function ThemeToggle() {
   const { theme, setTheme } = useTheme()
 
   if (!mounted) {
-    return <div className="h-8 w-[6.5rem]" />
+    return <div className="h-8 w-26" />
   }
 
   const options = [
@@ -25,20 +25,28 @@ export function ThemeToggle() {
   ] as const
 
   return (
-    <div className="flex items-center gap-1">
-      {options.map(({ value, icon: Icon, label }) => (
-        <button
-          key={value}
-          onClick={() => setTheme(value)}
-          className={cn(
-            'grid size-8 place-items-center items-center gap-1.5 p-1 font-pixel-circle text-sm text-iris-12/60 transition-colors',
-            theme === value ? 'text-iris-10' : 'hover:text-iris-10'
-          )}
-          aria-label={label}
-        >
-          <Icon size={16} />
-        </button>
-      ))}
+    <div className="flex flex-col gap-1 sm:flex-row sm:items-center">
+      <div className="px-1 lg:px-0">Theme:</div>
+      <div className="flex items-center">
+        {options.map(({ value, icon: Icon, label }, index) => (
+          <>
+            <button
+              key={value}
+              onClick={() => setTheme(value)}
+              className={cn(
+                'grid gap-1.5 p-1 font-pixel-circle text-sm/none text-iris-12/60 transition-colors',
+                theme === value ? 'text-iris-10' : 'hover:text-iris-10'
+              )}
+              aria-label={label}
+            >
+              {label}
+            </button>
+            {index !== options.length - 1 && (
+              <span className="text-iris-12/40">/</span>
+            )}
+          </>
+        ))}
+      </div>
     </div>
   )
 }

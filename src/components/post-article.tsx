@@ -14,13 +14,13 @@ export function PostArticle({ post }: Props) {
           {post.categories?.map((category) => (
             <span
               key={category}
-              className="border border-border bg-iris-2 px-1.5 font-pixel-circle text-[0.8125rem]/[1.75] tracking-wider"
+              className="bg-iris-3 px-1.5 font-pixel-circle text-[0.8125rem]/[1.75] font-bold tracking-wider"
             >
               {category}
             </span>
           ))}
         </div>
-        <h1 className="mt-4 mb-3 text-2xl leading-normal lg:text-3xl">
+        <h1 className="mt-4 mb-3 -translate-x-px text-2xl leading-normal lg:text-3xl">
           {post.title}
         </h1>
         <div className="grid font-pixel-circle text-[0.8125rem]/[1.75] tracking-wider">
