@@ -47,10 +47,12 @@ export function CommandMenu({
     <>
       <button
         onClick={() => setOpen(true)}
-        className="grid size-8 place-items-center items-center gap-1.5 p-1 font-pixel-circle text-sm text-iris-12/60"
+        className="grid place-items-center items-center gap-1.5 bg-iris-3 p-1 font-pixel-circle text-sm text-iris-12/60"
         aria-label="Search"
       >
-        <Search size={16} />
+        <span className="grid size-5 place-items-center">
+          <Search size={16} />
+        </span>
       </button>
 
       <Command.Dialog

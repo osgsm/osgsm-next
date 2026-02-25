@@ -60,7 +60,7 @@ export function Callout({ type = 'note', title, children }: CalloutProps) {
           {title ? (
             <span>{title}</span>
           ) : (
-            <span className="uppercase">{type}</span>
+            <span className="capitalize">{type}</span>
           )}
         </span>
       </h3>

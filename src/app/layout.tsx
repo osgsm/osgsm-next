@@ -36,24 +36,35 @@ export default function RootLayout({
       <body className="antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <header className="font-pixel-circle text-sm font-bold tracking-widest uppercase">
-            <nav className="mx-auto flex max-w-3xl items-center justify-between px-6 py-4">
-              <Link href="/" className="">
+            <nav className="mx-auto flex max-w-3xl items-center justify-between px-4 py-4">
+              <Link href="/" className="block h-7 bg-iris-3 px-2 py-1 text-sm">
                 osgsm.io
               </Link>
-              <div className="flex items-center gap-6">
-                <ul className="flex gap-6">
+              <div className="flex items-center">
+                <ul className="flex gap-4">
+                  {[
+                    {
+                      href: '/blog',
+                      label: 'Blog',
+                    },
+                    {
+                      href: '/note',
+                      label: 'Note',
+                    },
+                  ].map(({ href, label }) => (
+                    <li key={label}>
+                      <Link
+                        href={href}
+                        className="block h-7 bg-iris-3 px-2 py-1 text-sm"
+                      >
+                        {label}
+                      </Link>
+                    </li>
+                  ))}
                   <li>
-                    <Link href="/blog" className="hover:underline">
-                      Blog
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/note" className="hover:underline">
-                      Note
-                    </Link>
+                    <CommandMenu blogPosts={blogPosts} notePosts={notePosts} />
                   </li>
                 </ul>
-                <CommandMenu blogPosts={blogPosts} notePosts={notePosts} />
               </div>
             </nav>
           </header>

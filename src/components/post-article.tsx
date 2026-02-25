@@ -14,7 +14,7 @@ export function PostArticle({ post }: Props) {
           {post.categories?.map((category) => (
             <span
               key={category}
-              className="border border-border bg-iris-2 px-1.5 py-0.5 font-pixel-circle text-sm tracking-wider"
+              className="border border-border bg-iris-2 px-1.5 font-pixel-circle text-[0.8125rem]/[1.75] tracking-wider"
             >
               {category}
             </span>
@@ -23,7 +23,7 @@ export function PostArticle({ post }: Props) {
         <h1 className="mt-4 mb-3 text-2xl leading-normal lg:text-3xl">
           {post.title}
         </h1>
-        <div className="grid font-pixel-circle text-sm tracking-wider">
+        <div className="grid font-pixel-circle text-[0.8125rem]/[1.75] tracking-wider">
           <time>
             {new Date(post.date).toLocaleDateString('en-US', {
               year: 'numeric',
