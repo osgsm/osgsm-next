@@ -33,7 +33,8 @@
       "Bash(pnpm remove:*)",
       "Bash(git checkout:*)",
       "Bash(xargs sed:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(python3:*)"
     ]
   }
 }
