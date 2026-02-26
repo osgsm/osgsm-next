@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { GeistPixelSquare, GeistPixelCircle } from 'geist/font/pixel'
+import { Instrument_Serif } from 'next/font/google'
 import Link from 'next/link'
 
 import { CommandMenu } from '@/components/command-menu'
@@ -10,6 +11,14 @@ import { ThemeProvider } from '@/components/theme-provider'
 import { getAllPosts } from '@/lib/mdx'
 
 import './globals.css'
+
+const instrumentSerif = Instrument_Serif({
+  weight: '400',
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  variable: '--font-instrument-serif',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: {
@@ -31,17 +40,14 @@ export default function RootLayout({
     <html
       lang="ja"
       suppressHydrationWarning
-      className={`${GeistSans.variable} ${GeistMono.variable} ${GeistPixelCircle.variable} ${GeistPixelSquare.variable}`}
+      className={`${GeistSans.variable} ${GeistMono.variable} ${GeistPixelCircle.variable} ${GeistPixelSquare.variable} ${instrumentSerif.variable}`}
     >
       <body className="antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <header className="sticky top-0 z-40 bg-linear-to-b from-iris-2 to-transparent to-80% py-3 font-pixel-circle text-sm font-bold tracking-wide">
-            <div className="mx-auto max-w-3xl px-3 lg:px-2">
-              <nav className="flex items-center justify-between border border-border bg-iris-2/75 px-2 py-1 backdrop-blur-sm dark:backdrop-brightness-50">
-                <Link
-                  href="/"
-                  className="block h-7 px-2 py-1 text-sm tracking-wider"
-                >
+          <header className="sticky top-0 z-40 bg-linear-to-b from-iris-2 via-iris-2/25 via-80% to-transparent pb-5 font-serif text-iris-10">
+            <div className="mx-auto max-w-3xl px-3 lg:px-1">
+              <nav className="flex items-center justify-between px-2 py-1">
+                <Link href="/" className="block h-7 px-2 py-1 text-xl">
                   osgsm.io
                 </Link>
                 <div className="flex items-center">
@@ -59,7 +65,7 @@ export default function RootLayout({
                       <li key={label}>
                         <Link
                           href={href}
-                          className="block h-7 px-2 py-1 text-sm"
+                          className="block h-7 px-2 py-1 text-lg"
                         >
                           {label}
                         </Link>

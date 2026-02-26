@@ -47,7 +47,7 @@ export function CommandMenu({
     <>
       <button
         onClick={() => setOpen(true)}
-        className="grid place-items-center items-center gap-1.5 p-1 font-pixel-circle text-sm"
+        className="grid place-items-center items-center gap-1.5 p-1"
         aria-label="Search"
       >
         Search

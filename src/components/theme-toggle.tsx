@@ -26,7 +26,7 @@ export function ThemeToggle() {
 
   return (
     <div className="flex flex-col gap-1 sm:flex-row sm:items-center">
-      <div className="px-1 lg:px-0">Theme:</div>
+      <div className="px-1 italic lg:px-0">Theme:</div>
       <div className="flex items-center">
         {options.map(({ value, icon: Icon, label }, index) => (
           <>
@@ -34,7 +34,7 @@ export function ThemeToggle() {
               key={value}
               onClick={() => setTheme(value)}
               className={cn(
-                'grid gap-1.5 p-1 font-pixel-circle text-sm/none text-iris-12/60 transition-colors',
+                'grid gap-1.5 p-1 text-iris-12/60 transition-colors',
                 theme === value ? 'text-iris-10' : 'hover:text-iris-10'
               )}
               aria-label={label}

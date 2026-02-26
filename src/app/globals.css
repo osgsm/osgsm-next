@@ -129,6 +129,7 @@
   --font-pixel-circle: var(--font-geist-pixel-circle);
   --font-pixel-triangle: var(--font-geist-pixel-triangle);
   --font-pixel-line: var(--font-geist-pixel-line);
+  --font-serif: var(--font-instrument-serif);
 }
 
 body {
@@ -158,7 +159,7 @@ figure[data-rehype-pretty-code-figure] {
 
 /* Code title */
 figcaption[data-rehype-pretty-code-title] {
-  @apply border-b border-border bg-iris-2 px-4 py-2 font-pixel-square text-sm leading-none tracking-wider text-iris-10;
+  @apply border-b border-border bg-iris-2 px-4 py-2 font-pixel-square text-sm leading-none font-bold tracking-wider text-iris-10/80;
 }
 
 /* Pre element */
@@ -212,10 +213,6 @@ pre [data-line] {
 /* Copy button */
 figure[data-rehype-pretty-code-figure] {
   position: relative;
-}
-
-figure[data-rehype-pretty-code-figure] > .rehype-pretty-copy {
-  @apply absolute top-2 right-2 grid size-8 cursor-pointer place-items-center border border-border bg-iris-2 p-1;
 }
 
 /* When there's a figcaption (title), offset the button below it */

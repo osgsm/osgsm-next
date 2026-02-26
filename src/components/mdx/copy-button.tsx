@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback, useState } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 export function CopyButton({ getCode }: { getCode: () => string }) {
   const [copied, setCopied] = useState(false)
@@ -18,33 +19,31 @@ export function CopyButton({ getCode }: { getCode: () => string }) {
       title="Copy code"
       aria-label="Copy code"
       onClick={handleCopy}
-      className="rehype-pretty-copy"
+      className={twMerge(
+        'rehype-pretty-copy',
+        'absolute top-2 right-2 grid cursor-pointer place-items-center border border-border bg-iris-2 p-1 pl-2 font-pixel-square leading-none font-bold',
+        '*:col-span-full *:row-span-full'
+      )}
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={2}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={`absolute size-4 text-iris-11 transition-opacity duration-400 ${copied ? 'opacity-0' : 'opacity-100'}`}
+      <span
+        className={twMerge(
+          '-translate-px text-sm text-iris-11 transition-all duration-200 ease-out',
+
+          copied ? 'invisible opacity-0' : 'visible opacity-100'
+        )}
       >
-        <rect width={14} height={14} x={8} y={8} rx={2} ry={2} />
-        <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
-      </svg>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={2}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={`absolute size-4 text-iris-11 transition-opacity duration-300 ${copied ? 'opacity-100' : 'opacity-0'}`}
+        Copy
+      </span>
+      <span
+        className={twMerge(
+          'text-teal-9',
+          'transition-all duration-200 ease-out',
+
+          copied ? 'visible opacity-100' : 'invisible opacity-0'
+        )}
       >
-        <polyline points="20 6 9 17 4 12" />
-      </svg>
+        ✓
+      </span>
     </button>
   )
 }
