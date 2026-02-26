@@ -270,7 +270,7 @@ figure[data-rehype-pretty-code-figure]:has(figcaption) > .rehype-pretty-copy {
 }
 
 [cmdk-group-heading] {
-  @apply font-pixel-circle text-sm font-bold tracking-wider text-iris-10;
+  @apply font-serif text-lg text-iris-10;
   padding: 0.5rem 1rem 0.25rem;
 }
 

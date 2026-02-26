@@ -41,7 +41,7 @@ const calloutVariants: Record<
     icon: MessageCircleWarning,
   },
   warning: {
-    className: 'bg-amber-2 border-amber-4 text-amber-9',
+    className: 'bg-amber-2 border-amber-4 text-amber-9/80',
     icon: AlertTriangle,
   },
   caution: {
