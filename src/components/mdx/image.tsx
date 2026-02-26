@@ -28,12 +28,7 @@ export default function MDXImage({
       target={href.startsWith('/') ? '_self' : '_blank'}
       rel={href.startsWith('/') ? undefined : 'noopener noreferrer'}
     >
-      <div
-        className={cn(
-          'relative max-h-120 w-fit border border-border',
-          className
-        )}
-      >
+      <div className={cn('relative w-fit border border-border', className)}>
         <Image
           unoptimized
           alt={alt}
