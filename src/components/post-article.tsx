@@ -9,7 +9,7 @@ export function PostArticle({ post }: Props) {
   return (
     <article>
       <header className="mt-20 mb-10">
-        <div className="relative flex flex-wrap gap-3">
+        <div className="relative -left-1 flex flex-wrap gap-3">
           {post.categories?.map((category) => (
             <span
               key={category}

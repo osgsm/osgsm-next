@@ -45,9 +45,9 @@ export default function RootLayout({
       <body className="antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <header className="sticky top-0 z-40 bg-linear-to-b from-iris-2 via-iris-2/25 via-80% to-transparent pb-5 font-serif text-iris-10">
-            <div className="mx-auto max-w-3xl px-3 lg:px-1">
+            <div className="mx-auto max-w-3xl lg:px-1">
               <nav className="flex items-center justify-between px-2 py-1">
-                <Link href="/" className="block h-7 px-2 py-1 text-xl">
+                <Link href="/" className="block px-2 py-1 text-xl">
                   osgsm.io
                 </Link>
                 <div className="flex items-center">
@@ -63,10 +63,7 @@ export default function RootLayout({
                       },
                     ].map(({ href, label }) => (
                       <li key={label}>
-                        <Link
-                          href={href}
-                          className="block h-7 px-2 py-1 text-lg"
-                        >
+                        <Link href={href} className="block px-2 py-1 text-lg">
                           {label}
                         </Link>
                       </li>

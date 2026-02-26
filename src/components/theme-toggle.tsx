@@ -26,7 +26,9 @@ export function ThemeToggle() {
 
   return (
     <div className="flex flex-col gap-1 sm:flex-row sm:items-center">
-      <div className="px-1 italic lg:px-0">Theme:</div>
+      <div className="-translate-x-0.5 translate-y-2 px-1 italic lg:translate-0 lg:px-0">
+        Theme:
+      </div>
       <div className="flex items-center">
         {options.map(({ value, icon: Icon, label }, index) => (
           <>
