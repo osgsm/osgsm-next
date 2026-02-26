@@ -2,7 +2,6 @@
 
 import { Command } from 'cmdk'
 import { DialogDescription, DialogTitle } from '@radix-ui/react-dialog'
-import { Search } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 

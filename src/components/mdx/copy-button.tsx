@@ -3,15 +3,15 @@
 import { useCallback, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-export function CopyButton({ getCode }: { getCode: () => string }) {
+export function CopyButton({ getCodeAction }: { getCodeAction: () => string }) {
   const [copied, setCopied] = useState(false)
 
   const handleCopy = useCallback(() => {
-    const code = getCode()
+    const code = getCodeAction()
     navigator.clipboard.writeText(code)
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
-  }, [getCode])
+  }, [getCodeAction])
 
   return (
     <button

@@ -14,7 +14,9 @@ export function CodeBlock({
     <figure ref={ref} {...props} className="group my-[1.75em]">
       {children}
       <CopyButton
-        getCode={() => ref.current?.querySelector('code')?.textContent ?? ''}
+        getCodeAction={() =>
+          ref.current?.querySelector('code')?.textContent ?? ''
+        }
       />
     </figure>
   )

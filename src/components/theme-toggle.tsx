@@ -30,7 +30,7 @@ export function ThemeToggle() {
         Theme:
       </div>
       <div className="flex items-center">
-        {options.map(({ value, icon: Icon, label }, index) => (
+        {options.map(({ value, label }, index) => (
           <>
             <button
               key={value}
