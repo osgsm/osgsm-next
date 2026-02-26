@@ -159,7 +159,7 @@ figure[data-rehype-pretty-code-figure] {
 
 /* Code title */
 figcaption[data-rehype-pretty-code-title] {
-  @apply border-b border-border bg-iris-2 px-4 py-2 font-pixel-square text-sm leading-none font-bold tracking-wider text-iris-10/80;
+  @apply border-b border-border bg-iris-2 px-4 py-2 font-pixel-square text-sm leading-none font-bold text-iris-10/80;
 }
 
 /* Pre element */

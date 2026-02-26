@@ -29,23 +29,23 @@ const calloutVariants: Record<
   }
 > = {
   note: {
-    className: 'bg-blue-2 border-blue-8 text-blue-9',
+    className: 'bg-blue-2 border-blue-4 text-blue-9',
     icon: Info,
   },
   tip: {
-    className: 'bg-teal-2 border-teal-8 text-teal-9',
+    className: 'bg-teal-2 border-teal-4 text-teal-9',
     icon: Lightbulb,
   },
   important: {
-    className: 'bg-purple-2 border-purple-9 text-purple-10',
+    className: 'bg-purple-2 border-purple-5 text-purple-10',
     icon: MessageCircleWarning,
   },
   warning: {
-    className: 'bg-amber-2 border-amber-8 text-amber-9',
+    className: 'bg-amber-2 border-amber-4 text-amber-9',
     icon: AlertTriangle,
   },
   caution: {
-    className: 'bg-ruby-2 border-ruby-8 text-ruby-9',
+    className: 'bg-ruby-2 border-ruby-4 text-ruby-9',
     icon: OctagonAlert,
   },
 }
@@ -54,9 +54,8 @@ export function Callout({ type = 'note', title, children }: CalloutProps) {
   const Icon = calloutVariants[type].icon
   return (
     <div className={cn('my-7 border p-6', calloutVariants[type].className)}>
-      <h3 className="pb-3 text-sm leading-none text-inherit">
-        <span className="flex items-center gap-1.5 font-pixel-square font-bold tracking-widest">
-          <Icon size={16} />
+      <h3 className="pb-3 text-base leading-none text-inherit lg:text-lg">
+        <span className="flex items-center gap-1.5 font-serif">
           {title ? (
             <span>{title}</span>
           ) : (
