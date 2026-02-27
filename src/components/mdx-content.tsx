@@ -117,7 +117,7 @@ const components: MDXComponents = {
     return (
       <h2
         id={id}
-        className="mt-[2.75em] mb-6 text-xl before:mr-2 before:text-iris-6 before:content-['##'] lg:text-2xl"
+        className="mt-[2.75em] mb-6 text-xl before:mr-1.5 before:text-iris-8 before:content-['##'] lg:text-2xl"
       >
         {children}
       </h2>
@@ -125,7 +125,7 @@ const components: MDXComponents = {
   },
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
-      className="mt-[2em] mb-6 text-lg before:mr-2 before:text-iris-6 before:content-['###'] lg:text-xl"
+      className="mt-[2em] mb-6 text-lg before:mr-1.5 before:text-iris-8 before:content-['###'] lg:text-xl"
       {...props}
     />
   ),
@@ -145,7 +145,7 @@ const components: MDXComponents = {
   },
   p: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <p
-      className="my-[1.5em] text-[0.9375rem] leading-[1.9] first:mt-0 last:mb-0 lg:text-base"
+      className="my-[1.5em] text-[0.9375rem] leading-[1.9] first:mt-0 last:mb-0 sm:text-base"
       {...props}
     />
   ),
@@ -287,7 +287,10 @@ const components: MDXComponents = {
     return <figure {...props} />
   },
   code: (props: React.HTMLAttributes<HTMLElement>) => (
-    <code className="bg-iris-3 px-1.5 py-0.5 text-[90%]" {...props} />
+    <code
+      className="rounded-lg border border-border bg-iris-3 px-1.5 py-0.5 text-[90%]"
+      {...props}
+    />
   ),
   pre: (props: React.HTMLAttributes<HTMLPreElement>) => (
     <pre className="" {...props} />

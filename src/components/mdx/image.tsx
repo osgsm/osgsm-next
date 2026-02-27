@@ -23,12 +23,12 @@ export default function MDXImage({
 
   return (
     <a
-      className="my-7 flex cursor-pointer flex-col justify-end gap-2 hover:opacity-90"
+      className="-mx-1 my-7 flex cursor-pointer flex-col justify-end gap-2 overflow-clip rounded-3xl border border-border hover:opacity-90"
       href={href}
       target={href.startsWith('/') ? '_self' : '_blank'}
       rel={href.startsWith('/') ? undefined : 'noopener noreferrer'}
     >
-      <div className={cn('relative w-fit border border-border', className)}>
+      <div className={cn('relative w-fit', className)}>
         <Image
           unoptimized
           alt={alt}

@@ -17,7 +17,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --bg: var(--iris-1);
+  --bg: var(--mauve-1);
   --fg: var(--iris-12);
   --border: var(--iris-5);
 }
@@ -133,7 +133,7 @@
 }
 
 body {
-  @apply bg-bg leading-[1.9] text-fg;
+  @apply bg-iris-2 leading-[1.9] text-fg [--color-border:var(--iris-6)] dark:bg-bg;
 }
 
 /*
@@ -154,17 +154,17 @@ code[data-theme*=' '] span {
 
 /* Code block container */
 figure[data-rehype-pretty-code-figure] {
-  @apply overflow-clip border border-border bg-iris-2;
+  @apply -mx-1 grid min-h-18 items-center overflow-clip rounded-3xl border border-border bg-iris-2;
 }
 
 /* Code title */
 figcaption[data-rehype-pretty-code-title] {
-  @apply border-b border-border bg-iris-2 px-4 py-2 font-pixel-square text-sm leading-none font-bold text-iris-10/80;
+  @apply m-2 -mb-1.5 grid h-8 w-fit place-items-center rounded-2xl border border-border bg-iris-3/80 px-3 py-2 font-sans text-sm leading-none font-medium text-iris-10;
 }
 
 /* Pre element */
 pre {
-  @apply my-4 overflow-x-auto leading-[1.75];
+  @apply my-5 overflow-x-auto leading-[1.75];
 
   code {
     @apply border-0 bg-transparent p-0;
@@ -213,11 +213,6 @@ pre [data-line] {
 /* Copy button */
 figure[data-rehype-pretty-code-figure] {
   position: relative;
-}
-
-/* When there's a figcaption (title), offset the button below it */
-figure[data-rehype-pretty-code-figure]:has(figcaption) > .rehype-pretty-copy {
-  top: 2.5rem;
 }
 
 /*
