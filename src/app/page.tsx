@@ -1,79 +1,57 @@
 import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
 import { getAllPosts } from '@/lib/mdx'
+import { PostItem } from '@/components/post-list'
 
 export default function Home() {
-  const blogPosts = getAllPosts('blog').slice(0, 3)
-  const notePosts = getAllPosts('note').slice(0, 3)
+  const blogPosts = getAllPosts('blog').slice(0, 4)
+  const notePosts = getAllPosts('note').slice(0, 4)
 
   return (
-    <div className="space-y-12">
-      <section>
-        <h1 className="text-4xl font-bold">Welcome</h1>
-        <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
-          This is my personal portfolio. I write about programming and other
-          topics.
+    <div>
+      <header className="mt-20 mb-25">
+        <h1 className="sr-only">osgsm.io</h1>
+        <p className="mb-4 font-pixel-circle text-lg font-bold tracking-wider text-iris-9 uppercase">
+          Welcom to my playground!
         </p>
-      </section>
+        <p className="grid gap-y-1 text-lg text-iris-11">
+          <span>私の名前は大島翔吾。</span>
+          <span>ウェブ上での表現をつくる人です。</span>
+          <span>近頃は、WebGL とか WebGPU に惹かれてます。</span>
+        </p>
+      </header>
 
-      <section>
-        <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-bold">Blog</h2>
-          <Link href="/blog" className="text-blue-600 hover:underline">
+      <section className="mt-16">
+        <div className="mb-6 flex items-center justify-between">
+          <h2 className="text-xl text-iris-9 lg:text-2xl">Blog</h2>
+          <Link
+            href="/blog"
+            className="flex items-center gap-1 font-pixel-circle text-[0.8125rem]/[1.75] font-bold tracking-wider text-iris-11 uppercase transition-colors hover:text-iris-12"
+          >
             View all
           </Link>
         </div>
-        <ul className="mt-4 space-y-4">
-          {blogPosts.length > 0 ? (
-            blogPosts.map((post) => (
-              <li key={post.slug}>
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="block rounded-lg border p-4 transition-colors hover:bg-gray-50 dark:hover:bg-gray-900"
-                >
-                  <h3 className="font-semibold">{post.title}</h3>
-                  <time className="text-sm text-gray-500">{post.date}</time>
-                  {post.description && (
-                    <p className="mt-2 text-gray-600 dark:text-gray-400">
-                      {post.description}
-                    </p>
-                  )}
-                </Link>
-              </li>
-            ))
-          ) : (
-            <li className="text-gray-500">No posts yet.</li>
-          )}
+        <ul>
+          {blogPosts.map((post) => (
+            <PostItem key={post.slug} post={post} basePath="/blog" />
+          ))}
         </ul>
       </section>
 
-      <section>
-        <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-bold">Note</h2>
-          <Link href="/note" className="text-blue-600 hover:underline">
+      <section className="mt-16">
+        <div className="mb-6 flex items-center justify-between">
+          <h2 className="text-xl text-iris-9 lg:text-2xl">Note</h2>
+          <Link
+            href="/note"
+            className="flex items-center gap-1 font-pixel-circle text-[0.8125rem]/[1.75] font-bold tracking-wider text-iris-11 uppercase transition-colors hover:text-iris-12"
+          >
             View all
           </Link>
         </div>
-        <ul className="mt-4 space-y-4">
-          {notePosts.length > 0 ? (
-            notePosts.map((post) => (
-              <li key={post.slug}>
-                <Link
-                  href={`/note/${post.slug}`}
-                  className="block rounded-lg border p-4 transition-colors hover:bg-gray-50 dark:hover:bg-gray-900"
-                >
-                  <h3 className="font-semibold">{post.title}</h3>
-                  <time className="text-sm text-gray-500">{post.date}</time>
-                  {post.description && (
-                    <p className="mt-2 text-gray-600 dark:text-gray-400">
-                      {post.description}
-                    </p>
-                  )}
-                </Link>
-              </li>
-            ))
-          ) : (
-            <li className="text-gray-500">No notes yet.</li>
-          )}
+        <ul>
+          {notePosts.map((post) => (
+            <PostItem key={post.slug} post={post} basePath="/note" />
+          ))}
         </ul>
       </section>
     </div>

@@ -46,14 +46,16 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <header className="sticky top-0 z-40 from-iris-1 via-iris-1/25 via-80% to-transparent pb-5 font-sans text-iris-9 dark:bg-linear-to-b">
             <div className="mx-auto max-w-3xl lg:px-1">
-              <nav className="flex items-center justify-between px-2 py-3">
+              <nav className="flex items-center justify-center px-2 py-3">
                 <Link
                   href="/"
-                  className="block rounded-full border border-iris-5 bg-iris-3 px-3 py-1.5 leading-none text-iris-11 backdrop-blur-sm"
+                  className="block rounded-full border border-iris-5 bg-iris-4 p-0.5 leading-none text-iris-11 backdrop-blur-sm"
                 >
-                  <span className="block -translate-y-px">osgsm.io</span>
+                  <span className="block rounded-full border border-iris-5 bg-iris-3 px-3 py-1.5 leading-none text-iris-11">
+                    <span className="block -translate-y-px">osgsm.io</span>
+                  </span>
                 </Link>
-                <div className="flex items-center">
+                <div className="flex items-center rounded-full border border-border bg-iris-4 p-0.5">
                   <ul className="flex">
                     {[
                       {
@@ -63,6 +65,10 @@ export default function RootLayout({
                       {
                         href: '/note',
                         label: 'note',
+                      },
+                      {
+                        href: '/sketch',
+                        label: 'sketch',
                       },
                     ].map(({ href, label }) => (
                       <li key={label}>
@@ -75,8 +81,8 @@ export default function RootLayout({
                       </li>
                     ))}
                   </ul>
-                  <CommandMenu blogPosts={blogPosts} notePosts={notePosts} />
                 </div>
+                <CommandMenu blogPosts={blogPosts} notePosts={notePosts} />
               </nav>
             </div>
           </header>

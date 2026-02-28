@@ -6,6 +6,53 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { ArrowRight } from 'lucide-react'
 import type { PostMeta } from '@/lib/mdx'
 
+type PostItemProps = {
+  post: PostMeta
+  basePath: string
+}
+
+export function PostItem({ post, basePath }: PostItemProps) {
+  return (
+    <li className="border-t border-border">
+      <Link href={`${basePath}/${post.slug}`} className="group block py-5">
+        <div className="flex items-start justify-between gap-2">
+          <h2 className="font-features-['palt'] text-lg group-hover:text-iris-11">
+            {post.title}
+          </h2>
+          <ArrowRight
+            size={16}
+            className="mt-1 shrink-0 text-iris-11 transition-colors group-hover:text-iris-12"
+          />
+        </div>
+        <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1">
+          {post.categories && post.categories.length > 0 && (
+            <div className="relative -left-1 flex flex-wrap gap-1.5">
+              {post.categories.map((category) => (
+                <span
+                  key={category}
+                  className="rounded-lg bg-iris-3 px-2 py-0.5 font-sans text-sm tracking-wide text-iris-11"
+                >
+                  {category}
+                </span>
+              ))}
+            </div>
+          )}
+          <time className="font-pixel-circle text-[0.8125rem]/[1.75] font-bold tracking-wider text-iris-11 uppercase">
+            {new Date(post.date).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </time>
+        </div>
+        {post.description && (
+          <p className="mt-2 text-sm text-iris-11">{post.description}</p>
+        )}
+      </Link>
+    </li>
+  )
+}
+
 type Props = {
   title: string
   description: string
@@ -74,45 +121,7 @@ function PostListContent({
       <ul>
         {filteredPosts.length > 0 ? (
           filteredPosts.map((post) => (
-            <li key={post.slug} className="border-t border-border py-6">
-              <Link href={`${basePath}/${post.slug}`} className="group block">
-                <div className="flex items-start justify-between gap-2">
-                  <h2 className="font-features-['palt'] text-lg group-hover:text-iris-11">
-                    {post.title}
-                  </h2>
-                  <ArrowRight
-                    size={16}
-                    className="mt-1 shrink-0 text-iris-11 transition-colors group-hover:text-iris-12"
-                  />
-                </div>
-                <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1">
-                  {post.categories && post.categories.length > 0 && (
-                    <div className="relative -left-1 flex flex-wrap gap-1.5">
-                      {post.categories.map((category) => (
-                        <span
-                          key={category}
-                          className="rounded-lg bg-iris-3 px-2 py-0.5 font-sans text-sm tracking-wide text-iris-11"
-                        >
-                          {category}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                  <time className="font-pixel-circle text-[0.8125rem]/[1.75] font-bold tracking-wider text-iris-11 uppercase">
-                    {new Date(post.date).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                    })}
-                  </time>
-                </div>
-                {post.description && (
-                  <p className="mt-2 text-sm text-iris-11">
-                    {post.description}
-                  </p>
-                )}
-              </Link>
-            </li>
+            <PostItem key={post.slug} post={post} basePath={basePath} />
           ))
         ) : (
           <li className="text-iris-11">No posts found.</li>

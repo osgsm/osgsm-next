@@ -47,12 +47,14 @@ export function CommandMenu({
     <>
       <button
         onClick={() => setOpen(true)}
-        className="flex h-7.5 items-center gap-1 rounded-full border border-iris-5 bg-iris-3 px-2.5 py-1.5 leading-none text-iris-11 backdrop-blur-sm"
+        className="flex rounded-full border border-iris-5 bg-iris-4 p-0.5 backdrop-blur-sm"
         aria-label="Search"
       >
-        <Search size={15} />
-        <span className="hidden text-sm leading-none tracking-wide text-iris-11/75 md:block">
-          ⌘K
+        <span className="flex items-center gap-1 rounded-full border border-iris-5 bg-iris-3 px-1.5 py-1.5 leading-none text-iris-11 md:px-2.5">
+          <Search size={15} />
+          <span className="hidden text-sm leading-none tracking-wide text-iris-11/75 md:block">
+            ⌘K
+          </span>
         </span>
       </button>
 
