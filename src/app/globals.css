@@ -224,16 +224,7 @@ figure[data-rehype-pretty-code-figure] {
 }
 
 [cmdk-dialog] {
-  position: fixed;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 640px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  overflow: hidden;
-  z-index: 50;
+  @apply fixed top-[20%] left-1/2 z-50 w-[90%] max-w-160 -translate-x-1/2 overflow-clip rounded-3xl border border-border bg-bg;
 }
 
 [cmdk-input] {
