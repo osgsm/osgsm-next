@@ -6,13 +6,15 @@ import { CornerDownLeftIcon } from 'lucide-react'
 
 import styles from './styles.module.css'
 
-interface Props extends React.HTMLProps<HTMLDivElement> {
+interface Props {
+  id?: string
   href: string
 }
 
-function FootnoteBackReference({ href, children }: Props): JSX.Element {
+function FootnoteBackReference({ id, href }: Props): JSX.Element {
   const scroll = () => {
-    const footnote = document.querySelector(`[id="${href.replace('ref', '')}"]`)
+    const targetId = href.replace(/^#/, '')
+    const footnote = document.getElementById(targetId)
 
     if (footnote) {
       const headerOffset = 100
@@ -28,25 +30,23 @@ function FootnoteBackReference({ href, children }: Props): JSX.Element {
   }
 
   return (
-    <div className={styles['footnote-back-reference']}>
-      {children}
-      <button
-        id={href}
-        type="button"
-        onClick={(e) => {
+    <button
+      id={id}
+      type="button"
+      className={styles['footnote-back-reference']}
+      onClick={(e) => {
+        e.preventDefault()
+        scroll()
+      }}
+      onKeyUp={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault()
           scroll()
-        }}
-        onKeyUp={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault()
-            scroll()
-          }
-        }}
-      >
-        <CornerDownLeftIcon className="text-gray-500" />
-      </button>
-    </div>
+        }
+      }}
+    >
+      <CornerDownLeftIcon className="text-gray-500" />
+    </button>
   )
 }
 

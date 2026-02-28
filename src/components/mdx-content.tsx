@@ -129,13 +129,20 @@ const components: MDXComponents = {
       {...props}
     />
   ),
-  a: ({ children, href }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+  a: ({
+    children,
+    href,
+    id,
+  }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
     if (href?.startsWith('#user-content-fn-')) {
       return (
-        <FootnoteForwardReference href={href}>
+        <FootnoteForwardReference id={id} href={href}>
           {children}
         </FootnoteForwardReference>
       )
+    }
+    if (href?.includes('user-content-fnref-')) {
+      return <FootnoteBackReference id={id} href={href || ''} />
     }
     return (
       <Link href={href} className="text-iris-10">
@@ -222,53 +229,7 @@ const components: MDXComponents = {
     ...props
   }: React.HTMLAttributes<HTMLLIElement>) => {
     if (props.id?.includes('user-content-fn-')) {
-      return (
-        <li id={props.id}>
-          {React.Children.map(children, (child) => {
-            if (React.isValidElement(child)) {
-              if (child.type === 'p') {
-                const href = (
-                  child.props as { children?: React.ReactNode[] }
-                ).children?.find((innerChild: React.ReactNode) => {
-                  if (React.isValidElement(innerChild)) {
-                    return (
-                      React.isValidElement(innerChild) &&
-                      'props' in innerChild &&
-                      (innerChild.props as { href?: string }).href?.includes(
-                        'user-content-fnref-'
-                      )
-                    )
-                  }
-                  return false
-                }) as React.ReactElement<{ href?: string }> | undefined
-
-                const filteredChildren = (
-                  child.props as { children?: React.ReactNode[] }
-                ).children?.filter((innerChild: React.ReactNode) => {
-                  if (React.isValidElement(innerChild)) {
-                    return !(
-                      React.isValidElement(innerChild) &&
-                      'props' in innerChild &&
-                      (innerChild.props as { href?: string }).href?.includes(
-                        'user-content-fnref-'
-                      )
-                    )
-                  }
-                  return true
-                })
-
-                return (
-                  <FootnoteBackReference href={href?.props?.href || ''}>
-                    {filteredChildren}
-                  </FootnoteBackReference>
-                )
-              }
-              return child
-            }
-            return child
-          })}
-        </li>
-      )
+      return <li id={props.id}>{children}</li>
     }
     return (
       <li className={cn('mt-2 ml-2 list-item marker:text-mauve-8', className)}>
