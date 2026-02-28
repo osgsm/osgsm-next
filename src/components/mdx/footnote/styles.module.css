@@ -18,9 +18,9 @@
 }
 
 .footnote-forward-reference {
-  display: inline-block;
-  margin-right: 2px;
-  margin-left: 2px;
-  color: #6b7280;
+  min-width: 14px;
+  min-height: 14px;
+  margin-left: 1px;
+  color: var(--color-iris-10);
   cursor: pointer;
 }

@@ -44,7 +44,7 @@ export default function RootLayout({
     >
       <body className="antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <header className="sticky top-0 z-40 bg-linear-to-b from-iris-1 via-iris-1/25 via-80% to-transparent pb-5 font-sans text-iris-9 md:text-lg">
+          <header className="sticky top-0 z-40 from-iris-1 via-iris-1/25 via-80% to-transparent pb-5 font-sans text-iris-9 dark:bg-linear-to-b">
             <div className="mx-auto max-w-3xl lg:px-1">
               <nav className="flex items-center justify-between px-2 py-3">
                 <Link
@@ -53,7 +53,7 @@ export default function RootLayout({
                 >
                   <span className="block -translate-y-px">osgsm.io</span>
                 </Link>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center">
                   <ul className="flex">
                     {[
                       {
@@ -63,10 +63,6 @@ export default function RootLayout({
                       {
                         href: '/note',
                         label: 'note',
-                      },
-                      {
-                        href: '/about',
-                        label: 'about',
                       },
                     ].map(({ href, label }) => (
                       <li key={label}>

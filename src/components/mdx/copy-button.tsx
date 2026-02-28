@@ -22,7 +22,7 @@ export function CopyButton({ getCodeAction }: { getCodeAction: () => string }) {
       onClick={handleCopy}
       className={twMerge(
         'rehype-pretty-copy',
-        'absolute top-2 right-2 grid size-8 cursor-pointer place-items-center rounded-full border border-border bg-iris-3/80 font-pixel-square leading-none font-bold',
+        'absolute top-2 right-2 grid size-8 cursor-pointer place-items-center rounded-full border border-border bg-iris-3/75 font-pixel-square leading-none font-bold backdrop-blur-sm',
         '*:col-span-full *:row-span-full'
       )}
     >

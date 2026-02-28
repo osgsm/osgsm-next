@@ -13,6 +13,7 @@ function FootnoteForwardReference({ href, children }: Props): JSX.Element {
     const footnote = document.querySelector(
       `[id="${href.replace('fn-', 'fnref-')}"]`
     )
+    console.log(footnote)
 
     if (footnote) {
       window.scrollTo({
