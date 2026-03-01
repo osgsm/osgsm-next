@@ -2,7 +2,7 @@ import { ThemeToggle } from '@/components/theme-toggle'
 
 export function Footer() {
   return (
-    <footer className="mt-auto font-sans text-sm text-iris-10 dark:text-iris-8">
+    <footer className="mt-auto pt-16 font-sans text-sm text-iris-10 dark:text-iris-8">
       <div className="mx-auto flex max-w-3xl items-end justify-between px-3.5 py-4 sm:items-center">
         <div>
           <p>&copy; Shogo Oshima</p>
