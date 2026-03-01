@@ -15,7 +15,7 @@ export function PostArticle({ post }: Props) {
   return (
     <article>
       <header className="my-16">
-        <div className="gap-1. relative -left-0.5 flex flex-wrap text-iris-11">
+        <div className="relative -left-0.5 flex flex-wrap gap-1.5 text-iris-11">
           {post.categories?.map((category) => (
             <span
               key={category}
