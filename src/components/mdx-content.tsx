@@ -6,6 +6,7 @@ import React from 'react'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
+import { Asterisk } from 'lucide-react'
 
 import { cn } from '@/lib/cn'
 
@@ -34,7 +35,7 @@ const components: MDXComponents = {
     title,
     children,
   }: {
-    type?: 'note' | 'tip' | 'important' | 'warning' | 'caution'
+    type?: 'note' | 'reference' | 'important' | 'warning' | 'caution'
     title?: string
     children: React.ReactNode
   }) => (
@@ -145,7 +146,10 @@ const components: MDXComponents = {
       return <FootnoteBackReference id={id} href={href || ''} />
     }
     return (
-      <Link href={href} className="text-iris-10">
+      <Link
+        href={href}
+        className="text-iris-10 underline decoration-transparent underline-offset-4 transition-all hover:decoration-iris-8"
+      >
         {children}
       </Link>
     )
@@ -176,7 +180,7 @@ const components: MDXComponents = {
   th: ({ className, ...props }: React.HTMLAttributes<HTMLTableCellElement>) => (
     <th
       className={cn(
-        'border border-gray-200 px-4 py-2 text-left font-semibold dark:border-gray-700 [&[align=center]]:text-center [&[align=right]]:text-right',
+        'border border-gray-200 px-4 py-2 text-left font-semibold dark:border-gray-700 [[align=center]]:text-center [[align=right]]:text-right',
         className
       )}
       {...props}
@@ -185,7 +189,7 @@ const components: MDXComponents = {
   td: ({ className, ...props }: React.HTMLAttributes<HTMLTableCellElement>) => (
     <td
       className={cn(
-        'border border-gray-200 px-4 py-2 text-left dark:border-gray-700 [&[align=center]]:text-center [&[align=right]]:text-right',
+        'border border-gray-200 px-4 py-2 text-left dark:border-gray-700 [[align=center]]:text-center [[align=right]]:text-right',
         className
       )}
       {...props}
@@ -202,9 +206,16 @@ const components: MDXComponents = {
       )
     ) {
       return (
-        <ol className="my-10" data-footnotes>
-          {props.children}
-        </ol>
+        <div className="-mx-1 my-10 rounded-3xl border border-border bg-iris-3 p-6 dark:bg-iris-2">
+          <h2 className="mb-3 flex items-center gap-1 font-pixel-circle text-xs font-bold tracking-wider text-iris-11 uppercase">
+            <Asterisk
+              className="-translate-y-[0.03125rem] opacity-70"
+              size={14}
+            />
+            Footnote
+          </h2>
+          <ol data-footnotes>{props.children}</ol>
+        </div>
       )
     }
     return (
@@ -229,10 +240,19 @@ const components: MDXComponents = {
     ...props
   }: React.HTMLAttributes<HTMLLIElement>) => {
     if (props.id?.includes('user-content-fn-')) {
-      return <li id={props.id}>{children}</li>
+      return (
+        <li className="[&_p]:leading-relaxed" id={props.id}>
+          {children}
+        </li>
+      )
     }
     return (
-      <li className={cn('mt-2 ml-2 list-item marker:text-mauve-8', className)}>
+      <li
+        className={cn(
+          'mt-2 ml-2 list-item marker:text-(--color-accent,var(--color-mauve-8))/40',
+          className
+        )}
+      >
         {children}
       </li>
     )

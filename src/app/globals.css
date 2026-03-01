@@ -159,7 +159,7 @@ figure[data-rehype-pretty-code-figure] {
 
 /* Code title */
 figcaption[data-rehype-pretty-code-title] {
-  @apply m-2 -mb-1.5 grid h-8 w-fit place-items-center rounded-2xl border border-border bg-iris-3/50 px-3 py-2 font-sans text-sm leading-none font-medium text-iris-9/80;
+  @apply m-2 -mb-1.5 grid h-8 w-fit place-items-center rounded-2xl border border-border bg-iris-3/50 px-3 py-2 font-sans text-sm leading-none text-iris-10;
 }
 
 /* Pre element */

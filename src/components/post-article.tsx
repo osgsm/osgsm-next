@@ -8,7 +8,7 @@ type Props = {
 export function PostArticle({ post }: Props) {
   return (
     <article>
-      <header className="mt-20 mb-10">
+      <header className="my-15">
         <div className="relative -left-1 flex flex-wrap gap-2">
           {post.categories?.map((category) => (
             <span

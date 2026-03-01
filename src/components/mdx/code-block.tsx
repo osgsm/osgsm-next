@@ -11,7 +11,11 @@ export function CodeBlock({
   const ref = useRef<HTMLElement>(null)
 
   return (
-    <figure ref={ref} {...props} className="group my-[1.75em]">
+    <figure
+      ref={ref}
+      {...props}
+      className="group my-[1.75em] first:mt-0 last:mb-0"
+    >
       {children}
       <CopyButton
         getCodeAction={() =>

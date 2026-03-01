@@ -33,7 +33,7 @@ function FootnoteBackReference({ id, href }: Props): JSX.Element {
     <button
       id={id}
       type="button"
-      className={styles['footnote-back-reference']}
+      className="inline-block cursor-pointer p-1.25"
       onClick={(e) => {
         e.preventDefault()
         scroll()
@@ -45,7 +45,7 @@ function FootnoteBackReference({ id, href }: Props): JSX.Element {
         }
       }}
     >
-      <CornerDownLeftIcon className="text-gray-500" />
+      <CornerDownLeftIcon size={14} className="text-iris-10" />
     </button>
   )
 }

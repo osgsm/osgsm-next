@@ -36,7 +36,7 @@ function FootnoteForwardReference({ id, href, children }: Props): JSX.Element {
           scroll()
         }
       }}
-      className={styles['footnote-forward-reference']}
+      className="inline-block cursor-pointer p-1 leading-none text-iris-10"
     >
       [{children}]
     </button>
