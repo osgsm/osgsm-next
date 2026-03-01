@@ -20,21 +20,23 @@ export function ThemeToggle() {
 
   const options = [
     { value: 'light', icon: Sun, label: 'Light' },
-    { value: 'dark', icon: Moon, label: 'Dark' },
     { value: 'system', icon: MonitorCog, label: 'System' },
+    { value: 'dark', icon: Moon, label: 'Dark' },
   ] as const
 
   return (
     <div className="flex flex-col gap-1 sm:flex-row sm:items-center">
-      <div className="relative top-1 flex items-center gap-x-1">
-        {options.map(({ value, label, icon: Icon }, index) => {
+      <div className="flex items-center gap-x-1 rounded-full border border-border bg-iris-3/75 p-0.5">
+        {options.map(({ value, label, icon: Icon }) => {
           return (
             <button
               key={value}
               onClick={() => setTheme(value)}
               className={cn(
-                'grid size-7 place-items-center gap-1.5 p-1 text-iris-12/60 transition-colors',
-                theme === value ? 'text-iris-10' : 'hover:text-iris-10'
+                'grid rounded-full border border-transparent p-1.5 leading-none text-iris-11/75 backdrop-blur-sm transition-colors',
+                theme === value
+                  ? 'border-iris-5 bg-iris-4 text-iris-11'
+                  : 'hover:text-iris-10'
               )}
               aria-label={label}
             >

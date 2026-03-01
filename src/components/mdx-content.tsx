@@ -278,7 +278,7 @@ const components: MDXComponents = {
   ),
   hr: (props: React.HTMLAttributes<HTMLElement>) => (
     <hr
-      className="mx-auto my-17 block w-10 border-t border-border"
+      className="mx-auto my-14 block w-10 border-t border-border"
       {...props}
     />
   ),
