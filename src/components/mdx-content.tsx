@@ -118,7 +118,7 @@ const components: MDXComponents = {
     return (
       <h2
         id={id}
-        className="mt-[2.75em] mb-6 text-xl before:mr-1.5 before:text-iris-8 before:content-['##'] lg:text-2xl"
+        className="mt-[2.75em] mb-6 text-xl leading-normal before:mr-1.5 before:text-iris-8 before:content-['##'] lg:text-2xl"
       >
         {children}
       </h2>
@@ -126,7 +126,7 @@ const components: MDXComponents = {
   },
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
-      className="mt-[2em] mb-6 text-lg before:mr-1.5 before:text-iris-8 before:content-['###'] lg:text-xl"
+      className="mt-[2em] mb-6 text-lg leading-normal before:mr-1.5 before:text-iris-8 before:content-['###'] lg:text-xl"
       {...props}
     />
   ),
