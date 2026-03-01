@@ -42,17 +42,19 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${GeistSans.variable} ${GeistMono.variable} ${GeistPixelCircle.variable} ${GeistPixelSquare.variable} ${instrumentSerif.variable}`}
     >
-      <body className="antialiased">
+      <body className="flex min-h-screen flex-col antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <header className="sticky top-0 z-40 from-iris-1 via-iris-1/25 via-80% to-transparent pb-5 font-sans text-iris-9 dark:bg-linear-to-b">
-            <div className="mx-auto max-w-3xl lg:px-1">
-              <nav className="flex items-center justify-center px-2 py-3">
+            <div className="mx-auto max-w-3xl">
+              <nav className="flex flex-wrap items-center justify-between gap-2 px-3.5 py-3">
                 <Link
                   href="/"
-                  className="block rounded-full border border-iris-5 bg-iris-4 p-0.5 leading-none text-iris-11 backdrop-blur-sm"
+                  className="group block rounded-full border border-iris-5 bg-iris-4 p-0.5 leading-none text-iris-11 backdrop-blur-sm"
                 >
-                  <span className="block rounded-full border border-iris-5 bg-iris-3 px-3 py-1.5 leading-none text-iris-11">
-                    <span className="block -translate-y-px">osgsm.io</span>
+                  <span className="block rounded-full border border-iris-5 bg-iris-3 px-3 py-1.5 leading-none text-iris-11 transition-colors group-hover:border-iris-6 group-hover:bg-iris-5">
+                    <span className="block -translate-y-px transition-colors group-hover:text-iris-12">
+                      osgsm.io
+                    </span>
                   </span>
                 </Link>
                 <div className="flex items-center rounded-full border border-border bg-iris-4 p-0.5">
@@ -66,20 +68,25 @@ export default function RootLayout({
                         href: '/note',
                         label: 'note',
                       },
-                      {
-                        href: '/sketch',
-                        label: 'sketch',
-                      },
                     ].map(({ href, label }) => (
                       <li key={label}>
                         <Link
                           href={href}
-                          className="block rounded-full border border-iris-5 bg-iris-3 px-3 py-1.5 leading-none text-iris-11 backdrop-blur-sm"
+                          className="group block rounded-full border border-iris-5 bg-iris-3 px-3 py-1.5 leading-none text-iris-11 backdrop-blur-sm transition-colors hover:border-iris-6 hover:bg-iris-5"
                         >
-                          <span className="block -translate-y-px">{label}</span>
+                          <span className="block -translate-y-px transition-colors group-hover:text-iris-12">
+                            {label}
+                          </span>
                         </Link>
                       </li>
                     ))}
+                    <li>
+                      <span className="block rounded-full border border-iris-5 bg-iris-3 px-3 py-1.5 leading-none text-iris-11 opacity-50 backdrop-blur-sm">
+                        <s className="block -translate-y-px text-mauve-10">
+                          sketch
+                        </s>
+                      </span>
+                    </li>
                   </ul>
                 </div>
                 <CommandMenu blogPosts={blogPosts} notePosts={notePosts} />

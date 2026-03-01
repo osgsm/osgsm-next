@@ -13,5 +13,12 @@ export function getAllCategories(type: PostType): string[] {
     }
   }
 
-  return Array.from(categories).sort()
+  const sorted = Array.from(categories).sort()
+  const othersIndex = sorted.indexOf('Others')
+  if (othersIndex !== -1) {
+    sorted.splice(othersIndex, 1)
+    sorted.push('Others')
+  }
+
+  return sorted
 }

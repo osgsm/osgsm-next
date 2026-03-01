@@ -33,7 +33,7 @@ export function ThemeToggle() {
               key={value}
               onClick={() => setTheme(value)}
               className={cn(
-                'grid rounded-full border border-transparent p-1.5 leading-none text-iris-11/75 backdrop-blur-sm transition-colors',
+                'grid rounded-full border border-transparent p-1.5 leading-none text-iris-10 backdrop-blur-sm transition-colors',
                 theme === value
                   ? 'border-iris-5 bg-iris-4 text-iris-11'
                   : 'hover:text-iris-10'
