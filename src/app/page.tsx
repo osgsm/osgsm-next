@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
 import { getAllPosts } from '@/lib/mdx'
 import { PostItem } from '@/components/post-list'
+import DecryptedText from '@/components/decrypted-text'
 
 export default function Home() {
   const blogPosts = getAllPosts('blog').slice(0, 4)
@@ -12,13 +12,19 @@ export default function Home() {
       <header className="my-16 mb-24">
         <h1 className="sr-only">osgsm.io</h1>
         <p className="mb-4 font-pixel-circle text-[0.8125rem]/[1.75] font-bold tracking-wider text-iris-11 uppercase">
-          Welcom to my playground!
+          <DecryptedText
+            animateOn="view"
+            text="Welcom to my playground!"
+            sequential
+            speed={30}
+            useOriginalCharsOnly
+          />
         </p>
         <p className="mb-4 grid font-features-['palt'] text-2xl leading-snug tracking-wide md:text-3xl">
           <span>ようこそ👋🏼 </span>
           <span>大島翔吾と申します。</span>
         </p>
-        <p className="grid font-features-['palt'] text-sm leading-[1.9] tracking-wide lg:text-base">
+        <p className="grid font-features-['palt'] text-sm leading-[1.9] tracking-wide md:text-base">
           <span>ウェブサイトつくったりしてます。</span>
           <span>最近の関心は WebGL (WebGPU) 。</span>
           <span>

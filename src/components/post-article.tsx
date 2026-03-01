@@ -1,15 +1,21 @@
 import type { Post } from '@/lib/mdx'
 import { MDXContent } from '@/components/mdx-content'
+import DecryptedText from '@/components/decrypted-text'
 
 type Props = {
   post: Post
 }
 
 export function PostArticle({ post }: Props) {
+  const dateString = new Date(post.date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
   return (
     <article>
       <header className="my-16">
-        <div className="relative -left-1 flex flex-wrap gap-1.5 text-iris-11">
+        <div className="gap-1. relative -left-0.5 flex flex-wrap text-iris-11">
           {post.categories?.map((category) => (
             <span
               key={category}
@@ -23,13 +29,13 @@ export function PostArticle({ post }: Props) {
           {post.title}
         </h1>
         <div className="grid font-pixel-circle text-[0.8125rem]/[1.75] font-bold tracking-wider text-iris-11 uppercase">
-          <time>
-            {new Date(post.date).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })}
-          </time>
+          <DecryptedText
+            animateOn="view"
+            text={dateString}
+            sequential
+            speed={30}
+            useOriginalCharsOnly
+          />
         </div>
       </header>
       <div className="prose dark:prose-invert max-w-none">

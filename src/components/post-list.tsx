@@ -4,6 +4,7 @@ import { Suspense } from 'react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { cn } from '@/lib/cn'
+import DecryptedText from '@/components/decrypted-text'
 
 import type { PostMeta } from '@/lib/mdx'
 
@@ -13,6 +14,12 @@ type PostItemProps = {
 }
 
 export function PostItem({ post, basePath }: PostItemProps) {
+  const dateString = new Date(post.date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
+
   return (
     <li className="">
       <Link
@@ -35,13 +42,9 @@ export function PostItem({ post, basePath }: PostItemProps) {
               ))}
             </div>
           )}
-          <time className="font-pixel-circle text-[0.8125rem]/[1.75] font-bold tracking-wider text-iris-11 uppercase">
-            {new Date(post.date).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })}
-          </time>
+          <div className="font-pixel-circle text-[0.8125rem]/[1.75] font-bold tracking-wider text-iris-11 uppercase">
+            {dateString}
+          </div>
         </div>
         {post.description && (
           <p className="mt-2 text-sm text-iris-11">{post.description}</p>
@@ -90,11 +93,21 @@ function PostListContent({
         <h1 className="mb-2 -translate-x-px font-features-['palt'] text-2xl leading-normal lg:text-3xl">
           {title}
           <span className="ml-2 font-pixel-circle text-[0.8125rem]/[1.75] font-bold tracking-wider text-iris-11">
-            ({posts.length})
+            <DecryptedText
+              animateOn="view"
+              text={String(posts.length)}
+              speed={30}
+            />
           </span>
         </h1>
         <p className="font-pixel-circle text-[0.8125rem]/[1.75] font-bold tracking-wider text-iris-11 uppercase">
-          {description}
+          <DecryptedText
+            animateOn="view"
+            text={description}
+            sequential
+            speed={30}
+            useOriginalCharsOnly
+          />
         </p>
       </header>
 
