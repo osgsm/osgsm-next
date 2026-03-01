@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { getAllPosts } from '@/lib/mdx'
+import { Button } from '@/components/button'
 import { PostItem } from '@/components/post-list'
 import DecryptedText from '@/components/decrypted-text'
 
@@ -14,7 +15,7 @@ export default function Home() {
         <p className="mb-4 font-pixel-circle text-[0.8125rem]/[1.75] font-bold tracking-wider text-iris-11 uppercase">
           <DecryptedText
             animateOn="view"
-            text="Welcom to my playground!"
+            text="Welcome to my playground!"
             sequential
             speed={30}
             useOriginalCharsOnly
@@ -37,12 +38,9 @@ export default function Home() {
       <section className="mt-16">
         <div className="mb-6 flex items-center justify-between">
           <h2 className="text-xl text-iris-9 lg:text-2xl">Blog</h2>
-          <Link
-            href="/blog"
-            className="block rounded-full border border-iris-5 bg-iris-3 px-3 py-1.5 text-sm leading-none text-iris-11 backdrop-blur-sm"
-          >
+          <Button className="text-sm/none" href="/blog/">
             view all
-          </Link>
+          </Button>
         </div>
         <ul className="grid gap-3">
           {blogPosts.map((post) => (
@@ -54,12 +52,9 @@ export default function Home() {
       <section className="mt-16">
         <div className="mb-6 flex items-center justify-between">
           <h2 className="text-xl text-iris-9 lg:text-2xl">Note</h2>
-          <Link
-            href="/note"
-            className="block rounded-full border border-iris-5 bg-iris-3 px-3 py-1.5 text-sm leading-none text-iris-11 backdrop-blur-sm"
-          >
+          <Button className="text-sm/none" href="/note/">
             view all
-          </Link>
+          </Button>
         </div>
         <ul className="grid gap-3">
           {notePosts.map((post) => (

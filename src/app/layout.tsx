@@ -93,7 +93,7 @@ export default function RootLayout({
               </nav>
             </div>
           </header>
-          <main className="mx-auto max-w-3xl px-6 py-8">{children}</main>
+          <main className="mx-auto w-full max-w-3xl px-6 py-8">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>
