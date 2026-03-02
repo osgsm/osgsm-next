@@ -35,7 +35,9 @@
       "Bash(xargs sed:*)",
       "Bash(npm run build:*)",
       "Bash(python3:*)",
-      "Bash(xxd:*)"
+      "Bash(xxd:*)",
+      "mcp__ide__getDiagnostics",
+      "Bash(npx tsc:*)"
     ]
   }
 }
