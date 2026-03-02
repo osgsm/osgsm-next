@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { CommandMenu } from '@/components/command-menu'
 import { Footer } from '@/components/footer'
 import { ThemeProvider } from '@/components/theme-provider'
+import { cn } from '@/lib/cn'
 import { getAllPosts } from '@/lib/mdx'
 
 import './globals.css'
@@ -57,39 +58,45 @@ export default function RootLayout({
                     </span>
                   </span>
                 </Link>
-                <div className="flex items-center rounded-full border border-border bg-iris-4 p-0.5">
-                  <ul className="flex">
-                    {[
-                      {
-                        href: '/blog',
-                        label: 'blog',
-                      },
-                      {
-                        href: '/note',
-                        label: 'note',
-                      },
-                    ].map(({ href, label }) => (
-                      <li key={label}>
-                        <Link
-                          href={href}
-                          className="group block rounded-full border border-iris-5 bg-iris-3 px-3 py-1.5 leading-none text-iris-11 backdrop-blur-sm transition-colors hover:border-iris-6 hover:bg-iris-5"
-                        >
-                          <span className="block -translate-y-px transition-colors group-hover:text-iris-12">
-                            {label}
-                          </span>
-                        </Link>
+                <div className="ml-auto flex items-center gap-2">
+                  <div className="flex items-center rounded-full border border-border bg-iris-4 p-0.5">
+                    <ul className="flex">
+                      {[
+                        {
+                          href: '/blog',
+                          label: 'blog',
+                        },
+                        {
+                          href: '/note',
+                          label: 'note',
+                        },
+                      ].map(({ href, label }) => (
+                        <li key={label}>
+                          <Link
+                            href={href}
+                            className={cn(
+                              'group block rounded-full border border-iris-5 bg-iris-3 px-3 py-1.5 leading-none text-iris-11 backdrop-blur-sm',
+                              'transition-colors',
+                              'hover:border-iris-6 hover:bg-iris-5'
+                            )}
+                          >
+                            <span className="block -translate-y-px transition-colors group-hover:text-iris-12">
+                              {label}
+                            </span>
+                          </Link>
+                        </li>
+                      ))}
+                      <li>
+                        <span className="block rounded-full border border-iris-5 bg-iris-3 px-3 py-1.5 leading-none text-iris-11 opacity-50 backdrop-blur-sm">
+                          <s className="block -translate-y-px text-mauve-10">
+                            sketch
+                          </s>
+                        </span>
                       </li>
-                    ))}
-                    <li>
-                      <span className="block rounded-full border border-iris-5 bg-iris-3 px-3 py-1.5 leading-none text-iris-11 opacity-50 backdrop-blur-sm">
-                        <s className="block -translate-y-px text-mauve-10">
-                          sketch
-                        </s>
-                      </span>
-                    </li>
-                  </ul>
+                    </ul>
+                  </div>
+                  <CommandMenu blogPosts={blogPosts} notePosts={notePosts} />
                 </div>
-                <CommandMenu blogPosts={blogPosts} notePosts={notePosts} />
               </nav>
             </div>
           </header>

@@ -5,7 +5,7 @@ import { DialogDescription, DialogTitle } from '@radix-ui/react-dialog'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { Search } from 'lucide-react'
-
+import { cn } from '@/lib/cn'
 import type { PostMeta } from '@/lib/mdx'
 
 export function CommandMenu({
@@ -47,12 +47,27 @@ export function CommandMenu({
     <>
       <button
         onClick={() => setOpen(true)}
-        className="group flex rounded-full border border-iris-5 bg-iris-4 p-0.5 backdrop-blur-sm hover:border-iris-6 hover:bg-iris-5"
+        className={cn(
+          'group ml-auto flex rounded-full border border-iris-5 bg-iris-4 p-0.5 backdrop-blur-sm',
+          'hover:border-iris-6 hover:bg-iris-5'
+        )}
         aria-label="Search"
       >
-        <span className="flex items-center gap-1 rounded-full border border-iris-5 bg-iris-3 px-1.5 py-1.5 leading-none text-iris-11 group-hover:text-iris-12 md:px-2.5">
+        <span
+          className={cn(
+            'flex items-center gap-1 rounded-full border border-iris-5 bg-iris-3 px-1.5 py-1.5 leading-none text-iris-11',
+            'group-hover:text-iris-12',
+            'md:px-2.5'
+          )}
+        >
           <Search size={15} />
-          <span className="hidden text-sm leading-none tracking-wide text-iris-11/75 group-hover:text-iris-12 md:block">
+          <span
+            className={cn(
+              'hidden text-sm leading-none tracking-wide text-iris-11/75',
+              'group-hover:text-iris-12',
+              'md:block'
+            )}
+          >
             ⌘K
           </span>
         </span>
