@@ -1,9 +1,10 @@
 'use client'
 
-import { Suspense } from 'react'
+import { Suspense, useRef, useState } from 'react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { cn } from '@/lib/cn'
+import { sleep } from '@/lib/sleep'
 import DecryptedText from '@/components/decrypted-text'
 
 import type { PostMeta } from '@/lib/mdx'
@@ -72,18 +73,27 @@ function PostListContent({
   const router = useRouter()
   const searchParams = useSearchParams()
   const activeCategory = searchParams.get('category')
+  const [isFading, setIsFading] = useState(false)
+  const fadeTimeoutRef = useRef<NodeJS.Timeout>(undefined)
 
   const filteredPosts = activeCategory
     ? posts.filter((post) => post.categories?.includes(activeCategory))
     : posts
 
+  async function navigateWithFade(href: string) {
+    clearTimeout(fadeTimeoutRef.current)
+    setIsFading(true)
+    await sleep(100)
+    router.push(href, { scroll: false })
+    await sleep(50)
+    setIsFading(false)
+  }
+
   function handleCategoryClick(category: string) {
     if (activeCategory === category) {
-      router.push(basePath, { scroll: false })
+      navigateWithFade(basePath)
     } else {
-      router.push(`${basePath}?category=${encodeURIComponent(category)}`, {
-        scroll: false,
-      })
+      navigateWithFade(`${basePath}?category=${encodeURIComponent(category)}`)
     }
   }
 
@@ -118,7 +128,10 @@ function PostListContent({
           </div>
           <div className="relative -left-0.5 flex flex-wrap gap-1.5">
             <button
-              onClick={() => router.push(basePath, { scroll: false })}
+              onClick={() => {
+                if (activeCategory === null) return
+                navigateWithFade(basePath)
+              }}
               className={cn(
                 'rounded-lg px-2 py-0.5 font-sans text-sm tracking-wide transition-colors',
                 activeCategory === null
@@ -146,7 +159,12 @@ function PostListContent({
         </div>
       )}
 
-      <ul className="grid gap-3">
+      <ul
+        className={cn(
+          'grid gap-3 transition-opacity duration-200',
+          isFading && 'opacity-0'
+        )}
+      >
         {filteredPosts.length > 0 ? (
           filteredPosts.map((post) => (
             <PostItem key={post.slug} post={post} basePath={basePath} />
