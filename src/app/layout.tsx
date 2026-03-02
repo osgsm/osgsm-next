@@ -23,10 +23,10 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   title: {
-    default: 'osgsm',
-    template: '%s | osgsm',
+    default: 'osgsm.io',
+    template: '%s | osgsm.io',
   },
-  description: 'Personal portfolio and blog',
+  description: "Shogo Oshima's personal website",
 }
 
 export default function RootLayout({
@@ -45,7 +45,7 @@ export default function RootLayout({
     >
       <body className="flex min-h-screen flex-col antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <header className="sticky top-0 z-40 from-iris-1 via-iris-1/25 via-80% to-transparent pb-5 font-sans text-iris-9 dark:bg-linear-to-b">
+          <header className="sticky top-0 z-40 from-iris-1 via-iris-1/25 via-80% to-transparent pb-5 font-sans text-sm text-iris-9 md:text-base dark:bg-linear-to-b">
             <div className="mx-auto max-w-3xl">
               <nav className="flex flex-wrap items-center justify-between gap-2 px-3.5 py-3">
                 <Link
@@ -89,7 +89,7 @@ export default function RootLayout({
                       <li>
                         <span className="block rounded-full border border-iris-5 bg-iris-3 px-3 py-1.5 leading-none text-iris-11 opacity-50 backdrop-blur-sm">
                           <s className="block -translate-y-px text-mauve-10">
-                            sketch
+                            playground
                           </s>
                         </span>
                       </li>

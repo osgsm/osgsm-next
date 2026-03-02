@@ -15,7 +15,7 @@ export function PostArticle({ post }: Props) {
   return (
     <article>
       <header className="my-16">
-        <div className="relative -left-0.5 flex flex-wrap gap-1.5 text-iris-11">
+        <div className="relative -left-1 flex flex-wrap gap-1.5 text-iris-11">
           {post.categories?.map((category) => (
             <span
               key={category}
@@ -25,7 +25,7 @@ export function PostArticle({ post }: Props) {
             </span>
           ))}
         </div>
-        <h1 className="mt-4 mb-3 -translate-x-px font-features-['palt'] text-xl leading-normal lg:text-3xl">
+        <h1 className="mt-4 mb-3 -translate-x-px text-xl leading-normal lg:text-3xl">
           {post.title}
         </h1>
         <div className="grid font-pixel-circle text-[0.8125rem]/[1.75] font-bold tracking-wider text-iris-11 uppercase">

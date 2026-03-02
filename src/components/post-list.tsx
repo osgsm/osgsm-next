@@ -100,7 +100,7 @@ function PostListContent({
   return (
     <div>
       <header className="mt-16 mb-16">
-        <h1 className="mb-2 -translate-x-px font-features-['palt'] text-2xl leading-normal lg:text-3xl">
+        <h1 className="mb-2 -translate-x-px text-2xl leading-normal lg:text-3xl">
           {title}
           <span className="ml-2 font-pixel-circle text-[0.8125rem]/[1.75] font-bold tracking-wider text-iris-11">
             <DecryptedText

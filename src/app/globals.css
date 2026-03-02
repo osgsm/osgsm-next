@@ -140,6 +140,10 @@
   }
 }
 
+:root {
+  @apply max-[400px]:text-[4vw];
+}
+
 body {
   @apply bg-iris-2 text-[0.9375rem] leading-[1.9] text-fg sm:text-base dark:bg-bg;
 }
