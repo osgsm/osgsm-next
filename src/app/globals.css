@@ -132,6 +132,14 @@
   --font-serif: var(--font-instrument-serif);
 }
 
+@utility hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 body {
   @apply bg-iris-2 leading-[1.9] text-fg dark:bg-bg;
 }
@@ -164,7 +172,7 @@ figcaption[data-rehype-pretty-code-title] {
 
 /* Pre element */
 pre {
-  @apply my-5 overflow-x-auto leading-[1.75];
+  @apply overflow-x-auto py-5 leading-[1.75];
 
   code {
     @apply border-0 bg-transparent p-0;
