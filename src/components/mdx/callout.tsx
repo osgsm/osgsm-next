@@ -30,7 +30,7 @@ const calloutVariants: Record<
 > = {
   reference: {
     className:
-      'bg-blue-3/80 dark:bg-blue-2 border-blue-4 text-blue-11 [--color-accent:var(--color-blue-11)]',
+      'bg-iris-3/80 dark:bg-iris-2 border-iris-4 text-iris-11 [--color-accent:var(--color-iris-11)]',
     icon: BookOpen,
   },
   note: {
