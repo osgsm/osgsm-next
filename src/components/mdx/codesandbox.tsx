@@ -3,7 +3,7 @@
 export function CodeSandbox({ id, module }: { id: string; module?: string }) {
   const defaultModule = '/src/App.tsx'
   return (
-    <div className="brder-border -mx-1 overflow-clip rounded-3xl border">
+    <div className="-mx-1 overflow-clip rounded-3xl border border-border">
       <iframe
         className="size-full h-120"
         src={`https://codesandbox.io/embed/${id}?view=preview&module=${module || defaultModule}&hidenavigation=1&hidedevtools=1`}

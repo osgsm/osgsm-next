@@ -1,8 +1,8 @@
 'use client'
 
 import { useCallback, useState } from 'react'
-import { twMerge } from 'tailwind-merge'
 import { Copy, Check } from 'lucide-react'
+import { cn } from '@/lib/cn'
 
 export function CopyButton({ getCodeAction }: { getCodeAction: () => string }) {
   const [copied, setCopied] = useState(false)
@@ -20,15 +20,16 @@ export function CopyButton({ getCodeAction }: { getCodeAction: () => string }) {
       title="Copy code"
       aria-label="Copy code"
       onClick={handleCopy}
-      className={twMerge(
+      className={cn(
         'rehype-pretty-copy',
-        'absolute top-2 right-2 grid size-8 cursor-pointer place-items-center rounded-full border border-border bg-iris-3/75 font-pixel-square leading-none font-bold backdrop-blur-sm',
+        'absolute top-2 right-2 grid size-8 cursor-pointer place-items-center overflow-clip rounded-full border border-border bg-iris-2 font-pixel-square leading-none font-bold backdrop-blur-sm',
         '*:col-span-full *:row-span-full'
       )}
     >
       <span
-        className={twMerge(
-          'text-iris-10 transition-all duration-200 ease-out',
+        className={cn(
+          'grid size-full place-items-center bg-iris-2 text-iris-10',
+          'transition-all ease-out',
 
           copied ? 'invisible opacity-0' : 'visible opacity-100'
         )}
@@ -36,10 +37,8 @@ export function CopyButton({ getCodeAction }: { getCodeAction: () => string }) {
         <Copy size={15} />
       </span>
       <span
-        className={twMerge(
-          'text-teal-8',
-          'transition-all duration-200 ease-out',
-
+        className={cn(
+          'grid size-full place-items-center text-teal-8',
           copied ? 'visible opacity-100' : 'invisible opacity-0'
         )}
       >
