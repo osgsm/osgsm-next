@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { getAllPosts } from '@/lib/mdx'
 import { Button } from '@/components/button'
 import { PostItem } from '@/components/post-list'
@@ -29,7 +28,7 @@ export default function Home() {
           <span>ウェブサイトをつくったりしてます。</span>
           <span>最近の関心は WebGL (WebGPU) 。</span>
           <span>
-            日々の学びとか、つくったものを載せていきます
+            日々の学びとか、制作物を載せていきます
             <small className="-mx-1.5 opacity-60">（予定）</small>。
           </span>
         </p>
