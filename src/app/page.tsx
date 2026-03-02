@@ -25,12 +25,12 @@ export default function Home() {
           <span>ようこそ👋🏼 </span>
           <span>大島翔吾と申します。</span>
         </p>
-        <p className="grid font-features-['palt'] text-sm leading-[1.9] tracking-wide md:text-base">
-          <span>ウェブサイトつくったりしてます。</span>
+        <p className="grid text-sm leading-[1.9] tracking-wide md:text-base">
+          <span>ウェブサイトをつくったりしてます。</span>
           <span>最近の関心は WebGL (WebGPU) 。</span>
           <span>
             日々の学びとか、つくったものを載せていきます
-            <small className="opacity-60">（予定）</small>。
+            <small className="-mx-1.5 opacity-60">（予定）</small>。
           </span>
         </p>
       </header>

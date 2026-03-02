@@ -26,7 +26,7 @@ export function ThemeToggle() {
 
   return (
     <div className="flex flex-col gap-1 sm:flex-row sm:items-center">
-      <div className="flex items-center gap-x-1 rounded-full border border-border bg-iris-3/75 p-0.5">
+      <div className="flex items-center rounded-full border border-border bg-iris-3/75 p-0.5">
         {options.map(({ value, label, icon: Icon }) => {
           return (
             <button
