@@ -34,7 +34,9 @@ export function CopyButton({ getCodeAction }: { getCodeAction: () => string }) {
           copied ? 'invisible opacity-0' : 'visible opacity-100'
         )}
       >
-        <Copy size={15} />
+        <span className="size-3.5">
+          <Copy className="size-full" />
+        </span>
       </span>
       <span
         className={cn(

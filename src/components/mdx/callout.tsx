@@ -69,7 +69,9 @@ export function Callout({ type = 'note', title, children }: CalloutProps) {
       )}
     >
       <div className="mb-3 flex items-center gap-1 font-pixel-circle text-xs font-bold tracking-wider uppercase">
-        <Icon className="opacity-70" size={13} />
+        <span className="size-3">
+          <Icon className="size-full opacity-70" />
+        </span>
         {title ? <span>{title}</span> : <span>{type}</span>}
       </div>
       <div className="leading-relaxed text-gray-800 dark:text-gray-200 marker:[&_li]:text-(--accent-color)">
