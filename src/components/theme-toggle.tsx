@@ -40,9 +40,7 @@ export function ThemeToggle() {
               )}
               aria-label={label}
             >
-              <span className="size-3.5">
-                <Icon className="size-full" />
-              </span>
+              <Icon className="size-3.5" />
             </button>
           )
         })}

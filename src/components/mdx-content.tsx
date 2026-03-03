@@ -255,7 +255,7 @@ const components: MDXComponents = {
     return (
       <li
         className={cn(
-          'mt-2 ml-2 list-item marker:text-(--color-accent,var(--color-mauve-8))/40',
+          'mt-2 ml-2 list-item marker:text-(--color-accent,var(--color-mauve-9))',
           className
         )}
       >

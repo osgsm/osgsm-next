@@ -45,9 +45,7 @@ function FootnoteBackReference({ id, href }: Props): JSX.Element {
         }
       }}
     >
-      <span className="block size-3.5">
-        <CornerDownLeftIcon className="size-full text-iris-10" />
-      </span>
+      <CornerDownLeftIcon className="size-3 text-iris-10" />
     </button>
   )
 }

@@ -60,9 +60,7 @@ export function CommandMenu({
             'md:px-2.5'
           )}
         >
-          <span className="size-3.5">
-            <Search className="size-full" />
-          </span>
+          <Search className="size-3.5" />
           <span
             className={cn(
               'hidden text-sm leading-none tracking-wide text-iris-11/75',
