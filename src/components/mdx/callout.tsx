@@ -65,7 +65,7 @@ export function Callout({ type = 'note', title, children }: CalloutProps) {
         '[&_code]:border-(--color-accent)/15! [&_code]:bg-(--color-accent)/10!',
         '[&_ol]:mt-0! [&_ul]:mt-0!',
         '[&_button]:hidden!',
-        '[&_a]:text-(--color-accent) [&_a]:hover:decoration-(--color-accent)/60',
+        '[&_a]:text-(--color-accent)/80 [&_a]:hover:decoration-(--color-accent)/60',
         calloutVariants[type].className
       )}
     >

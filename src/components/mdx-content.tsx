@@ -173,14 +173,20 @@ const components: MDXComponents = {
     />
   ),
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
-    <div className="my-6 w-full overflow-hidden overflow-y-auto">
-      <table className={cn('w-full overflow-hidden', className)} {...props} />
+    <div className="-mx-1 my-6 w-full overflow-hidden overflow-y-auto rounded-3xl border border-border bg-iris-2 p-2 text-sm/relaxed">
+      <table
+        className={cn('grid w-full gap-y-1 overflow-hidden', className)}
+        {...props}
+      />
     </div>
+  ),
+  tr: ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
+    <tr className={cn('flex gap-x-2 *:w-full', className)} {...props} />
   ),
   th: ({ className, ...props }: React.HTMLAttributes<HTMLTableCellElement>) => (
     <th
       className={cn(
-        'border border-gray-200 px-4 py-2 text-left font-semibold dark:border-gray-700 [[align=center]]:text-center [[align=right]]:text-right',
+        'rounded-2xl bg-iris-3 px-4 py-1.5 text-left font-normal [[align=center]]:text-center [[align=right]]:text-right',
         className
       )}
       {...props}
@@ -189,7 +195,7 @@ const components: MDXComponents = {
   td: ({ className, ...props }: React.HTMLAttributes<HTMLTableCellElement>) => (
     <td
       className={cn(
-        'border border-gray-200 px-4 py-2 text-left dark:border-gray-700 [[align=center]]:text-center [[align=right]]:text-right',
+        'px-1.5 py-1 text-left [[align=center]]:text-center [[align=right]]:text-right',
         className
       )}
       {...props}
