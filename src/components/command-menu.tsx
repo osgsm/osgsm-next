@@ -3,8 +3,10 @@
 import { Command } from 'cmdk'
 import { DialogDescription, DialogTitle } from '@radix-ui/react-dialog'
 import { useRouter } from 'next/navigation'
+import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import { Search } from 'lucide-react'
+
 import { cn } from '@/lib/cn'
 import type { PostMeta } from '@/lib/mdx'
 
@@ -17,6 +19,7 @@ export function CommandMenu({
 }) {
   const [open, setOpen] = useState(false)
   const router = useRouter()
+  const { resolvedTheme, setTheme } = useTheme()
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -79,11 +82,11 @@ export function CommandMenu({
         label="Search posts"
         filter={filter}
       >
-        <DialogTitle className="sr-only">Search posts</DialogTitle>
+        <DialogTitle className="sr-only">Search posts or commands</DialogTitle>
         <DialogDescription className="sr-only">
-          Search blog and note posts
+          Search posts or commands
         </DialogDescription>
-        <Command.Input placeholder="Search posts..." autoFocus />
+        <Command.Input placeholder="Search posts or commands..." autoFocus />
         <Command.List>
           <Command.Empty>No results found.</Command.Empty>
 
@@ -116,6 +119,39 @@ export function CommandMenu({
               ))}
             </Command.Group>
           )}
+          <Command.Group heading="Navigation">
+            {[
+              { title: 'Home', href: '/' },
+              { title: 'Blog', href: '/blog/' },
+              { title: 'Note', href: '/note/' },
+            ].map(({ title, href }) => {
+              return (
+                <Command.Item
+                  key={title}
+                  value={title}
+                  keywords={[title, 'navigation']}
+                  onSelect={() => {
+                    router.push(href)
+                    setOpen(false)
+                  }}
+                >
+                  {title}
+                </Command.Item>
+              )
+            })}
+          </Command.Group>
+          <Command.Group heading="Commands">
+            <Command.Item
+              value="Toggle Theme"
+              keywords={['Toggle Theme', 'commands']}
+              onSelect={() => {
+                setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
+                setOpen(false)
+              }}
+            >
+              Toggle Theme
+            </Command.Item>
+          </Command.Group>
         </Command.List>
       </Command.Dialog>
     </>
