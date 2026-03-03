@@ -1,10 +1,7 @@
 'use client'
 
 import type { JSX } from 'react'
-
 import { CornerDownLeftIcon } from 'lucide-react'
-
-import styles from './styles.module.css'
 
 interface Props {
   id?: string
