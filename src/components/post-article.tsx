@@ -1,12 +1,15 @@
-import type { Post } from '@/lib/mdx'
+import type { Post, PostType } from '@/lib/mdx'
+import Link from 'next/link'
+import { ArrowLeft } from 'lucide-react'
 import { MDXContent } from '@/components/mdx-content'
 import DecryptedText from '@/components/decrypted-text'
 
 type Props = {
   post: Post
+  type: PostType
 }
 
-export function PostArticle({ post }: Props) {
+export function PostArticle({ post, type }: Props) {
   const dateString = new Date(post.date).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
@@ -41,6 +44,13 @@ export function PostArticle({ post }: Props) {
       <div className="prose dark:prose-invert max-w-none">
         <MDXContent source={post.content} />
       </div>
+      <Link
+        href={`/${type}`}
+        className="mt-12 inline-flex items-center gap-1.5 text-sm text-iris-10 hover:text-iris-11 md:text-base"
+      >
+        <ArrowLeft className="size-3.5" />
+        Back to {type.charAt(0).toUpperCase() + type.slice(1)}
+      </Link>
     </article>
   )
 }

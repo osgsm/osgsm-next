@@ -212,7 +212,7 @@ const components: MDXComponents = {
       )
     ) {
       return (
-        <div className="-mx-1 my-10 rounded-3xl border border-border bg-iris-3 p-6 dark:bg-iris-2">
+        <div className="-mx-1 mt-10 rounded-3xl border border-border bg-iris-3 p-6 dark:bg-iris-2">
           <h2 className="mb-3 flex items-center gap-1 font-pixel-circle text-xs font-bold tracking-wider text-iris-11 uppercase">
             <Asterisk
               className="-translate-y-[0.03125rem] opacity-70"

@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getPostBySlug, getPostSlugs } from '@/lib/mdx'
 import { PostArticle } from '@/components/post-article'
@@ -11,7 +12,7 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({ slug }))
 }
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const post = getPostBySlug('blog', slug)
 
@@ -33,5 +34,5 @@ export default async function BlogPostPage({ params }: Props) {
     notFound()
   }
 
-  return <PostArticle post={post} />
+  return <PostArticle post={post} type="blog" />
 }

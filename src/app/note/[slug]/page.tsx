@@ -33,5 +33,5 @@ export default async function NotePostPage({ params }: Props) {
     notFound()
   }
 
-  return <PostArticle post={post} />
+  return <PostArticle post={post} type="note" />
 }
