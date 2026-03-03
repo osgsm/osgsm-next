@@ -251,44 +251,32 @@ figure[data-rehype-pretty-code-figure] {
   @apply fixed top-[20%] left-1/2 z-50 w-[90%] max-w-160 -translate-x-1/2 overflow-clip rounded-3xl border border-border bg-bg;
 }
 
+[cmdk-root] {
+  @apply bg-iris-2 p-2;
+}
+
 [cmdk-input] {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  border: none;
-  border-bottom: 1px solid var(--border);
-  background: transparent;
-  color: var(--fg);
-  outline: none;
+  @apply w-full overflow-clip rounded-2xl border border-border bg-iris-2 px-3.5 py-2 text-iris-11 outline-0;
 }
 
 [cmdk-input]::placeholder {
-  color: var(--color-iris-11);
+  @apply text-iris-10;
 }
 
 [cmdk-list] {
-  max-height: 300px;
-  overflow-y: auto;
-  padding: 0.5rem 0;
+  @apply max-h-80 overflow-y-auto mask-t-from-92% mask-t-to-100% mask-b-from-94% mask-b-to-100% px-0;
 }
 
 [cmdk-empty] {
-  @apply font-pixel-circle tracking-widest text-iris-11 uppercase;
-  padding: 2rem 1rem;
-  text-align: center;
-  font-size: 0.9375rem;
+  @apply px-4 py-8 text-center font-pixel-circle text-[0.8125rem] tracking-widest text-iris-11 uppercase;
 }
 
 [cmdk-group-heading] {
-  @apply font-sans text-lg text-iris-10;
-  padding: 0.5rem 1rem 0.25rem;
+  @apply px-4 pt-4 pb-2 font-sans leading-normal text-iris-10;
 }
 
 [cmdk-item] {
-  padding: 0.5rem 1rem;
-  font-size: 0.9375rem;
-  cursor: pointer;
-  color: var(--foreground);
+  @apply cursor-pointer rounded-2xl px-4 py-2 text-[0.9375rem];
 }
 
 [cmdk-item][data-selected='true'] {
