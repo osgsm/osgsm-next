@@ -148,6 +148,18 @@ body {
   @apply bg-iris-2 text-[0.9375rem] leading-[1.9] text-fg sm:text-base dark:bg-bg;
 }
 
+a {
+  @apply break-all;
+}
+
+kbd {
+  @apply rounded-lg border border-border bg-iris-3 px-1.5 py-0.5 text-[90%];
+
+  + kbd {
+    @apply ml-1;
+  }
+}
+
 /*
  * Syntax highlighting styles for rehype-pretty-code
  * @see: https://rehype-pretty.pages.dev/
