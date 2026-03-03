@@ -197,7 +197,7 @@ pre {
 
 /* Code lines */
 pre [data-line] {
-  @apply border-l-4 border-transparent pr-14 pl-4;
+  @apply border-l-4 border-transparent pr-12 pl-4;
 }
 
 /* Highlighted lines */
