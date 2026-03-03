@@ -29,9 +29,9 @@ export function CopyButton({ getCodeAction }: { getCodeAction: () => string }) {
       <span
         className={cn(
           'grid size-full place-items-center bg-iris-2 text-iris-10',
-          'transition-all ease-out',
+          'transition-all duration-400 ease-out',
 
-          copied ? 'invisible opacity-0' : 'visible opacity-100'
+          copied ? 'invisible opacity-0' : 'visible opacity-100 delay-150'
         )}
       >
         <span className="size-3.5">
@@ -41,7 +41,8 @@ export function CopyButton({ getCodeAction }: { getCodeAction: () => string }) {
       <span
         className={cn(
           'grid size-full place-items-center text-teal-8',
-          copied ? 'visible opacity-100' : 'invisible opacity-0'
+          'transition-all ease-out',
+          copied ? 'visible opacity-100 delay-150' : 'invisible opacity-0'
         )}
       >
         <Check size={15} />
