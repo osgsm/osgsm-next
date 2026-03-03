@@ -74,19 +74,21 @@ function PostListContent({
   const searchParams = useSearchParams()
   const activeCategory = searchParams.get('category')
   const [isFading, setIsFading] = useState(false)
-  const fadeTimeoutRef = useRef<NodeJS.Timeout>(undefined)
+  const callIdRef = useRef(0)
 
   const filteredPosts = activeCategory
     ? posts.filter((post) => post.categories?.includes(activeCategory))
     : posts
 
   async function navigateWithFade(href: string) {
-    clearTimeout(fadeTimeoutRef.current)
+    const callId = ++callIdRef.current
     setIsFading(true)
     await sleep(100)
     router.push(href, { scroll: false })
     await sleep(50)
-    setIsFading(false)
+    if (callId === callIdRef.current) {
+      setIsFading(false)
+    }
   }
 
   function handleCategoryClick(category: string) {
