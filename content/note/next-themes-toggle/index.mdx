@@ -1,0 +1,36 @@
+---
+title: 'next-themes でテーマをトグルする'
+date: 2026-03-03
+
+tags: ['next-themes']
+categories: [Next.js]
+---
+
+`next-themes` では `system` が選ばれているときの実際のテーマを取得するために `useTheme()` から `resolvedTheme` を受け取れる。
+
+```tsx
+const { resolvedTheme, setTheme } = useTheme()
+```
+
+この値をもとに `setTheme()` に渡す引数を切り替えることでテーマをトグルできるようになる。例えば、cmdk[^1] から行う場合は次のようになる。
+
+[^1]: cmdk については [cmdk を使ってコマンドパレットのような機能を追加する](/blog/introducing-cmdk/) を参照
+
+```tsx
+<Command.Item
+  onSelect={() => {
+    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
+    setOpen(false)
+  }}
+>
+  Toggle Theme
+</Command.Item>
+```
+
+---
+
+<Callout type="reference">
+  - [pacocoursey/next-themes: Perfect Next.js dark mode in 2 lines of code.
+  Support System preference and any other theme with no
+  flashing](https://github.com/pacocoursey/next-themes?tab=readme-ov-file#usetheme-1)
+</Callout>
