@@ -51,15 +51,14 @@ export function CommandMenu({
       <button
         onClick={() => setOpen(true)}
         className={cn(
-          'group ml-auto flex rounded-full border border-iris-5 bg-iris-4 p-0.5 backdrop-blur-sm',
-          'hover:border-iris-6 hover:bg-iris-5'
+          'group ml-auto flex rounded-full border border-iris-5 bg-iris-4 p-0.5 backdrop-blur-sm transition-colors duration-2000 hover:bg-iris-3'
         )}
         aria-label="Search"
       >
         <span
           className={cn(
-            'flex items-center gap-1 rounded-full border border-iris-5 bg-iris-3 px-1.5 py-1.5 leading-none text-iris-11',
-            'group-hover:text-iris-12',
+            'flex items-center gap-1 rounded-full border border-iris-5 bg-iris-3 px-1.5 py-1.5 leading-none text-iris-11 transition-colors',
+            'group-hover:border-iris-6 group-hover:text-iris-12',
             'md:px-2.5'
           )}
         >
