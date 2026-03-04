@@ -30,27 +30,27 @@ const calloutVariants: Record<
 > = {
   reference: {
     className:
-      'bg-iris-3/80 dark:bg-iris-2 border-border text-iris-11 [--color-accent:var(--color-iris-11)]',
+      'bg-iris-3 dark:bg-iris-2 border-border text-iris-11 [--color-accent:var(--color-iris-11)]',
     icon: BookOpen,
   },
   note: {
     className:
-      'bg-teal-3/80 dark:bg-teal-2 border-teal-4 text-teal-11 [--color-accent:var(--color-teal-11)]',
+      'bg-teal-3/75 dark:bg-teal-2 border-teal-4 text-teal-11 [--color-accent:var(--color-teal-11)]',
     icon: Info,
   },
   important: {
     className:
-      'bg-purple-3/80 dark:bg-purple-2 border-purple-5 text-purple-11 [--color-accent:var(--color-purple-11)]',
+      'bg-purple-2 dark:bg-purple-2 border-purple-5 text-purple-11 [--color-accent:var(--color-purple-11)]',
     icon: MessageCircleWarning,
   },
   warning: {
     className:
-      'bg-amber-3/80 dark:bg-amber-2 border-amber-4 text-amber-9 [--color-accent:var(--color-amber-11)]',
+      'bg-amber-2 dark:bg-amber-2 border-amber-4 text-amber-9 [--color-accent:var(--color-amber-11)]',
     icon: AlertTriangle,
   },
   caution: {
     className:
-      'bg-ruby-3/80 dark:bg-ruby-2 border-ruby-4 text-ruby-10 [--color-accent:var(--color-ruby-11)]',
+      'bg-ruby-2 dark:bg-ruby-2 border-ruby-4 text-ruby-10 [--color-accent:var(--color-ruby-11)]',
     icon: OctagonAlert,
   },
 }
@@ -63,7 +63,7 @@ export function Callout({ type = 'note', title, children }: CalloutProps) {
         '-mx-1 my-7 rounded-3xl border p-6',
         '[&_figure]:mt-4! [&_figure]:rounded-2xl! [&_figure]:border-0! [&_figure_code]:bg-transparent!',
         '**:data-rehype-pretty-code-figure:translate-y-1 **:data-rehype-pretty-code-figure:bg-(--color-accent)/5!',
-        '[&_code]:border-(--color-accent)/15! [&_code]:bg-(--color-accent)/10!',
+        '[&_code]:border-(--color-accent)/15! [&_code]:bg-(--color-accent)/5!',
         '[&_ol]:mt-0! [&_ul]:mt-0!',
         '[&_button]:hidden!',
         '[&_a]:text-(--color-accent) [&_a]:hover:decoration-(--color-accent)/60',
