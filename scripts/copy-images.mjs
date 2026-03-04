@@ -42,6 +42,6 @@ console.log('Copying blog images...')
 copyPostAssets('blog', 'blog')
 
 console.log('Copying note images...')
-copyPostAssets('note', 'notes')
+copyPostAssets('note', 'note')
 
 console.log('Images copied successfully!')
