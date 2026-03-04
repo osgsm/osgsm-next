@@ -26,15 +26,11 @@ export function CopyButton({ getCodeAction }: { getCodeAction: () => string }) {
       onClick={handleCopy}
       className={cn(
         'rehype-pretty-copy',
-        'absolute top-2 right-2 grid size-8 cursor-pointer place-items-center overflow-clip rounded-full border border-border bg-iris-2 font-pixel-square leading-none font-bold',
+        'absolute top-2 right-2 grid size-8 cursor-pointer place-items-center overflow-clip rounded-full border border-border bg-iris-3 font-pixel-square leading-none font-bold dark:bg-iris-2',
         '*:col-span-full *:row-span-full'
       )}
     >
-      <span
-        className={cn(
-          'grid size-full place-items-center bg-iris-2 text-iris-10'
-        )}
-      >
+      <span className={cn('grid size-full place-items-center text-iris-10')}>
         <Copy
           className={cn(
             'size-3.5',
