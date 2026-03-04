@@ -24,8 +24,8 @@ export function Header({
             href="/"
             className={cn(
               'group block rounded-full border border-iris-5 bg-iris-4 p-0.5 leading-none text-iris-11 backdrop-blur-sm',
-              'transition-colors duration-2000',
-              'hover:bg-iris-3 hover:text-iris-12'
+              'transition-colors',
+              'hover:text-iris-12'
             )}
           >
             <span
@@ -40,7 +40,7 @@ export function Header({
             </span>
           </Link>
           <div className="ml-auto flex items-center gap-2">
-            <div className="flex items-center rounded-full border border-border bg-iris-4 p-0.5 transition-colors duration-2000 hover:bg-iris-3">
+            <div className="flex items-center rounded-full border border-border bg-iris-4 p-0.5 transition-colors">
               <ul className="flex">
                 {[
                   {

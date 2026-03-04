@@ -216,7 +216,7 @@ const components: MDXComponents = {
           className={cn(
             '-mx-1 mt-10 rounded-3xl border border-border bg-iris-3 p-6 dark:bg-iris-2',
             '[--color-accent:var(--color-iris-11)]',
-            '[&_a]:text-(--color-accent)/80 [&_a]:hover:decoration-(--color-accent)/60'
+            '[&_a]:text-(--color-accent) [&_a]:hover:decoration-(--color-accent)/60'
           )}
         >
           <h2 className="mb-3 flex items-center gap-1 font-pixel-circle text-xs font-bold tracking-wider text-iris-11 uppercase">
