@@ -86,7 +86,11 @@ export function CommandMenu({
         <DialogDescription className="sr-only">
           Search posts or commands
         </DialogDescription>
-        <Command.Input placeholder="Search posts or commands..." autoFocus />
+        <Command.Input
+          className="text-base"
+          placeholder="Search posts or commands..."
+          autoFocus
+        />
         <Command.List>
           <Command.Empty>No results found.</Command.Empty>
 

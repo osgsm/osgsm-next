@@ -62,7 +62,7 @@ export function Callout({ type = 'note', title, children }: CalloutProps) {
       className={cn(
         '-mx-1 my-7 rounded-3xl border p-6',
         '[&_figure]:mt-4! [&_figure]:rounded-2xl! [&_figure]:border-0! [&_figure_code]:bg-transparent!',
-        '**:data-rehype-pretty-code-figure:bg-(--color-accent)/5!',
+        '**:data-rehype-pretty-code-figure:translate-y-1 **:data-rehype-pretty-code-figure:bg-(--color-accent)/5!',
         '[&_code]:border-(--color-accent)/15! [&_code]:bg-(--color-accent)/10!',
         '[&_ol]:mt-0! [&_ul]:mt-0!',
         '[&_button]:hidden!',

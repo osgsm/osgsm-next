@@ -214,7 +214,7 @@ const components: MDXComponents = {
       return (
         <div
           className={cn(
-            '-mx-1 mt-10 rounded-3xl border border-border bg-iris-3 p-6 text-iris-11 dark:bg-iris-2',
+            '-mx-1 mt-10 rounded-3xl border border-border bg-iris-3 p-6 dark:bg-iris-2',
             '[--color-accent:var(--color-iris-11)]',
             '[&_a]:text-(--color-accent)/80 [&_a]:hover:decoration-(--color-accent)/60'
           )}

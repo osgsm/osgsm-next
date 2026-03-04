@@ -244,7 +244,7 @@ figure[data-rehype-pretty-code-figure] {
  */
 
 [cmdk-overlay] {
-  @apply fixed inset-0 z-50 bg-black/50 backdrop-blur-2xl dark:backdrop-brightness-75;
+  @apply fixed inset-0 z-50 bg-iris-2/50 backdrop-blur-lg dark:backdrop-brightness-75;
 }
 
 [cmdk-dialog] {
@@ -256,7 +256,7 @@ figure[data-rehype-pretty-code-figure] {
 }
 
 [cmdk-input] {
-  @apply w-full overflow-clip rounded-2xl border border-border bg-iris-2 px-3.5 py-2 text-iris-11 outline-0;
+  @apply w-full overflow-clip rounded-2xl border border-border bg-iris-2 px-3.5 py-2 outline-0;
 }
 
 [cmdk-input]::placeholder {
