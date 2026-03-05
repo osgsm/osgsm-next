@@ -114,13 +114,13 @@ export function Header({
               </ul>
               <span
                 className={cn(
-                  'pointer-events-none absolute inset-y-0 left-0 w-8 bg-linear-to-r from-iris-4 to-transparent transition-opacity',
+                  'pointer-events-none absolute inset-y-0 left-0 w-8 bg-linear-to-r from-iris-4 to-transparent transition-opacity min-[442px]:opacity-0!',
                   canScrollLeft ? 'opacity-100' : 'opacity-0'
                 )}
               />
               <span
                 className={cn(
-                  'pointer-events-none absolute inset-y-0 right-0 w-8 bg-linear-to-l from-iris-4 to-transparent transition-opacity',
+                  'pointer-events-none absolute inset-y-0 right-0 w-8 bg-linear-to-l from-iris-4 to-transparent transition-opacity min-[442px]:opacity-0!',
                   canScrollRight ? 'opacity-100' : 'opacity-0'
                 )}
               />
