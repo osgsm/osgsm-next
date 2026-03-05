@@ -37,7 +37,9 @@
       "Bash(python3:*)",
       "Bash(xxd:*)",
       "mcp__ide__getDiagnostics",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(wc:*)",
+      "Bash(npx next build:*)"
     ]
   }
 }
