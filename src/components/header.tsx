@@ -19,11 +19,11 @@ export function Header({
   return (
     <header className="sticky top-0 z-40 from-iris-1 via-iris-1/25 via-80% to-transparent pb-5 font-sans text-sm text-iris-9 md:text-base dark:bg-linear-to-b">
       <div className="mx-auto max-w-3xl">
-        <nav className="flex flex-wrap items-center justify-between gap-2 px-3.5 py-3">
+        <nav className="flex items-center justify-between gap-2 px-3.5 py-3">
           <Link
             href="/"
             className={cn(
-              'group block rounded-full border border-iris-5 bg-iris-4 p-0.5 leading-none text-iris-11 backdrop-blur-sm',
+              'group block shrink-0 rounded-full border border-iris-5 bg-iris-4 p-0.5 leading-none text-iris-11 backdrop-blur-sm',
               'transition-colors',
               'hover:text-iris-12'
             )}
@@ -41,7 +41,7 @@ export function Header({
           </Link>
           <div className="ml-auto flex items-center gap-2">
             <div className="flex items-center rounded-full border border-border bg-iris-4 p-0.5 transition-colors">
-              <ul className="flex">
+              <ul className="hide-scrollbar flex overflow-x-auto">
                 {[
                   {
                     href: '/blog',
@@ -51,11 +51,15 @@ export function Header({
                     href: '/note',
                     label: 'note',
                   },
+                  {
+                    href: '/about',
+                    label: 'about',
+                  },
                 ].map(({ href, label }) => {
                   const isActive = pathname.startsWith(href)
 
                   return (
-                    <li key={label}>
+                    <li className="shrink-0" key={label}>
                       <Link
                         href={href}
                         className={cn(
