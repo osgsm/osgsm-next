@@ -1,7 +1,9 @@
 'use client'
 
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useMotionValueEvent, useScroll } from 'motion/react'
 import { CommandMenu } from '@/components/command-menu'
 import { cn } from '@/lib/cn'
 import type { PostMeta } from '@/lib/mdx'
@@ -15,6 +17,31 @@ export function Header({
 }) {
   const pathname = usePathname()
   const isHome = pathname === '/'
+
+  const scrollRef = useRef<HTMLUListElement>(null)
+  const [canScrollLeft, setCanScrollLeft] = useState(false)
+  const [canScrollRight, setCanScrollRight] = useState(false)
+
+  const { scrollXProgress } = useScroll({ container: scrollRef, axis: 'x' })
+
+  useMotionValueEvent(scrollXProgress, 'change', (v) => {
+    setCanScrollLeft(v > 0.01)
+    setCanScrollRight(v < 0.99)
+  })
+
+  useEffect(() => {
+    const el = scrollRef.current
+    if (!el) return
+    const check = () => {
+      if (el.scrollWidth > el.clientWidth) {
+        setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 1)
+      }
+    }
+    check()
+    const observer = new ResizeObserver(check)
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <header className="sticky top-0 z-40 from-iris-1 via-iris-1/25 via-80% to-transparent pb-5 font-sans text-sm text-iris-9 md:text-base dark:bg-linear-to-b">
@@ -40,8 +67,11 @@ export function Header({
             </span>
           </Link>
           <div className="ml-auto flex items-center gap-2">
-            <div className="flex items-center rounded-full border border-border bg-iris-4 p-0.5 transition-colors">
-              <ul className="hide-scrollbar flex overflow-x-auto">
+            <div className="relative flex items-center overflow-hidden rounded-full border border-border bg-iris-4 p-0.5 transition-colors">
+              <ul
+                ref={scrollRef}
+                className="hide-scrollbar flex overflow-x-auto"
+              >
                 {[
                   {
                     href: '/blog',
@@ -82,6 +112,18 @@ export function Header({
                   </span>
                 </li>
               </ul>
+              <span
+                className={cn(
+                  'pointer-events-none absolute inset-y-0 left-0 w-8 bg-linear-to-r from-iris-4 to-transparent transition-opacity',
+                  canScrollLeft ? 'opacity-100' : 'opacity-0'
+                )}
+              />
+              <span
+                className={cn(
+                  'pointer-events-none absolute inset-y-0 right-0 w-8 bg-linear-to-l from-iris-4 to-transparent transition-opacity',
+                  canScrollRight ? 'opacity-100' : 'opacity-0'
+                )}
+              />
             </div>
             <CommandMenu blogPosts={blogPosts} notePosts={notePosts} />
           </div>
