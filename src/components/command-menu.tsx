@@ -127,6 +127,7 @@ export function CommandMenu({
               { title: 'Home', href: '/' },
               { title: 'Blog', href: '/blog/' },
               { title: 'Note', href: '/note/' },
+              { title: 'Playground', href: '/playground/' },
             ].map(({ title, href }) => {
               return (
                 <Command.Item
