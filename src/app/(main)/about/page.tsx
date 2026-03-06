@@ -102,10 +102,9 @@ export default function AboutPage() {
             <span>大島翔吾です。</span>
             <span>ウェブでの表現をつくります。</span>
             <span>最近は WebGL (WebGPU) に興味津々。</span>
-            <span>開発だけでなくデザインも好き。</span>
           </p>
         </div>
-        <div className="relative -left-1.25 flex gap-0.5">
+        <div className="relative -left-1.25 flex gap-1">
           {[
             {
               label: 'Bluesky',
