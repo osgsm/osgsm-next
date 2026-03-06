@@ -11,16 +11,16 @@ const commits = [
     title: 'フロントエンドデベロッパーとして転職',
     org: 'KITERETZ inc.',
     description:
-      'ウェブを極めるべく転職。HTML/CSS/JavaScript を使ったマークアップから、WordPress やAstro とヘッドレス CMS を組み合わせたサイト制作、Next.js を使ったアプリケーション開発に携わる。',
-    tags: ['v32.8.0'],
+      'ウェブを追求すべく転職。HTML/CSS/JS を使ったマークアップから、WordPress やAstro と CMS を組み合わせたサイト制作、Next.js を使ったアプリケーション開発などに携わる。',
+    tags: ['v3.2.8'],
   },
   {
     hash: '417873b7fe3a1de264ce8a58e4907bdf09ad5a9764e528f1f22440914d552ffc',
     date: '2018-10',
     title: 'ウェブとの邂逅',
     description:
-      'グラフィックデザイナーとして働いていたが、ウェブ担当が離脱。それによりウェブ関連の仕事を任されるようになる。企画、デザイン、写真撮影、コーディングを一通り担当。',
-    tags: ['v28.0.0'],
+      'グラフィックデザイナーとして転職した勤務先のウェブ担当が離脱。それによりウェブ関連の仕事を任されるようになる。サイトの企画、デザイン、写真撮影、コーディングを一通り担当。',
+    tags: ['v2.8.0'],
   },
   {
     hash: 'd05f0db28585400528d8c4bde460f46172beb89ffde25462c86fb1ca11dc27c6',
@@ -28,7 +28,7 @@ const commits = [
     title: '本屋兼雑貨屋兼カフェで働き始める',
     description:
       '主に雑貨の仕入れを行う。のちにイベントのフライヤー制作やカフェのメニューデザインなどを任される。グラフィックデザインへの興味が湧き始める。',
-    tags: ['v25.6.0'],
+    tags: ['v2.5.6'],
   },
   {
     hash: '46eb5a4c7b24cff7584bbc206a50652376d1fd10c625fb1e8d4026f9f9b8ef16',
@@ -36,31 +36,31 @@ const commits = [
     title: '自室を暗室にするほど写真にのめり込む',
     description:
       'モノクロフィルムにハマる。現像だけでは飽き足らず、引き伸ばし、額装なども自身で行う。ギャラリーに展示してもらったりもした。',
-    tags: ['v24.10.0'],
+    tags: ['v2.4.10'],
   },
   {
     hash: 'd565d6ab135c4cbc9628bae47da41eefd1125f103294c32a3ac351f1e3e7a5f7',
     date: '2015-03',
     title: '6年間在籍していた大学を中退',
     description:
-      '卒業論文を提出したものの退学。残る単位は8つだけだったが、猛烈に学校に行く気がなくなる。',
-    tags: ['v24.5.0'],
+      '卒業論文を提出するものの、その後、猛烈に学校に行く気がなくなり退学。',
+    tags: ['v2.4.5'],
   },
   {
     hash: '35c6c4baf50723d36b5dd6f17150886bb6f2a5cf08d7cc8a2c1bb589f55e1569',
     date: '2012-07',
     title: '就活中にウェブ制作に出会う',
     description:
-      '就活の学びを残そうとブログを開始。ブログカスタマイズにハマり、就活そっちのけで HTML/CSS を独学にいそしむ。学生ベンチャーで制作の手伝いをしたり、学生団体のサイトを作る。',
-    tags: ['v21.9.0'],
+      '就活の学びを残そうとブログを開始。ブログカスタマイズをきっかけに HTML/CSS の独学をスタート。学生ベンチャーで制作の手伝いをしたり、学生団体のサイトを作ったりする。',
+    tags: ['v2.1.9'],
   },
   {
     hash: '95aa33fbc5a19d369603cf289e96556a8a12cb734a953caa0a3a7a47e463e8b1',
     date: '2006-04',
     title: '時給708円でキーボードを叩き始める',
     description:
-      'スーパーでポップ (POP) 作成担当のアルバイトを始める。情報系の先輩に諸々を教わる。ショートカットキーというものをはじめて知り感銘を受ける。',
-    tags: ['v15.6.0'],
+      'スーパーでポップ (POP) 作成担当のアルバイトを始める。情報系の先輩にパソコンのいろはを教わる。できるだけショートカットキーを使えとこの時に叩き込まれる。',
+    tags: ['v1.5.6'],
   },
   {
     hash: '08b6ea515b5759ef7c649c7a24686bd3a40cf9daa6f0263ac5b0031ded647087',
@@ -98,7 +98,7 @@ export default function AboutPage() {
         </p>
       </header>
 
-      <div className="relative">
+      <div className="relative -mr-2 -ml-3 md:mx-0">
         {commits.map((commit, i) => {
           return (
             <div
@@ -158,7 +158,7 @@ export default function AboutPage() {
                       "font-features-['palt'] leading-snug",
                       i === commits.length - 1
                         ? 'trackint-normal'
-                        : 'tracking-wide md:tracking-wider'
+                        : 'tracking-wider'
                     )}
                   >
                     {commit.title}
