@@ -14,7 +14,7 @@ export default function Home() {
         <p className="mb-4 font-pixel-circle text-[0.8125rem]/[1.75] font-bold tracking-wider text-iris-11 uppercase">
           <DecryptedText
             animateOn="view"
-            text="Welcome in. No rush, just pixels."
+            text="Welcome. No rush, just pixels."
             sequential
             speed={30}
             useOriginalCharsOnly
