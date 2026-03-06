@@ -12,7 +12,7 @@ const items = [
 
 export default function PlaygroundPage() {
   return (
-    <div>
+    <div className="mx-auto w-full max-w-3xl px-6 py-8">
       <div className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-3">
         {items.map((item) => (
           <Link
