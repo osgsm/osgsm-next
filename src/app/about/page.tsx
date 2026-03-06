@@ -1,6 +1,7 @@
 'use client'
 
 import { Tag } from 'lucide-react'
+import { SiBluesky, SiGithub, SiX } from '@icons-pack/react-simple-icons'
 import DecryptedText from '@/components/decrypted-text'
 import { cn } from '@/lib/cn'
 
@@ -83,19 +84,58 @@ function TagBadge({ tag }: { tag: string }) {
 export default function AboutPage() {
   return (
     <div>
-      <header className="mt-16 mb-16">
+      <header className="mt-16 mb-20">
         <h1 className="mb-2 -translate-x-px text-2xl leading-normal lg:text-3xl">
-          About
+          About me
         </h1>
-        <p className="font-pixel-circle text-[0.8125rem]/[1.75] font-bold tracking-wider text-iris-11 uppercase">
+        <p className="mb-8 font-pixel-circle text-[0.8125rem]/[1.75] font-bold tracking-wider text-iris-11 uppercase">
           <DecryptedText
             animateOn="view"
-            text={'Commit history of my life'}
+            text={'I write code. I break code. I fix it.'}
             sequential
-            speed={30}
+            speed={25}
             useOriginalCharsOnly
           />
         </p>
+        <div className="mb-5">
+          <p className="grid text-sm leading-[1.9] tracking-wide md:text-base">
+            <span>大島翔吾です。</span>
+            <span>ウェブでの表現をつくります。</span>
+            <span>最近は WebGL (WebGPU) に興味津々。</span>
+            <span>開発だけでなくデザインも好き。</span>
+          </p>
+        </div>
+        <div className="relative -left-1.25 flex gap-0.5">
+          {[
+            {
+              label: 'Bluesky',
+              href: 'https://bsky.app/profile/osgsm.io',
+              icon: SiBluesky,
+            },
+            {
+              label: 'X',
+              href: 'https://x.com/osgsm_',
+              icon: SiX,
+            },
+            {
+              label: 'GitHub',
+              href: 'https://github.com/osgsm',
+              icon: SiGithub,
+            },
+          ].map(({ label, href, icon: Icon }) => {
+            return (
+              <a
+                className="p-1 text-iris-10 transition-colors hover:text-iris-11"
+                key={label}
+                href={href}
+                title={label}
+                target="_blank"
+              >
+                <Icon className="size-4" />
+              </a>
+            )
+          })}
+        </div>
       </header>
 
       <div className="relative -mr-2 -ml-3 md:mx-0">
@@ -124,11 +164,7 @@ export default function AboutPage() {
                     })}
                   </div>
                   <div className="font-pixel-circle text-xs font-bold tracking-wider text-iris-10">
-                    <DecryptedText
-                      animateOn="view"
-                      text={commit.hash.slice(0, 7)}
-                      speed={50}
-                    />
+                    {commit.hash.slice(0, 7)}
                   </div>
                 </div>
                 {/* Dot on the line */}
