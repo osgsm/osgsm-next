@@ -36,7 +36,7 @@ const commits = [
     date: '2015-08',
     title: '自室を暗室にするほど写真にのめり込む',
     description:
-      'モノクロフィルムにハマる。現像だけでは飽き足らず、印画紙へのプリント、額装なども自身で行う。ギャラリーに展示してもらったりもした。',
+      'モノクロフィルムにハマる。現像だけでは飽き足らず、プリント、額装なども自身で行う。ギャラリーに展示してもらったりもした。',
     tags: ['v2.4.10'],
   },
   {
@@ -93,7 +93,7 @@ export default function AboutPage() {
             animateOn="view"
             text={'I write code. I break code. I fix it.'}
             sequential
-            speed={25}
+            speed={30}
             useOriginalCharsOnly
           />
         </p>
