@@ -12,7 +12,7 @@ const commits = [
     title: 'フロントエンドデベロッパーとして転職',
     org: 'KITERETZ inc.',
     description:
-      'ウェブを追求すべく転職。HTML/CSS/JS を使ったマークアップから、WordPress やAstro と CMS を組み合わせたサイト制作、Next.js を使ったアプリケーション開発などに携わる。',
+      'ウェブを追求すべく転職。HTML/CSS/JS を使ったマークアップから、WordPress や Astro と CMS を組み合わせたサイト制作、Next.js を使ったアプリケーション開発などに携わる。',
     tags: ['v3.2.8'],
   },
   {
