@@ -104,7 +104,7 @@ export default function AboutPage() {
             <span>最近は WebGL (WebGPU) に興味津々。</span>
           </p>
         </div>
-        <div className="relative -left-1.25 flex gap-1">
+        <div className="relative -left-1 flex gap-1">
           {[
             {
               label: 'Bluesky',
@@ -124,20 +124,20 @@ export default function AboutPage() {
           ].map(({ label, href, icon: Icon }) => {
             return (
               <a
-                className="p-1 text-iris-10 transition-colors hover:text-iris-11"
+                className="p-1 text-iris-9 transition-colors hover:text-iris-10"
                 key={label}
                 href={href}
                 title={label}
                 target="_blank"
               >
-                <Icon className="size-4" />
+                <Icon className="size-4.5" />
               </a>
             )
           })}
         </div>
       </header>
 
-      <div className="relative -mr-2 -ml-3 md:mx-0">
+      <div className="relative -mr-2 -ml-3 md:mx-0 md:-ml-1">
         {commits.map((commit, i) => {
           return (
             <div
@@ -181,22 +181,23 @@ export default function AboutPage() {
                   i === commits.length - 1 ? 'pb-0' : 'pb-10'
                 )}
               >
-                <div className="mb-3 flex flex-wrap items-center gap-2">
-                  {commit.tags.map((tag) => (
-                    <TagBadge key={tag} tag={tag} />
-                  ))}
-                </div>
-
                 <div className="mb-2 grid gap-y-1">
-                  <div
-                    className={cn(
-                      "font-features-['palt'] leading-snug",
-                      i === commits.length - 1
-                        ? 'trackint-normal'
-                        : 'tracking-wider'
-                    )}
-                  >
-                    {commit.title}
+                  <div className="flex flex-col gap-x-2 gap-y-2.5 md:flex-row md:items-center">
+                    <div
+                      className={cn(
+                        "order-2 font-features-['palt'] leading-snug md:order-1",
+                        i === commits.length - 1
+                          ? 'trackint-normal'
+                          : 'tracking-wider'
+                      )}
+                    >
+                      {commit.title}
+                    </div>
+                    <div className="order-1 flex flex-wrap items-center gap-2 md:order-2">
+                      {commit.tags.map((tag) => (
+                        <TagBadge key={tag} tag={tag} />
+                      ))}
+                    </div>
                   </div>
                   {commit.org && (
                     <div className="mt-1 text-xs text-iris-10">
