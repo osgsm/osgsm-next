@@ -1,17 +1,12 @@
 'use client'
 
-import { useEffect, useRef, type ComponentProps } from 'react'
+import { useEffect, useMemo, type ComponentProps } from 'react'
+import { Canvas, useThree } from '@react-three/fiber'
+import { OrthographicCamera } from '@react-three/drei'
 import { Leva } from 'leva'
+import { WebGPURenderer, MeshBasicNodeMaterial, Vector2 } from 'three/webgpu'
 import { uniform } from 'three/tsl'
-import {
-  WebGPURenderer,
-  OrthographicCamera,
-  PlaneGeometry,
-  Mesh,
-  Scene,
-  Vector2,
-  MeshBasicNodeMaterial,
-} from 'three/webgpu'
+
 type ColorNode = NonNullable<MeshBasicNodeMaterial['colorNode']>
 
 export type ShaderCanvasProps = {
@@ -21,98 +16,88 @@ export type ShaderCanvasProps = {
   className?: string
 }
 
-export function ShaderCanvas({
+function ShaderPlane({
   createColorNodeAction,
-  leva: levaProps,
-  className,
-}: ShaderCanvasProps) {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+}: Pick<ShaderCanvasProps, 'createColorNodeAction'>) {
+  const size = useThree((s) => s.size)
+  const gl = useThree((s) => s.gl)
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const resolution = useMemo(
+    () => uniform(new Vector2(size.width, size.height)),
+    []
+  )
+  const mouse = useMemo(() => uniform(new Vector2(0, 0)), [])
+
+  const material = useMemo(() => {
+    const mat = new MeshBasicNodeMaterial()
+    mat.colorNode = createColorNodeAction({ resolution, mouse })
+    return mat
+  }, [createColorNodeAction, resolution, mouse])
 
   useEffect(() => {
-    const canvas = canvasRef.current!
-    if (!canvas) return
+    resolution.value.set(size.width, size.height)
+  }, [size, resolution])
 
-    let renderer: WebGPURenderer
-    let animationId: number
-    let disposed = false
-
-    const scene = new Scene()
-    const camera = new OrthographicCamera(-0.5, 0.5, 0.5, -0.5, 0.1, 10)
-    camera.position.z = 1
-
-    const resolution = uniform(
-      new Vector2(canvas.clientWidth, canvas.clientHeight)
-    )
-    const mouse = uniform(new Vector2(0, 0))
-
-    const material = new MeshBasicNodeMaterial()
-    material.colorNode = createColorNodeAction({ resolution, mouse })
-
-    const plane = new Mesh(new PlaneGeometry(1, 1), material)
-    scene.add(plane)
-
-    const handleResize = () => {
-      if (disposed || !canvas) return
-      const width = canvas.clientWidth
-      const height = canvas.clientHeight
-      renderer.setSize(width, height, false)
-      resolution.value.set(width, height)
-    }
-
+  useEffect(() => {
+    const canvas = gl.domElement
     const handleMouseMove = (e: MouseEvent) => {
-      if (disposed || !canvas) return
       const rect = canvas.getBoundingClientRect()
       mouse.value.set(
         e.clientX - rect.left,
         rect.height - (e.clientY - rect.top)
       )
     }
+    canvas.addEventListener('mousemove', handleMouseMove)
+    return () => canvas.removeEventListener('mousemove', handleMouseMove)
+  }, [gl, mouse])
 
-    async function init() {
-      renderer = new WebGPURenderer({
-        canvas,
-        antialias: true,
-      })
-      renderer.setPixelRatio(window.devicePixelRatio)
-      renderer.setSize(canvas.clientWidth, canvas.clientHeight, false)
-
-      await renderer.init()
-      if (disposed) {
-        renderer.dispose()
-        return
-      }
-
-      window.addEventListener('resize', handleResize)
-      canvas.addEventListener('mousemove', handleMouseMove)
-
-      const animate = () => {
-        if (disposed) return
-        animationId = requestAnimationFrame(animate)
-        renderer.render(scene, camera)
-      }
-      animate()
-    }
-
-    init()
-
+  useEffect(() => {
     return () => {
-      disposed = true
-      cancelAnimationFrame(animationId)
-      window.removeEventListener('resize', handleResize)
-      canvas?.removeEventListener('mousemove', handleMouseMove)
       try {
         material.dispose()
-        plane.geometry.dispose()
       } catch {
         // nodeBuilderState may already be cleared during navigation
       }
-      renderer?.dispose()
     }
-  }, [createColorNodeAction])
+  }, [material])
 
   return (
+    <mesh>
+      <planeGeometry args={[1, 1]} />
+      <primitive object={material} attach="material" />
+    </mesh>
+  )
+}
+
+export function ShaderCanvas({
+  createColorNodeAction,
+  leva: levaProps,
+  className,
+}: ShaderCanvasProps) {
+  return (
     <div className={className ?? 'relative h-full'}>
-      <canvas ref={canvasRef} className="block h-full w-full" />
+      <Canvas
+        gl={async (props) => {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const renderer = new WebGPURenderer(props as any)
+          await renderer.init()
+          return renderer
+        }}
+      >
+        <OrthographicCamera
+          makeDefault
+          manual
+          left={-0.5}
+          right={0.5}
+          top={0.5}
+          bottom={-0.5}
+          near={0.1}
+          far={10}
+          position={[0, 0, 1]}
+        />
+        <ShaderPlane createColorNodeAction={createColorNodeAction} />
+      </Canvas>
       <Leva collapsed={false} oneLineLabels {...levaProps} />
     </div>
   )
