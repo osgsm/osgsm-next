@@ -8,6 +8,12 @@ const items = [
     href: '/playground/cube',
     thumbnail: '/images/playground/cube.gif',
   },
+  {
+    title: 'Gradient',
+    description: 'Animated gradient shader with TSL',
+    href: '/playground/gradient',
+    thumbnail: null,
+  },
 ]
 
 export default function PlaygroundPage() {
