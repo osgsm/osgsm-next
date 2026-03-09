@@ -4,6 +4,7 @@ import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useControls, folder } from 'leva'
 import type { Mesh } from 'three'
+import { WebGPURenderer } from 'three/webgpu'
 import { Scene } from '@/components/playground/scene'
 
 function SpinningCube() {
@@ -52,7 +53,15 @@ function SpinningCube() {
 
 export function CubeScene() {
   return (
-    <Scene leva={{ titleBar: { title: 'Cube Controls' } }}>
+    <Scene
+      gl={async (props) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const renderer = new WebGPURenderer(props as any)
+        await renderer.init()
+        return renderer
+      }}
+      leva={{ titleBar: { title: 'Cube Controls' } }}
+    >
       <ambientLight intensity={0.4} />
       <directionalLight position={[5, 5, 5]} intensity={1} />
       <directionalLight position={[-3, 2, -2]} intensity={0.3} />
