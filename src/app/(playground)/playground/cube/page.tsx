@@ -3,8 +3,7 @@
 import dynamic from 'next/dynamic'
 
 const CubeScene = dynamic(
-  () =>
-    import('@/components/playground/cube-scene').then((mod) => mod.CubeScene),
+  () => import('@/components/playground/cube').then((mod) => mod.CubeScene),
   { ssr: false }
 )
 
