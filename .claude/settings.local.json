@@ -42,7 +42,8 @@
       "Bash(npx next build:*)",
       "Bash(xargs:*)",
       "Bash(cat:*)",
-      "Bash(git rm:*)"
+      "Bash(git rm:*)",
+      "Bash(node -e:*)"
     ]
   }
 }
