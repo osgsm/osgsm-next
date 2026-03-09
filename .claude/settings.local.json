@@ -40,7 +40,9 @@
       "Bash(npx tsc:*)",
       "Bash(wc:*)",
       "Bash(npx next build:*)",
-      "Bash(xargs:*)"
+      "Bash(xargs:*)",
+      "Bash(cat:*)",
+      "Bash(git rm:*)"
     ]
   }
 }
