@@ -46,11 +46,17 @@ import WebGPURenderer from 'three/webgpu'
 type ColorNode = NonNullable<MeshBasicNodeMaterial['colorNode']>
 ```
 
+`NonNullable<T>` は TypeScript のユーティリティ型で、型 `T` から `null` と `undefined` を除外する。
+
+```ts
+type NonNullable<T> = T extends null | undefined ? never : T
+```
+
 `UniformNode` の型は `three/webgpu` から再エクスポートされていないため、直接参照が必要な場合は `@types/three/src/nodes/core/UniformNode.d.ts` を確認する。
 
 ## WebGPU レンダラーの初期化
 
-R3F の `Canvas` コンポーネントの `gl` prop に async ファクトリ関数を渡す。**`renderer.init()` は非同期なので必ず `await` する。**
+R3F の `Canvas` コンポーネントの `gl` prop に async ファクトリ関数を渡す。**`renderer.init()` は非同期なので必ず `await` する。** cf. [v9 Migration Guide - React Three Fiber](https://r3f.docs.pmnd.rs/tutorials/v9-migration-guide#webgpu)
 
 ```tsx
 <Canvas
@@ -153,6 +159,7 @@ useEffect(() => {
 
 1. **WebGPU レンダラー** — `Canvas` の `gl` prop で async 初期化
 2. **正射影カメラ** — 1x1 の平面にぴったり合う設定
+
    ```tsx
    <OrthographicCamera
      makeDefault
@@ -166,6 +173,7 @@ useEffect(() => {
      position={[0, 0, 1]}
    />
    ```
+
 3. **resolution / mouse uniform** — ビューポートサイズとマウス座標を自動追跡
 4. **`MeshBasicNodeMaterial`** — `createColorNodeAction` の戻り値を `colorNode` に設定
 5. **クリーンアップ** — `useEffect` の cleanup でマテリアルを `dispose()`
@@ -197,7 +205,6 @@ function MyShader() {
 
 ```tsx
 import { WebGPURenderer } from 'three/webgpu'
-
 ;<Scene
   gl={async (props) => {
     const renderer = new WebGPURenderer(props as any)

@@ -40,20 +40,25 @@ Next.js 13 以降で導入された新しいルーティングシステム。`sr
 
 ### `layout.tsx`
 
-すべてのページに適用される共通レイアウト。
+すべてのページに適用されるルートレイアウト。
 
 ```tsx
 // src/app/layout.tsx
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode
-}) {
+}>) {
   return (
-    <html lang="ja">
-      <body>
-        <header>...</header> {/* 共通ヘッダー */}
-        <main>{children}</main> {/* ページコンテンツがここに入る */}
+    <html
+      lang="ja"
+      suppressHydrationWarning
+      className={`${GeistSans.variable} ${GeistMono.variable} ...`}
+    >
+      <body className="flex min-h-screen flex-col antialiased">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )
@@ -62,9 +67,11 @@ export default function RootLayout({
 
 **ポイント:**
 
-- `children` に各ページの内容が入る
-- ヘッダーやフッターなど共通部分をここに書く
-- `metadata` でサイト全体のタイトルや説明を設定
+- `children` に各 Route Group（`(main)` や `(playground)`）のレイアウトが入る
+- `ThemeProvider` でダーク/ライトテーマの切り替えを提供
+- Geist フォント（Sans, Mono, Pixel）と Instrument Serif を CSS 変数として設定
+- `metadata` でサイト全体のタイトル（テンプレート: `%s | osgsm.io`）や説明を設定
+- ヘッダーやフッターはここではなく `(main)` レイアウトで定義
 
 ### `page.tsx`
 
@@ -153,3 +160,67 @@ const CubeScene = dynamic(
 ```
 
 Three.js はブラウザ API（`canvas`, `navigator.gpu`）に依存するため、サーバーサイドでは実行できない。詳細は [three-webgpu.md](./three-webgpu.md#ssr-無効化が必要な理由) を参照。
+
+### コードの分解
+
+**`'use client'`** — このファイルを Client Component として宣言する。`dynamic()` 自体が内部で React hooks を使うため必須。
+
+**第 1 引数（ローダー関数）:**
+
+```tsx
+;() => import('@/components/playground/cube').then((mod) => mod.CubeScene)
+```
+
+- `import(...)` は ES の動的 import。通常の `import` 文と違い、実行時にモジュールを非同期で読み込む
+- `.then((mod) => mod.CubeScene)` でモジュールから named export を取り出す。default export なら `.then()` を省略可
+
+**第 2 引数（オプション）:**
+
+```tsx
+{
+  ssr: false
+}
+```
+
+サーバー側ではこのコンポーネントのモジュールを一切読み込まず、クライアントのハイドレーション後に初めて `import()` が発火する。
+
+### なぜ `'use client'` だけでは不十分か
+
+`'use client'` は「クライアントでのみ実行される」という意味ではない。Client Component でも**初期 HTML を生成するためにサーバー上でレンダリング関数が実行される**（SSR）。
+
+仮に `dynamic()` を使わず直接 import した場合:
+
+```tsx
+'use client'
+import { CubeScene } from '@/components/playground/cube' // 直接 import
+
+export default function CubePage() {
+  return <CubeScene />
+}
+```
+
+1. サーバーがページをレンダリングするとき `import` 文が評価される
+2. Three.js のモジュール初期化コードが `canvas` や `navigator.gpu` にアクセスしようとする
+3. サーバーにはこれらの API が存在しないのでクラッシュ
+
+問題はレンダリング関数の中ではなく、**モジュールの読み込み（import）時点**で起きる。`'use client'` はモジュールの読み込み自体を止めることはできない。
+
+|                                            | サーバーでのモジュール読み込み | サーバーでのレンダリング |
+| ------------------------------------------ | ------------------------------ | ------------------------ |
+| `'use client'` のみ                        | **される**                     | される（初期 HTML 生成） |
+| `'use client'` + `dynamic({ ssr: false })` | **されない**                   | されない                 |
+
+`'use client'` は hooks を使うために必要で、`ssr: false` は Three.js のモジュール読み込み自体を防ぐために必要。両方がそれぞれ別の役割を担っている。
+
+### 通常の `import` との違い
+
+|                    | 通常の `import`                  | `dynamic()` + `ssr: false`     |
+| ------------------ | -------------------------------- | ------------------------------ |
+| 読み込みタイミング | ビルド時にバンドル               | ブラウザで実行時に読み込み     |
+| サーバー側         | 実行される                       | 実行されない                   |
+| バンドル           | メインバンドルに含まれる         | 別チャンクに分離（コード分割） |
+| 初期 HTML          | コンポーネントの HTML が含まれる | 空（プレースホルダー）         |
+
+### なぜ `React.lazy()` ではなく `next/dynamic` を使うのか
+
+`React.lazy()` には `ssr: false` オプションがない。Next.js 環境では SSR が標準で行われるため、SSR を明示的にスキップできる `next/dynamic` が必要。
