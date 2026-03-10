@@ -214,7 +214,7 @@ const components: MDXComponents = {
       return (
         <div
           className={cn(
-            '-mx-1 mt-10 rounded-3xl border border-border bg-iris-3 p-6 dark:bg-iris-2',
+            '-mx-1 mt-7 rounded-3xl border border-border bg-iris-3 p-6 dark:bg-iris-2',
             '[--color-accent:var(--color-iris-11)]',
             '[&_a]:text-(--color-accent) [&_a]:hover:decoration-(--color-accent)/60'
           )}
@@ -290,7 +290,7 @@ const components: MDXComponents = {
   ),
   hr: (props: React.HTMLAttributes<HTMLElement>) => (
     <hr
-      className="mx-auto my-14 block w-10 border-t border-border"
+      className="mx-auto my-10 block w-10 border-t border-border"
       {...props}
     />
   ),

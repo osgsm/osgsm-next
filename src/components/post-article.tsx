@@ -2,6 +2,7 @@ import type { Post, PostType } from '@/lib/mdx'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import { MDXContent } from '@/components/mdx-content'
+import { Button } from '@/components/button'
 import DecryptedText from '@/components/decrypted-text'
 
 type Props = {
@@ -46,13 +47,10 @@ export function PostArticle({ post, type }: Props) {
           <MDXContent source={post.content} />
         </div>
       </article>
-      <Link
-        href={`/${type}`}
-        className="mt-16 inline-flex items-center gap-1.5 text-sm text-iris-10 hover:text-iris-11 md:text-base"
-      >
-        <ArrowLeft className="size-3.5" />
-        Back to {type.charAt(0).toUpperCase() + type.slice(1)}
-      </Link>
+      <Button className="mt-16 leading-tight text-iris-11" href="/playground">
+        <ArrowLeft className="size-3" />
+        <span className="-translate-y-px">back to playground</span>
+      </Button>
     </div>
   )
 }

@@ -11,9 +11,11 @@ export function Button({
       href={href}
       className={cn(
         'group',
-        'block rounded-full border border-iris-5 bg-iris-3 px-3 py-1.5 leading-none text-iris-11 backdrop-blur-sm',
+        'block w-fit rounded-full border border-iris-5 bg-iris-3 px-3 py-1.5 backdrop-blur-sm',
+        'text-sm leading-none text-iris-11',
         'transition-colors',
-        'hover:border-iris-6 hover:bg-iris-5',
+        'hover:border-iris-6',
+        'md:text-base md:leading-none',
         className
       )}
     >
