@@ -46,7 +46,7 @@ export function PostArticle({ post, type }: Props) {
           <MDXContent source={post.content} />
         </div>
       </article>
-      <Button className="mt-16 leading-tight text-iris-11" href="/playground">
+      <Button className="mt-16 leading-tight text-iris-11" href={`/${type}`}>
         <ArrowLeft className="size-3" />
         <span>back to {type}</span>
       </Button>
