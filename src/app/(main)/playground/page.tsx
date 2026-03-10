@@ -23,9 +23,9 @@ export default function PlaygroundPage() {
         <Link
           key={item.href}
           href={item.href}
-          className="group relative overflow-hidden rounded-2xl border border-border p-2 transition-colors hover:border-iris-7"
+          className="group relative overflow-hidden rounded-3xl border border-border p-2 transition-colors hover:border-iris-7"
         >
-          <div className="relative aspect-video bg-iris-3 dark:bg-iris-2">
+          <div className="relative aspect-video rounded-2xl bg-iris-3 dark:bg-iris-2">
             {item.thumbnail ? (
               <Image
                 src={item.thumbnail}
@@ -40,7 +40,7 @@ export default function PlaygroundPage() {
               </div>
             )}
           </div>
-          <div className="absolute bottom-0 left-0 p-4">
+          <div className="absolute inset-x-0 bottom-0 px-5 py-4">
             <h2 className="text-sm font-medium text-iris-11">{item.title}</h2>
             <p className="text-xs text-iris-10">{item.description}</p>
           </div>
