@@ -8,6 +8,8 @@
 - [pages.md](./pages.md) - App Router とページ構成
 - [mdx.md](./mdx.md) - MDX の仕組みと使い方
 - [styling.md](./styling.md) - Tailwind CSS の設定
+- [playground.md](./playground.md) - Playground システムの構成
+- [three-webgpu.md](./three-webgpu.md) - R3F・Three.js TSL・WebGPU
 
 ## プロジェクト概要
 
@@ -20,3 +22,6 @@
 - TypeScript
 - Tailwind CSS v4
 - MDX (next-mdx-remote)
+- Three.js (WebGPU / TSL)
+- React Three Fiber (R3F)
+- Leva（リアルタイムパラメータ UI）

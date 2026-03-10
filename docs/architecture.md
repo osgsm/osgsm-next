@@ -6,12 +6,26 @@
 osgsm-next/
 ├── src/                    # ソースコード
 │   ├── app/                # Next.js App Router（ページとレイアウト）
+│   │   ├── (main)/         # メインレイアウト（Header + Footer）
+│   │   │   ├── blog/
+│   │   │   ├── note/
+│   │   │   └── playground/ # Playground ハブページ
+│   │   └── (playground)/   # Playground 専用レイアウト（ミニマル）
+│   │       └── playground/
+│   │           ├── cube/
+│   │           └── gradient/
 │   ├── components/         # 再利用可能なコンポーネント
+│   │   └── playground/     # Playground 関連コンポーネント
+│   │       ├── scene.tsx
+│   │       ├── shader-canvas.tsx
+│   │       ├── cube/
+│   │       └── gradient/
 │   └── lib/                # ユーティリティ関数
 ├── content/                # MDX コンテンツファイル
 │   ├── blog/               # ブログ記事
 │   └── note/               # ノート
 ├── public/                 # 静的ファイル
+│   └── images/playground/  # Playground サムネイル
 ├── docs/                   # このドキュメント
 └── 設定ファイル群
 ```
@@ -28,11 +42,20 @@ Next.js の App Router を使用。ファイルベースのルーティングで
 | `layout.tsx`  | 共通レイアウト（ネストされたページに適用） |
 | `globals.css` | グローバルスタイル                         |
 
+**Route Groups:** `(main)` と `(playground)` の 2 つの Route Group でレイアウトを分離している。括弧付きフォルダ名は URL に影響しない。詳細は [pages.md](./pages.md#route-groups) を参照。
+
 ### `src/components/`
 
 再利用可能な React コンポーネントを配置。
 
 - `mdx-content.tsx` - MDX をレンダリングするコンポーネント
+- `playground/` - Playground 関連コンポーネント
+  - `scene.tsx` - 3D シーン共通ラッパー（Canvas + OrbitControls + Leva）
+  - `shader-canvas.tsx` - TSL シェーダー共通ラッパー（WebGPU + 正射影カメラ）
+  - `cube/index.tsx` - 回転キューブの実装
+  - `gradient/index.tsx` - TSL グラデーションシェーダーの実装
+
+Playground の詳細は [playground.md](./playground.md) と [three-webgpu.md](./three-webgpu.md) を参照。
 
 ### `src/lib/`
 
