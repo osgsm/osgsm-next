@@ -3,7 +3,10 @@
 import type { ComponentProps, ReactNode } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
-import { Leva } from 'leva'
+import {
+  LevaPanel,
+  type LevaPanelProps,
+} from '@/components/playground/leva-panel'
 
 type SceneProps = {
   children: ReactNode
@@ -11,7 +14,7 @@ type SceneProps = {
   gl?: ComponentProps<typeof Canvas>['gl']
   className?: string
   orbitControls?: boolean | ComponentProps<typeof OrbitControls>
-  leva?: ComponentProps<typeof Leva>
+  leva?: LevaPanelProps
 }
 
 export function Scene({
@@ -36,7 +39,7 @@ export function Scene({
           />
         )}
       </Canvas>
-      <Leva collapsed={false} oneLineLabels {...leva} />
+      <LevaPanel {...leva} />
     </div>
   )
 }

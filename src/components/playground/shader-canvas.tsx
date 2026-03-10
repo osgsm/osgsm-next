@@ -1,9 +1,12 @@
 'use client'
 
-import { useEffect, useMemo, type ComponentProps } from 'react'
+import { useEffect, useMemo } from 'react'
 import { Canvas, useThree } from '@react-three/fiber'
 import { OrthographicCamera } from '@react-three/drei'
-import { Leva } from 'leva'
+import {
+  LevaPanel,
+  type LevaPanelProps,
+} from '@/components/playground/leva-panel'
 import { WebGPURenderer, MeshBasicNodeMaterial, Vector2 } from 'three/webgpu'
 import { uniform } from 'three/tsl'
 
@@ -12,7 +15,7 @@ type ColorNode = NonNullable<MeshBasicNodeMaterial['colorNode']>
 export type ShaderCanvasProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   createColorNodeAction: (params: { resolution: any; mouse: any }) => ColorNode
-  leva?: ComponentProps<typeof Leva>
+  leva?: LevaPanelProps
   className?: string
 }
 
@@ -22,10 +25,9 @@ function ShaderPlane({
   const size = useThree((s) => s.size)
   const gl = useThree((s) => s.gl)
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const resolution = useMemo(
     () => uniform(new Vector2(size.width, size.height)),
-    []
+    [size.width, size.height]
   )
   const mouse = useMemo(() => uniform(new Vector2(0, 0)), [])
 
@@ -98,7 +100,7 @@ export function ShaderCanvas({
         />
         <ShaderPlane createColorNodeAction={createColorNodeAction} />
       </Canvas>
-      <Leva collapsed={false} oneLineLabels {...levaProps} />
+      <LevaPanel {...levaProps} />
     </div>
   )
 }
