@@ -8,7 +8,7 @@ export default function Home() {
   const notePosts = getAllPosts('note').slice(0, 4)
 
   return (
-    <div>
+    <div className="mx-auto w-full max-w-3xl px-6 py-8">
       <header className="my-16 mb-24">
         <h1 className="sr-only">osgsm.io</h1>
         <p className="mb-4 font-pixel-circle text-[0.8125rem]/[1.75] font-bold tracking-wider text-iris-11 uppercase">

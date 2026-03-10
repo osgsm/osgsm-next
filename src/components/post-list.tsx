@@ -100,7 +100,7 @@ function PostListContent({
   }
 
   return (
-    <div>
+    <div className="mx-auto w-full max-w-3xl px-6 py-8">
       <header className="mt-16 mb-16">
         <h1 className="mb-2 -translate-x-px text-2xl leading-normal lg:text-3xl">
           {title}

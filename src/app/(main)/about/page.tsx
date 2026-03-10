@@ -83,7 +83,7 @@ function TagBadge({ tag }: { tag: string }) {
 
 export default function AboutPage() {
   return (
-    <div>
+    <div className="mx-auto w-full max-w-3xl px-6 py-8">
       <header className="mt-16 mb-20">
         <h1 className="mb-2 -translate-x-px text-2xl leading-normal lg:text-3xl">
           About me

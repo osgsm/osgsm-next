@@ -13,7 +13,7 @@ export default function MainLayout({
   return (
     <>
       <Header blogPosts={blogPosts} notePosts={notePosts} />
-      <main className="mx-auto w-full max-w-3xl px-6 py-8">{children}</main>
+      <main>{children}</main>
       <Footer />
     </>
   )

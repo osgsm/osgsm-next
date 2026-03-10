@@ -1,4 +1,5 @@
-import Link from 'next/link'
+import { ArrowLeft } from 'lucide-react'
+import { Button } from '@/components/button'
 
 export default function PlaygroundLayout({
   children,
@@ -7,12 +8,13 @@ export default function PlaygroundLayout({
 }) {
   return (
     <div className="relative">
-      <Link
-        className="absolute top-2.5 left-2.5 z-10 text-iris-10"
-        href="/playground/"
+      <Button
+        className="absolute top-2.5 left-2.5 z-10 leading-tight text-iris-10"
+        href="/playground"
       >
-        ← Back to playground
-      </Link>
+        <ArrowLeft className="size-3" />
+        <span className="-translate-y-px">back to playground</span>
+      </Button>
       <main className="flex-1">{children}</main>
     </div>
   )
