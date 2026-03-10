@@ -13,7 +13,7 @@ export default function PlaygroundLayout({
         href="/playground"
       >
         <ArrowLeft className="size-3" />
-        <span className="-translate-y-px">back to playground</span>
+        <span>back to playground</span>
       </Button>
       <main className="flex-1">{children}</main>
     </div>

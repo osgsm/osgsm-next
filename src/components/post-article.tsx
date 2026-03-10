@@ -48,7 +48,7 @@ export function PostArticle({ post, type }: Props) {
       </article>
       <Button className="mt-16 leading-tight text-iris-11" href="/playground">
         <ArrowLeft className="size-3" />
-        <span className="-translate-y-px">back to {type}</span>
+        <span>back to {type}</span>
       </Button>
     </div>
   )
