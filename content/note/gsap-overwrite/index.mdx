@@ -1,0 +1,30 @@
+---
+title: 'GSAP でアニメーションの競合を避ける'
+date: 2026-03-12
+
+tags: ['gsap']
+categories: ['GSAP']
+---
+
+GSAP の `vars` には `overwrite` というプロパティがある。同じターゲットの同じプロパティのアニメーションがある場合、それをどのように上書きするかを指定できる。
+
+- `false` (default): 上書きしない
+- `true`: 競合するものはすべて killed される
+- `auto`: コンフリクトするもののみ killed される
+
+例えば、スクロールによって要素が出たり入ったりするときのフェードイン・アウトアニメーションなどで使う。このようなケースでは `auto` を指定しておくとよい。
+
+```ts
+gsap.to(element, {
+  autoAlpha: 0,
+  duration: 1.0,
+  overwrite: 'auto',
+})
+```
+
+---
+
+<Callout type="reference">
+  - [vars | GSAP | Docs &
+  Learning](https://gsap.com/docs/v3/GSAP/Tween/vars/#overwrite)
+</Callout>
