@@ -1,0 +1,30 @@
+---
+title: 'GSAP でビューポートに応じて処理を分けているケースで、適用された style をリサイズ時にリセットする'
+date: 2026-03-12
+
+tags: ['gsap', 'matchmedia']
+categories: ['GSAP']
+---
+
+GSAP の `MatchMedia.add(){:ts}` を使えば、特定のメディアクエリにマッチしたときに実行したい処理を書ける。`add(){:ts}` メソッドのセカンドパラメータに渡すコールバックで cleanup code を返すことができ、このコードはメディアのマッチが変更になったときに実行される。
+
+```ts
+const mm = gsap.matchMedia()
+
+mm.add('(min-width: 800px)', () => {
+  const tween = gsap.to('.box', { x: 200, opacity: 1 })
+
+  return () => {
+    tween.revert()
+    // or
+    // gsap.set('.box', { clearProps: 'all' })
+  }
+})
+```
+
+---
+
+<Callout type="reference">
+  - [gsap.matchMedia() | GSAP | Docs &
+  Learning](https://gsap.com/docs/v3/GSAP/gsap.matchMedia())
+</Callout>
