@@ -185,7 +185,7 @@ export default function AboutPage() {
                   <div className="flex flex-col gap-x-2 gap-y-2.5 md:flex-row md:items-center">
                     <div
                       className={cn(
-                        "order-2 font-features-['palt'] leading-snug md:order-1",
+                        "order-2 pl-px font-features-['palt'] leading-snug md:order-1 md:pl-0",
                         i === commits.length - 1
                           ? 'trackint-normal'
                           : 'tracking-wider'
@@ -200,13 +200,13 @@ export default function AboutPage() {
                     </div>
                   </div>
                   {commit.org && (
-                    <div className="mt-1 text-xs text-iris-10">
+                    <div className="mt-1 pl-px text-xs text-iris-10 md:pl-0">
                       {commit.org}
                     </div>
                   )}
                 </div>
 
-                <div className="mt-2 text-[0.8125rem] leading-[1.75] md:text-sm">
+                <div className="mt-2 pl-px text-[0.8125rem] leading-[1.75] md:pl-0 md:text-sm">
                   {commit.description}
                 </div>
               </div>
