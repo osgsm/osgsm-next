@@ -150,6 +150,10 @@ body {
 
 a {
   @apply break-all;
+
+  code {
+    @apply bg-iris-3/75;
+  }
 }
 
 kbd {
