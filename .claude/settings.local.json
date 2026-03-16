@@ -43,7 +43,11 @@
       "Bash(xargs:*)",
       "Bash(cat:*)",
       "Bash(git rm:*)",
-      "Bash(node -e:*)"
+      "Bash(node -e:*)",
+      "WebSearch",
+      "WebFetch(domain:www.npmjs.com)",
+      "WebFetch(domain:boytchev.github.io)",
+      "WebFetch(domain:threejsroadmap.com)"
     ]
   }
 }
