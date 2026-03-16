@@ -10,13 +10,13 @@ export const metadata: Metadata = {
 
 const items = [
   {
-    title: 'Cube',
+    title: 'Perfectly ordinary cube',
     description: null,
     href: '/playground/cube',
     thumbnail: null,
   },
   {
-    title: 'Gradient',
+    title: 'Linear Gradient with TSL',
     description: null,
     href: '/playground/gradient',
     thumbnail: null,
