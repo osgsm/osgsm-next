@@ -49,6 +49,7 @@
     "shiki": "^3.22.0",
     "tailwind-merge": "^3.5.0",
     "three": "^0.183.2",
+    "tsl-textures": "^3.0.1",
     "unified": "^11.0.5",
     "vercel": "^50.25.4"
   },
