@@ -10,15 +10,21 @@ export const metadata: Metadata = {
 
 const items = [
   {
-    title: 'Perfectly ordinary cube',
+    title: 'Noise Gradient with TSL',
     description: null,
-    href: '/playground/cube',
+    href: '/playground/noise-gradient',
     thumbnail: null,
   },
   {
     title: 'Linear Gradient with TSL',
     description: null,
     href: '/playground/gradient',
+    thumbnail: null,
+  },
+  {
+    title: 'Perfectly ordinary cube',
+    description: null,
+    href: '/playground/cube',
     thumbnail: null,
   },
 ]
