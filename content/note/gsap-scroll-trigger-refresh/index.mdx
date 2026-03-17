@@ -1,0 +1,18 @@
+---
+title: 'コンテンツの高さが動的に変わる場合に GSAP ScrollTrigger が機能しないときの対処法'
+date: 2026-03-17
+
+tags: ['gsap', 'scrolltrigger']
+categories: ['GSAP']
+---
+
+width, height が指定されていない画像がまだ読み込まれていない場合や、コンテンツが動的に読み込まれる場合（via AJAX/fetch/etc.）など、コンテンツがページのレイアウトに影響する場合は ScrollTrigger を refresh する必要がある。
+
+ScrollTrigger を更新するには `ScrollTrigger.refresh(){:ts}` を、画像や新しいコンテンツを読み込むメソッドを使っているコールバック内でコールする。
+
+---
+
+<Callout type="reference">
+  - [ScrollTrigger tips & mistakes | GSAP | Docs &
+  Learning](https://gsap.com/resources/st-mistakes/#loading-new-content-but-not-refreshing)
+</Callout>
