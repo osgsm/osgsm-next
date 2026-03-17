@@ -22,7 +22,7 @@ const items = [
     thumbnail: '/playground/gradient.png',
   },
   {
-    title: 'Perfectly ordinary cube',
+    title: 'Perfectly Ordinary Cube',
     description: null,
     href: '/playground/cube',
     thumbnail: '/playground/cube.png',
@@ -32,9 +32,16 @@ const items = [
 export default function PlaygroundPage() {
   return (
     <div className="mx-auto w-full max-w-7xl px-4 py-8 md:px-6">
-      <header className="mt-16 mb-16 px-1">
+      <header className="mt-16 mb-16 px-2 md:px-4">
         <h1 className="mb-2 -translate-x-px text-2xl leading-normal lg:text-3xl">
           Playground
+          <span className="ml-2 font-pixel-circle text-[0.8125rem]/[1.75] font-bold tracking-wider text-iris-11">
+            <DecryptedText
+              animateOn="view"
+              text={String(items.length)}
+              speed={30}
+            />
+          </span>
         </h1>
         <p className="font-pixel-circle text-[0.8125rem]/[1.75] font-bold tracking-wider text-iris-11 uppercase">
           <DecryptedText
@@ -67,10 +74,10 @@ export default function PlaygroundPage() {
                   No image
                 </div>
               )}
-            </div>
-            <div className="absolute inset-x-0 bottom-0 bg-linear-to-b from-transparent to-iris-1/25 px-5 py-4 pt-4">
-              <h2 className="text-sm font-medium text-iris-12">{item.title}</h2>
-              <p className="text-xs text-iris-10">{item.description}</p>
+              <div className="absolute inset-x-0 bottom-0 bg-linear-to-b from-transparent to-mauve-12/50 px-5 py-4 pt-4 text-iris-5 dark:to-iris-1/25 dark:text-iris-12/90">
+                <h2 className="text-sm font-medium">{item.title}</h2>
+                <p className="text-xs">{item.description}</p>
+              </div>
             </div>
           </Link>
         ))}
