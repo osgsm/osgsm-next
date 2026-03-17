@@ -20,6 +20,7 @@ export function Header({
   const isPlayground = pathname.startsWith('/playground')
 
   const scrollRef = useRef<HTMLUListElement>(null)
+  const activeRef = useRef<HTMLLIElement>(null)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(false)
 
@@ -43,6 +44,14 @@ export function Header({
     observer.observe(el)
     return () => observer.disconnect()
   }, [])
+
+  useEffect(() => {
+    activeRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      inline: 'center',
+      block: 'nearest',
+    })
+  }, [pathname])
 
   return (
     <header className="sticky top-0 z-40 from-iris-1 via-iris-1/25 via-80% to-transparent pb-5 font-sans text-sm text-iris-9 md:text-base dark:bg-linear-to-b">
@@ -95,7 +104,11 @@ export function Header({
                   const isActive = pathname.startsWith(href)
 
                   return (
-                    <li className="shrink-0" key={label}>
+                    <li
+                      className="shrink-0"
+                      key={label}
+                      ref={isActive ? activeRef : undefined}
+                    >
                       <Link
                         href={href}
                         className={cn(
