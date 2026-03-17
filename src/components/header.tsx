@@ -17,7 +17,6 @@ export function Header({
 }) {
   const pathname = usePathname()
   const isHome = pathname === '/'
-  const isPlayground = pathname.startsWith('/playground')
 
   const scrollRef = useRef<HTMLUListElement>(null)
   const activeRef = useRef<HTMLLIElement>(null)
@@ -55,12 +54,7 @@ export function Header({
 
   return (
     <header className="sticky top-0 z-40 from-iris-1 via-iris-1/25 via-80% to-transparent pb-5 font-sans text-sm text-iris-9 md:text-base dark:bg-linear-to-b">
-      <div
-        className={cn(
-          'mx-auto max-w-3xl',
-          isPlayground ? 'max-w-7xl' : 'max-w-3xl'
-        )}
-      >
+      <div className={cn('mx-auto max-w-7xl')}>
         <nav className="flex items-center justify-between gap-2 px-3.5 py-3">
           <Link
             href="/"
@@ -100,6 +94,10 @@ export function Header({
                     href: '/about',
                     label: 'about',
                   },
+                  {
+                    href: '/playground',
+                    label: 'playground',
+                  },
                 ].map(({ href, label }) => {
                   const isActive = pathname.startsWith(href)
 
@@ -123,13 +121,6 @@ export function Header({
                     </li>
                   )
                 })}
-                <li>
-                  <span className="block rounded-full border border-iris-5 bg-iris-3 px-3 py-1.5 leading-none text-iris-11 opacity-50 backdrop-blur-sm">
-                    <s className="block -translate-y-px text-mauve-10">
-                      playground
-                    </s>
-                  </span>
-                </li>
               </ul>
               <span
                 className={cn(

@@ -8,13 +8,12 @@ export default function PlaygroundLayout({
 }) {
   return (
     <div className="relative">
-      <Button
-        className="absolute top-2.5 left-2.5 z-10 leading-tight text-iris-11"
-        href="/playground"
-      >
-        <ArrowLeft className="size-3" />
-        <span>back to playground</span>
-      </Button>
+      <div className="absolute inset-x-0 top-0 z-10 mx-auto max-w-7xl px-3.5 py-3">
+        <Button className="leading-tight text-iris-11" href="/playground">
+          <ArrowLeft className="size-3" />
+          <span>back to playground</span>
+        </Button>
+      </div>
       <main className="flex-1">{children}</main>
     </div>
   )

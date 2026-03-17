@@ -26,7 +26,6 @@ export default function Home() {
         </p>
         <p className="grid text-sm leading-[1.9] tracking-wide md:text-base">
           <span>ウェブサイトをつくったりしてます。</span>
-          <span>最近の関心は WebGL (WebGPU) 。</span>
           <span>
             日々の学びとか、制作物を載せていきます
             <small className="-mx-1.5 opacity-60">（予定）</small>。

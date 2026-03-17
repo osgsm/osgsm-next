@@ -1,19 +1,14 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/cn'
 import { ThemeToggle } from '@/components/theme-toggle'
 
 export function Footer() {
-  const pathname = usePathname()
-  const isPlayground = pathname.startsWith('/playground')
-
   return (
     <footer className="mt-auto pt-16 font-sans text-sm/[1.125rem] text-iris-10 dark:text-iris-8">
       <div
         className={cn(
-          'mx-auto flex items-center justify-between px-3.5 py-4',
-          isPlayground ? 'max-w-7xl' : 'max-w-3xl'
+          'mx-auto flex max-w-7xl items-center justify-between px-3.5 py-4'
         )}
       >
         <div>
