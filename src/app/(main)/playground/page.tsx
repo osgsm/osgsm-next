@@ -46,7 +46,7 @@ export default function PlaygroundPage() {
         <p className="font-pixel-circle text-[0.8125rem]/[1.75] font-bold tracking-wider text-iris-11 uppercase">
           <DecryptedText
             animateOn="view"
-            text="Ship first, think later"
+            text="Built for fun, not profit"
             sequential
             speed={30}
             useOriginalCharsOnly
