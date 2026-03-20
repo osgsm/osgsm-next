@@ -54,7 +54,7 @@ export function Header({
 
   return (
     <header className="sticky top-0 z-40 from-iris-1 via-iris-1/25 via-80% to-transparent pb-5 font-sans text-sm text-iris-9 md:text-base dark:bg-linear-to-b">
-      <div className={cn('mx-auto max-w-7xl')}>
+      <div className={cn('mx-auto max-w-360')}>
         <nav className="flex items-center justify-between gap-2 px-3.5 py-3">
           <Link
             href="/"

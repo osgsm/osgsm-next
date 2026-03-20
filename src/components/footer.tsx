@@ -8,7 +8,7 @@ export function Footer() {
     <footer className="mt-auto pt-16 font-sans text-sm/[1.125rem] text-iris-10 dark:text-iris-8">
       <div
         className={cn(
-          'mx-auto flex max-w-7xl items-center justify-between px-3.5 py-4'
+          'mx-auto flex max-w-360 items-center justify-between px-3.5 py-4'
         )}
       >
         <div>
