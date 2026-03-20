@@ -10,8 +10,8 @@ import { ShaderCanvas } from '@/components/playground/shader-canvas'
 const uScale = uniform(1)
 const uBalance = uniform(0)
 const uContrast = uniform(0)
-const uColor1 = uniform(new Color('#3d3e82'))
-const uColor2 = uniform(new Color('#8385ff'))
+const uColor1 = uniform(new Color('#4a4a95'))
+const uColor2 = uniform(new Color('#202248'))
 const uSeed = uniform(0)
 const uSpeed = uniform(2.0)
 
@@ -20,12 +20,12 @@ export function NoiseGradientScene() {
     {
       'Noise Gradient': folder({
         scale: { value: 1, min: 0, max: 4, step: 0.1 },
-        balance: { value: 0, min: -3, max: 3, step: 0.1 },
+        balance: { value: -0.1, min: -3, max: 3, step: 0.1 },
         contrast: { value: 0, min: -2, max: 2, step: 0.1 },
-        color1: '#3d3e82',
-        color2: '#8385ff',
+        color1: '#4a4a95',
+        color2: '#202248',
         seed: { value: 0, min: 0, max: 100, step: 1 },
-        speed: { value: 0.5, min: 0, max: 3, step: 0.1 },
+        speed: { value: 1.0, min: 0, max: 3, step: 0.1 },
       }),
     }
   )
