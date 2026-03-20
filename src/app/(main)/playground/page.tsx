@@ -10,6 +10,12 @@ export const metadata: Metadata = {
 
 const items = [
   {
+    title: 'GPU Particle Simulation',
+    description: null,
+    href: '/playground/particles',
+    thumbnail: '/playground/particles.gif',
+  },
+  {
     title: 'Noise Gradient with TSL',
     description: null,
     href: '/playground/noise-gradient',
