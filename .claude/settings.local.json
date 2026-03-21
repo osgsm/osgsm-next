@@ -47,7 +47,11 @@
       "WebSearch",
       "WebFetch(domain:www.npmjs.com)",
       "WebFetch(domain:boytchev.github.io)",
-      "WebFetch(domain:threejsroadmap.com)"
+      "WebFetch(domain:threejsroadmap.com)",
+      "Bash(tail:*)",
+      "Bash(sleep 5:*)",
+      "Bash(node:*)",
+      "Bash(echo done:*)"
     ]
   }
 }
