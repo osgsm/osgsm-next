@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const items = [
   {
-    title: 'GPU Particle Simulation',
+    title: 'GPGPU Particles',
     description: null,
     href: '/playground/particles',
     thumbnail: '/playground/particles.gif',
