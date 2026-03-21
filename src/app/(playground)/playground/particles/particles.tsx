@@ -48,7 +48,7 @@ function Particles() {
 
   const { color, opacity } = useControls({
     Appearance: folder({
-      color: '#b4aaff',
+      color: '#5b5bd6',
       opacity: { value: 0.85, min: 0, max: 1, step: 0.01 },
     }),
   })
@@ -82,7 +82,7 @@ function Particles() {
       const gravityU = uniform(-0.5)
       const dampingU = uniform(0.98)
       const dt = uniform(0)
-      const colorU = uniform(new THREE.Color('#b4aaff'))
+      const colorU = uniform(new THREE.Color('#5b5bd6'))
       const particleSizeU = uniform(2.0)
       const opacityU = uniform(0.85)
 
