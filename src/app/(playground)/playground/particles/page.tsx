@@ -3,6 +3,15 @@ import ParticleLoader from './particles-loader'
 
 export const metadata: Metadata = {
   title: 'GPGPU Particles',
+  openGraph: {
+    images: [
+      {
+        url: 'https://osgsm.io/playground/particles.gif',
+        width: 800,
+        height: 450,
+      },
+    ],
+  },
 }
 
 export default function ParticlesPage() {

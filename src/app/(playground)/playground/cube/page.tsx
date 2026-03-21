@@ -3,6 +3,15 @@ import CubeLoader from './cube-loader'
 
 export const metadata: Metadata = {
   title: 'Perfectly Ordinary Cube',
+  openGraph: {
+    images: [
+      {
+        url: 'https://osgsm.io/playground/cube.png',
+        width: 1920,
+        height: 1080,
+      },
+    ],
+  },
 }
 
 export default function CubePage() {

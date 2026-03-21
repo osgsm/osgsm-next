@@ -7,6 +7,9 @@ import { ThemeProvider } from '@/components/theme-provider'
 
 import './globals.css'
 
+const title = 'osgsm.io'
+const description = "Shogo Oshima's personal website"
+
 const instrumentSerif = Instrument_Serif({
   weight: '400',
   style: ['normal', 'italic'],
@@ -17,10 +20,16 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   title: {
-    default: 'osgsm.io',
-    template: '%s | osgsm.io',
+    default: title,
+    template: `%s | ${title}`,
   },
-  description: "Shogo Oshima's personal website",
+  description: description,
+  openGraph: {
+    url: 'https://osgsm.io',
+    siteName: 'osgsm.io',
+    locale: 'ja_JP',
+    type: 'website',
+  },
 }
 
 export default function RootLayout({
