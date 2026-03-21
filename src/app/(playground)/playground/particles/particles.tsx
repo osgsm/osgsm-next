@@ -37,9 +37,9 @@ function Particles() {
     speed: timeScale,
   } = useControls({
     Simulation: folder({
-      attractorStrength: { value: 20, min: 0, max: 50, step: 0.1 },
+      attractorStrength: { value: 10, min: 0, max: 50, step: 0.1 },
       gravity: { value: -0.5, min: -5, max: 5, step: 0.1 },
-      damping: { value: 0.98, min: 0.9, max: 1.0, step: 0.005 },
+      damping: { value: 1.0, min: 0.9, max: 1.0, step: 0.005 },
     }),
     Animation: folder({
       speed: { value: 1.0, min: 0, max: 3, step: 0.1 },
@@ -49,7 +49,7 @@ function Particles() {
   const { color, opacity } = useControls({
     Appearance: folder({
       color: '#5b5bd6',
-      opacity: { value: 0.85, min: 0, max: 1, step: 0.01 },
+      opacity: { value: 1.0, min: 0, max: 1, step: 0.01 },
     }),
   })
 
@@ -78,13 +78,13 @@ function Particles() {
       const maxLifetimes = instancedArray(PARTICLE_COUNT, 'float')
 
       const attractorPos = uniform(new THREE.Vector3(0, 0, 0))
-      const attractorStrengthU = uniform(20)
+      const attractorStrengthU = uniform(10)
       const gravityU = uniform(-0.5)
-      const dampingU = uniform(0.98)
+      const dampingU = uniform(1.0)
       const dt = uniform(0)
       const colorU = uniform(new THREE.Color('#5b5bd6'))
       const particleSizeU = uniform(2.0)
-      const opacityU = uniform(0.85)
+      const opacityU = uniform(1.0)
 
       const computeInit = Fn(() => {
         const pos = positions.element(instanceIndex)
