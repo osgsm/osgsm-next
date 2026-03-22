@@ -257,7 +257,6 @@ function FlowField() {
     // HSL to RGB
     const hslToRgb = Fn(([h, s, l]: ReturnType<typeof float>[]) => {
       const c = s.mul(float(1).sub(abs(l.mul(2).sub(1))))
-      const x = c.mul(float(1).sub(abs(h.mul(6).mod(2).sub(1))))
       const m = l.sub(c.mul(0.5))
 
       const hue6 = h.mul(6)
