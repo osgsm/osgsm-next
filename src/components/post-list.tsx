@@ -43,7 +43,7 @@ export function PostItem({ post, basePath }: PostItemProps) {
               ))}
             </div>
           )}
-          <div className="font-pixel-circle text-[0.8125rem]/[1.75] font-bold tracking-wider text-iris-11 uppercase">
+          <div className="font-pixel-circle text-xs font-bold tracking-wider text-iris-11 uppercase">
             {dateString}
           </div>
         </div>

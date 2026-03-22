@@ -32,7 +32,7 @@ export function PostArticle({ post, type }: Props) {
           <h1 className="mt-4 mb-3 -translate-x-px text-xl leading-normal lg:text-3xl">
             {post.title}
           </h1>
-          <div className="grid font-pixel-circle text-[0.8125rem]/[1.75] font-bold tracking-wider text-iris-11 uppercase">
+          <div className="grid font-pixel-circle text-xs font-bold tracking-wider text-iris-11 uppercase">
             <DecryptedText
               animateOn="view"
               text={dateString}
