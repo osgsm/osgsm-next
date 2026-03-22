@@ -10,6 +10,12 @@ export const metadata: Metadata = {
 
 const items = [
   {
+    title: 'Curl Noise Flow Field',
+    description: null,
+    href: '/playground/flow-field',
+    thumbnail: '/playground/flow-field.png',
+  },
+  {
     title: 'GPGPU Particles',
     description: null,
     href: '/playground/particles',
