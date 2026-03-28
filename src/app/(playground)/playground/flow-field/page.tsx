@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [
       {
-        url: 'https://osgsm.io/playground/flow-field.png',
+        url: 'https://osgsm.io/images/playground/index/flow-field.png',
         width: 800,
         height: 450,
       },

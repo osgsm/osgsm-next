@@ -10,28 +10,34 @@ export const metadata: Metadata = {
 
 const items = [
   {
+    title: 'Pixel Dissolve Slider',
+    description: null,
+    href: '/playground/pixel-dissolve',
+    thumbnail: '/images/playground/index/pixel-dissolve.png',
+  },
+  {
     title: 'Curl Noise Flow Field',
     description: null,
     href: '/playground/flow-field',
-    thumbnail: '/playground/flow-field.png',
+    thumbnail: '/images/playground/index/flow-field.png',
   },
   {
     title: 'GPGPU Particles',
     description: null,
     href: '/playground/particles',
-    thumbnail: '/playground/particles.gif',
+    thumbnail: '/images/playground/index/particles.gif',
   },
   {
     title: 'Noise Gradient with TSL',
     description: null,
     href: '/playground/noise-gradient',
-    thumbnail: '/playground/noise-gradient.png',
+    thumbnail: '/images/playground/index/noise-gradient.png',
   },
   {
     title: 'Perfectly Ordinary Cube',
     description: null,
     href: '/playground/cube',
-    thumbnail: '/playground/cube.png',
+    thumbnail: '/images/playground/index/cube.png',
   },
 ]
 

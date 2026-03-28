@@ -4,9 +4,9 @@ import { existsSync, mkdirSync } from 'fs'
 import path from 'path'
 
 const BASE_URL = process.env.BASE_URL || 'http://localhost:3000'
-const OUTPUT_DIR = path.resolve('public/playground')
+const OUTPUT_DIR = path.resolve('public/images/playground/index')
 const VIEWPORT = { width: 1280, height: 720 }
-const WAIT_MS = 2000
+const WAIT_MS = parseInt(process.env.WAIT_MS || '2000', 10)
 
 // Parse CLI args
 // Usage:

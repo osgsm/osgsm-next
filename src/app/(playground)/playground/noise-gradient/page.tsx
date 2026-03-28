@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [
       {
-        url: 'https://osgsm.io/playground/noise-gradient.png',
+        url: 'https://osgsm.io/images/playground/index/noise-gradient.png',
         width: 1920,
         height: 1080,
       },
