@@ -3,7 +3,18 @@
 import { useCallback, useEffect, useMemo, useRef } from 'react'
 import { useControls, folder } from 'leva'
 import { TextureLoader, SRGBColorSpace } from 'three'
-import { texture, uniform, uv, mix, smoothstep, hash, float } from 'three/tsl'
+import {
+  texture,
+  uniform,
+  uv,
+  mix,
+  smoothstep,
+  hash,
+  float,
+  vec2,
+  min as tslMin,
+  step,
+} from 'three/tsl'
 import { ShaderCanvas } from '@/components/playground/shader-canvas'
 
 const IMAGE_PATHS = [
@@ -16,24 +27,23 @@ const IMAGE_PATHS = [
 const uProgress = uniform(0)
 const uSoftness = uniform(0.1)
 const uPixelScale = uniform(1.0)
+const uImageAspect = uniform(1.0)
+const uIndexA = uniform(0)
+const uIndexB = uniform(1)
 
 export function PixelDissolveScene() {
   const textures = useMemo(() => {
     const loader = new TextureLoader()
-    return IMAGE_PATHS.map((path) => {
-      const tex = loader.load(path)
+    return IMAGE_PATHS.map((path, i) => {
+      const tex = loader.load(path, (loaded) => {
+        if (i === 0 && loaded.image) {
+          uImageAspect.value = loaded.image.width / loaded.image.height
+        }
+      })
       tex.colorSpace = SRGBColorSpace
       return tex
     })
   }, [])
-
-  const texNodeA = useMemo(() => texture(textures[0]), [textures])
-  const texNodeB = useMemo(() => texture(textures[1]), [textures])
-
-  const texNodesRef = useRef({ a: texNodeA, b: texNodeB })
-  useEffect(() => {
-    texNodesRef.current = { a: texNodeA, b: texNodeB }
-  }, [texNodeA, texNodeB])
 
   const stateRef = useRef({
     currentIdx: 0,
@@ -71,8 +81,9 @@ export function PixelDissolveScene() {
 
       const nextIdx =
         (s.currentIdx + direction + textures.length) % textures.length
-      texNodesRef.current.a.value = textures[s.currentIdx]
-      texNodesRef.current.b.value = textures[nextIdx]
+      uIndexA.value = s.currentIdx
+      uIndexB.value = nextIdx
+      uProgress.value = 0
       s.direction = direction
       s.phase = 'transition'
       s.startTime = performance.now()
@@ -111,7 +122,7 @@ export function PixelDissolveScene() {
         if (progress >= 1) {
           s.currentIdx =
             (s.currentIdx + s.direction + textures.length) % textures.length
-          texNodesRef.current.a.value = textures[s.currentIdx]
+          uIndexA.value = s.currentIdx
           uProgress.value = 0
           s.phase = 'hold'
           s.startTime = performance.now()
@@ -128,7 +139,31 @@ export function PixelDissolveScene() {
   const createColorNode = useCallback(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ({ resolution }: { resolution: any }) => {
-      // Per-pixel random threshold via hash
+      // Cover UV: object-fit: cover equivalent
+      const canvasAspect = resolution.x.div(resolution.y)
+      const scaleX = tslMin(float(1.0), canvasAspect.div(uImageAspect))
+      const scaleY = tslMin(float(1.0), uImageAspect.div(canvasAspect))
+      const coverUv = uv().sub(0.5).mul(vec2(scaleX, scaleY)).add(0.5)
+
+      // Create all texture nodes upfront — select by uniform index
+      const texNodes = textures.map((t) => texture(t, coverUv))
+      const pickTex = (idx: ReturnType<typeof uniform>) => {
+        // Chain of mix+step: idx 0→t0, 1→t1, 2→t2, 3→t3
+        const fi = float(idx)
+        const s1 = step(float(0.5), fi)
+        const s2 = step(float(1.5), fi)
+        const s3 = step(float(2.5), fi)
+        return mix(
+          mix(mix(texNodes[0], texNodes[1], s1), texNodes[2], s2),
+          texNodes[3],
+          s3
+        )
+      }
+
+      const colorA = pickTex(uIndexA)
+      const colorB = pickTex(uIndexB)
+
+      // Per-pixel random threshold via hash (screen-space UVs for dissolve pattern)
       const pixelCoord = uv().mul(resolution).div(uPixelScale).floor()
       const seed = pixelCoord.x.add(pixelCoord.y.mul(float(10000)))
       // Remap hash (0-1) to (softness, 1-softness) so smoothstep edges
@@ -144,9 +179,9 @@ export function PixelDissolveScene() {
         uProgress
       )
 
-      return mix(texNodeA, texNodeB, blend)
+      return mix(colorA, colorB, blend)
     },
-    [texNodeA, texNodeB]
+    [textures]
   )
 
   return (
