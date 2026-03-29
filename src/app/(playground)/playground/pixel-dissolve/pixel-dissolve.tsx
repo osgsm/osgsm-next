@@ -60,8 +60,8 @@ export function PixelDissolveScene() {
   const { speed, softness, pixelScale, holdTime } = useControls({
     'Pixel Dissolve': folder({
       speed: { value: 0.5, min: 0.2, max: 3, step: 0.1 },
-      softness: { value: 0.1, min: 0, max: 0.5, step: 0.01 },
-      pixelScale: { value: 3, min: 1, max: 20, step: 1 },
+      softness: { value: 0, min: 0, max: 0.5, step: 0.01 },
+      pixelScale: { value: 20, min: 1, max: 50, step: 1 },
       holdTime: { value: 2.0, min: 0.5, max: 5, step: 0.5 },
     }),
   })
