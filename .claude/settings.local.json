@@ -51,7 +51,9 @@
       "Bash(tail:*)",
       "Bash(sleep 5:*)",
       "Bash(node:*)",
-      "Bash(echo done:*)"
+      "Bash(echo done:*)",
+      "Bash(curl:*)",
+      "Bash(file:*)"
     ]
   }
 }
