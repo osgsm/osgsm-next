@@ -10,16 +10,22 @@ export const metadata: Metadata = {
 
 const items = [
   {
+    title: 'Ripple Distortion Slider',
+    description: null,
+    href: '/playground/ripple-distortion',
+    thumbnail: '/images/playground/index/ripple-distortion.avif',
+  },
+  {
     title: 'Pixel Dissolve Slider',
     description: null,
     href: '/playground/pixel-dissolve',
-    thumbnail: '/images/playground/index/pixel-dissolve.png',
+    thumbnail: '/images/playground/index/pixel-dissolve.avif',
   },
   {
     title: 'Curl Noise Flow Field',
     description: null,
     href: '/playground/flow-field',
-    thumbnail: '/images/playground/index/flow-field.png',
+    thumbnail: '/images/playground/index/flow-field.avif',
   },
   {
     title: 'GPGPU Particles',
@@ -31,13 +37,13 @@ const items = [
     title: 'Noise Gradient with TSL',
     description: null,
     href: '/playground/noise-gradient',
-    thumbnail: '/images/playground/index/noise-gradient.png',
+    thumbnail: '/images/playground/index/noise-gradient.avif',
   },
   {
     title: 'Perfectly Ordinary Cube',
     description: null,
     href: '/playground/cube',
-    thumbnail: '/images/playground/index/cube.png',
+    thumbnail: '/images/playground/index/cube.avif',
   },
 ]
 
