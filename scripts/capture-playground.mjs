@@ -10,7 +10,7 @@ const WAIT_MS = parseInt(process.env.WAIT_MS || '2000', 10)
 
 // Parse CLI args
 // Usage:
-//   node scripts/capture-playground.mjs <slug>                  → PNG capture
+//   node scripts/capture-playground.mjs <slug>                  → AVIF capture
 //   node scripts/capture-playground.mjs <slug> --gif [duration]  → GIF capture (duration in ms, default 2000)
 const args = process.argv.slice(2)
 const slug = args.find((a) => !a.startsWith('--'))
@@ -65,7 +65,7 @@ async function main() {
 
   const url = `${BASE_URL}/playground/${target.slug}`
   console.log(
-    `\nCapturing: ${target.slug} (${url})${target.gif ? ` [GIF ${target.duration}ms]` : ' [PNG]'}`
+    `\nCapturing: ${target.slug} (${url})${target.gif ? ` [GIF ${target.duration}ms]` : ' [AVIF]'}`
   )
 
   const context = await browser.newContext({
@@ -124,9 +124,17 @@ async function main() {
     execSync(`rm -rf "${tmpFramesDir}"`)
     console.log(`  Saved: ${outGif}`)
   } else {
-    const outPng = path.join(OUTPUT_DIR, `${target.slug}.png`)
-    await tab.screenshot({ path: outPng })
-    console.log(`  Saved: ${outPng}`)
+    const tmpPng = path.join(OUTPUT_DIR, `${target.slug}.png`)
+    const outAvif = path.join(OUTPUT_DIR, `${target.slug}.avif`)
+    await tab.screenshot({ path: tmpPng })
+
+    // Convert PNG to AVIF
+    console.log(`  Converting to AVIF...`)
+    execSync(`avifenc "${tmpPng}" "${outAvif}" --min 20 --max 30 -s 6`, {
+      stdio: 'inherit',
+    })
+    execSync(`rm "${tmpPng}"`)
+    console.log(`  Saved: ${outAvif}`)
   }
 
   await context.close()
