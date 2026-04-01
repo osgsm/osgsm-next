@@ -1,51 +1,12 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
-import Image from 'next/image'
 import DecryptedText from '@/components/decrypted-text'
+import { PlaygroundCard } from '@/components/playground-card'
+import { playgroundItems } from '@/lib/playground'
 
 export const metadata: Metadata = {
   title: 'Playground',
   description: 'Where ideas go to play',
 }
-
-const items = [
-  {
-    title: 'Ripple Distortion Slider',
-    description: null,
-    href: '/playground/ripple-distortion',
-    thumbnail: '/images/playground/index/ripple-distortion.avif',
-  },
-  {
-    title: 'Pixel Dissolve Slider',
-    description: null,
-    href: '/playground/pixel-dissolve',
-    thumbnail: '/images/playground/index/pixel-dissolve.avif',
-  },
-  {
-    title: 'Curl Noise Flow Field',
-    description: null,
-    href: '/playground/flow-field',
-    thumbnail: '/images/playground/index/flow-field.avif',
-  },
-  {
-    title: 'GPGPU Particles',
-    description: null,
-    href: '/playground/particles',
-    thumbnail: '/images/playground/index/particles.gif',
-  },
-  {
-    title: 'Noise Gradient with TSL',
-    description: null,
-    href: '/playground/noise-gradient',
-    thumbnail: '/images/playground/index/noise-gradient.avif',
-  },
-  {
-    title: 'Perfectly Ordinary Cube',
-    description: null,
-    href: '/playground/cube',
-    thumbnail: '/images/playground/index/cube.avif',
-  },
-]
 
 export default function PlaygroundPage() {
   return (
@@ -56,7 +17,7 @@ export default function PlaygroundPage() {
           <span className="ml-2 font-pixel-circle text-[0.8125rem]/[1.75] font-bold tracking-wider text-iris-11">
             <DecryptedText
               animateOn="view"
-              text={String(items.length)}
+              text={String(playgroundItems.length)}
               speed={30}
             />
           </span>
@@ -72,32 +33,8 @@ export default function PlaygroundPage() {
         </p>
       </header>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {items.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            className="group relative overflow-hidden rounded-3xl border border-border p-1 transition-colors hover:border-iris-7"
-          >
-            <div className="relative aspect-video overflow-clip rounded-[1.25rem] bg-iris-3 dark:bg-iris-2">
-              {item.thumbnail ? (
-                <Image
-                  src={item.thumbnail}
-                  alt={item.title}
-                  fill
-                  className="object-cover"
-                  unoptimized
-                />
-              ) : (
-                <div className="flex h-full items-center justify-center font-pixel-circle text-sm font-bold tracking-wider text-iris-10 uppercase">
-                  No image
-                </div>
-              )}
-              <div className="absolute inset-x-0 bottom-0 bg-linear-to-b from-transparent to-mauve-12/50 px-4 py-3 text-iris-5 dark:to-iris-1/25 dark:text-iris-12/90">
-                <h2 className="text-sm font-medium">{item.title}</h2>
-                <p className="text-xs">{item.description}</p>
-              </div>
-            </div>
-          </Link>
+        {playgroundItems.map((item) => (
+          <PlaygroundCard key={item.href} {...item} />
         ))}
       </div>
     </div>

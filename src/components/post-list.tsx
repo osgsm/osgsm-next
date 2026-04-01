@@ -25,31 +25,33 @@ export function PostItem({ post, basePath }: PostItemProps) {
     <li className="">
       <Link
         href={`${basePath}/${post.slug}`}
-        className="group -mx-1 grid gap-2 rounded-3xl border border-border bg-iris-3 p-6 pt-5 transition-colors hover:bg-iris-4 dark:bg-iris-2 dark:hover:bg-iris-3"
+        className="group -mx-1 grid h-full gap-2 rounded-3xl border border-border bg-iris-2 p-1 transition-colors hover:border-iris-7 dark:bg-iris-1"
       >
-        <div className="flex items-start justify-between gap-2">
-          <h2 className="leading-normal md:text-lg">{post.title}</h2>
-        </div>
-        <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1">
-          {post.categories && post.categories.length > 0 && (
-            <div className="relative -left-0.5 flex flex-wrap gap-1.5">
-              {post.categories.map((category) => (
-                <span
-                  key={category}
-                  className="rounded-lg bg-iris-4 px-2 py-0.5 font-sans text-sm tracking-wide text-iris-11 transition-colors group-hover:bg-iris-5 dark:bg-iris-3 dark:group-hover:bg-iris-4"
-                >
-                  {category}
-                </span>
-              ))}
-            </div>
-          )}
-          <div className="font-pixel-circle text-xs font-bold tracking-wider text-iris-11 uppercase">
-            {dateString}
+        <div className="grid h-full content-start gap-2 rounded-[1.25rem] bg-iris-3 p-5 pt-4 dark:bg-iris-2">
+          <div className="flex items-start justify-between gap-2">
+            <h2 className="leading-normal md:text-lg">{post.title}</h2>
           </div>
+          <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1">
+            {post.categories && post.categories.length > 0 && (
+              <div className="relative -left-0.5 flex flex-wrap gap-1.5">
+                {post.categories.map((category) => (
+                  <span
+                    key={category}
+                    className="rounded-lg bg-iris-4 px-2 py-0.5 font-sans text-sm tracking-wide text-iris-11 transition-colors dark:bg-iris-3"
+                  >
+                    {category}
+                  </span>
+                ))}
+              </div>
+            )}
+            <div className="font-pixel-circle text-xs font-bold tracking-wider text-iris-11 uppercase">
+              {dateString}
+            </div>
+          </div>
+          {post.description && (
+            <p className="mt-2 text-sm text-iris-11">{post.description}</p>
+          )}
         </div>
-        {post.description && (
-          <p className="mt-2 text-sm text-iris-11">{post.description}</p>
-        )}
       </Link>
     </li>
   )

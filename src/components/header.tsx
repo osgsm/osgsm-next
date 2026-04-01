@@ -53,7 +53,13 @@ export function Header({
   }, [pathname])
 
   return (
-    <header className="sticky top-0 z-40 from-iris-1 via-iris-1/25 via-80% to-transparent pb-5 font-sans text-sm text-iris-9 md:text-base dark:bg-linear-to-b">
+    <header
+      className={cn(
+        'sticky top-0 z-40 from-iris-1 via-iris-1/25 via-80% to-transparent pb-5 font-sans text-sm text-iris-9',
+        'md:text-base',
+        'dark:bg-linear-to-b'
+      )}
+    >
       <div className={cn('mx-auto max-w-360')}>
         <nav className="flex items-center justify-between gap-2 px-3.5 py-3">
           <Link
@@ -66,7 +72,8 @@ export function Header({
           >
             <span
               className={cn(
-                'block rounded-full border bg-iris-3 px-3 py-1.5 leading-none text-iris-11 transition-colors',
+                'block rounded-full border bg-iris-3 px-3 py-1.5 leading-none text-iris-11',
+                'transition-colors',
                 isHome
                   ? 'border-iris-7'
                   : 'border-iris-5 group-hover:border-iris-7 group-hover:text-iris-12'
@@ -76,12 +83,21 @@ export function Header({
             </span>
           </Link>
           <div className="ml-auto flex items-center gap-2">
-            <div className="relative flex items-center overflow-hidden rounded-full border border-border bg-iris-4 p-0.5 transition-colors">
+            <div
+              className={cn(
+                'relative flex items-center overflow-hidden rounded-full border border-border bg-iris-4 p-0.5',
+                'transition-colors'
+              )}
+            >
               <ul
                 ref={scrollRef}
                 className="hide-scrollbar flex overflow-x-auto"
               >
                 {[
+                  {
+                    href: '/playground',
+                    label: 'playground',
+                  },
                   {
                     href: '/blog',
                     label: 'blog',
@@ -93,10 +109,6 @@ export function Header({
                   {
                     href: '/about',
                     label: 'about',
-                  },
-                  {
-                    href: '/playground',
-                    label: 'playground',
                   },
                 ].map(({ href, label }) => {
                   const isActive = pathname.startsWith(href)
@@ -110,7 +122,9 @@ export function Header({
                       <Link
                         href={href}
                         className={cn(
-                          'group block rounded-full border bg-iris-3 px-3 py-1.5 leading-none text-iris-11 backdrop-blur-sm transition-colors',
+                          'group',
+                          'block rounded-full border bg-iris-3 px-3 py-1.5 leading-none text-iris-11 backdrop-blur-sm',
+                          'transition-colors',
                           isActive
                             ? 'border-iris-7'
                             : 'border-iris-5 hover:border-iris-7 hover:text-iris-12'
@@ -124,13 +138,17 @@ export function Header({
               </ul>
               <span
                 className={cn(
-                  'pointer-events-none absolute inset-y-0 left-0 w-8 bg-linear-to-r from-iris-4 to-transparent transition-opacity min-[442px]:opacity-0!',
+                  'pointer-events-none absolute inset-y-0 left-0 w-8 bg-linear-to-r from-iris-4 to-transparent',
+                  'transition-opacity',
+                  'min-[442px]:opacity-0!',
                   canScrollLeft ? 'opacity-100' : 'opacity-0'
                 )}
               />
               <span
                 className={cn(
-                  'pointer-events-none absolute inset-y-0 right-0 w-8 bg-linear-to-l from-iris-4 to-transparent transition-opacity min-[442px]:opacity-0!',
+                  'pointer-events-none absolute inset-y-0 right-0 w-8 bg-linear-to-l from-iris-4 to-transparent',
+                  'transition-opacity',
+                  'min-[442px]:opacity-0!',
                   canScrollRight ? 'opacity-100' : 'opacity-0'
                 )}
               />
