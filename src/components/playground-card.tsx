@@ -20,7 +20,7 @@ export function PlaygroundCard({
             src={thumbnail}
             alt={title}
             fill
-            className="rounded-[1.25rem] object-cover"
+            className="object-cover"
             unoptimized
           />
         ) : (
@@ -30,7 +30,7 @@ export function PlaygroundCard({
         )}
         <div
           className={cn(
-            'absolute inset-x-0 bottom-0 mx-4 rounded-3xl bg-linear-to-b from-transparent to-mauve-12/80 pt-8 pb-3 text-iris-5',
+            'absolute inset-x-0 bottom-0 bg-linear-to-b from-transparent to-mauve-12/80 px-4 pt-8 pb-3 text-iris-5',
             'dark:to-iris-1/90 dark:text-iris-12'
           )}
         >
