@@ -25,9 +25,9 @@ export function PostItem({ post, basePath }: PostItemProps) {
     <li className="">
       <Link
         href={`${basePath}/${post.slug}`}
-        className="group -mx-1 grid h-full gap-2 rounded-3xl border border-border bg-iris-2 p-1 transition-colors hover:border-iris-7 dark:bg-iris-1"
+        className="group -mx-1 grid h-full gap-2 rounded-3xl border border-border bg-iris-4 p-1 transition-all hover:border-iris-7 dark:bg-iris-2"
       >
-        <div className="grid h-full content-start gap-2 rounded-[1.25rem] bg-iris-3 p-5 pt-4 dark:bg-iris-2">
+        <div className="grid h-full content-start gap-2 rounded-[1.25rem] bg-iris-3 p-5 pt-4 transition-all dark:bg-iris-2">
           <div className="flex items-start justify-between gap-2">
             <h2 className="leading-normal md:text-lg">{post.title}</h2>
           </div>

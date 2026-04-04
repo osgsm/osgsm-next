@@ -12,7 +12,7 @@ export function PlaygroundCard({
   return (
     <Link
       href={href}
-      className="group relative -mx-1 overflow-clip rounded-3xl border border-border p-1 transition-colors hover:border-iris-7"
+      className="group relative -mx-1 overflow-clip rounded-3xl border border-border bg-iris-4 p-1 transition-colors hover:border-iris-7 dark:bg-iris-2"
     >
       <div className="relative aspect-video overflow-clip rounded-[1.25rem]">
         {thumbnail ? (
