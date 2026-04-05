@@ -221,7 +221,7 @@ export function RippleDistortionScene() {
         waveFront.add(softEdge),
         waveFront.sub(softEdge),
         distance
-      )
+      ).mul(step(float(0.001), uProgress))
 
       return mix(colorA, colorB, blend)
     },
