@@ -7,6 +7,12 @@ export type PlaygroundItem = {
 
 export const playgroundItems: PlaygroundItem[] = [
   {
+    title: 'Noise Wipe Slider',
+    description: null,
+    href: '/playground/noise-wipe',
+    thumbnail: '/images/playground/index/noise-wipe.avif',
+  },
+  {
     title: 'Ripple Distortion Slider',
     description: null,
     href: '/playground/ripple-distortion',
