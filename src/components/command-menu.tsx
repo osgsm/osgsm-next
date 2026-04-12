@@ -9,6 +9,7 @@ import { Search } from 'lucide-react'
 
 import { cn } from '@/lib/cn'
 import type { PostMeta } from '@/lib/mdx'
+import { playgroundItems } from '@/lib/playground'
 
 export function CommandMenu({
   blogPosts,
@@ -128,6 +129,7 @@ export function CommandMenu({
               { title: 'Blog', href: '/blog/' },
               { title: 'Note', href: '/note/' },
               { title: 'Playground', href: '/playground/' },
+              { title: 'About', href: '/about/' },
             ].map(({ title, href }) => {
               return (
                 <Command.Item
@@ -144,6 +146,23 @@ export function CommandMenu({
               )
             })}
           </Command.Group>
+          {playgroundItems.length > 0 && (
+            <Command.Group heading="Playground">
+              {playgroundItems.map((item) => (
+                <Command.Item
+                  key={item.href}
+                  value={item.title}
+                  keywords={[item.title, 'playground']}
+                  onSelect={() => {
+                    router.push(item.href)
+                    setOpen(false)
+                  }}
+                >
+                  {item.title}
+                </Command.Item>
+              ))}
+            </Command.Group>
+          )}
           <Command.Group heading="Commands">
             <Command.Item
               value="Toggle Theme"
